@@ -1,0 +1,9 @@
+1. faire un TAD labyrinthe
+2. Analyse descendante des opérations suivantes
+
+     chemins : Labyrinthe -> Liste<NaturelNonNul>
+    ordresRobot : Liste<NaturelNonnul> -> Liste<Ordre>
+3. Conception préliminaire + conception détaillée
+4. Développement des .h, des .c vide et des tests unitaires
+5. Développement des .c
+6. Intégration
