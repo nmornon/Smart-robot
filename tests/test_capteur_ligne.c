@@ -17,11 +17,11 @@ int main(int argc, char **argv)
             // Blanc
             printf("Détection : BLANC (0)\n");
         } else {
-            Noir
+            //Noir
             printf("Détection : NOIR (1)\n");
         }
 
-        delay(500); // Pause de 500ms pour avoir le temps de lire
+        delay(500); 
     }
     return 0;
 }
