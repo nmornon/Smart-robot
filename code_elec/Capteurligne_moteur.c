@@ -11,7 +11,7 @@
 #define	EN2 13    //GPIO 25
 #define CAPTEUR_PIN1 24  //GPIO 13
 #define CAPTEUR_PIN2 25 //GPIO 14 
-#define CAPTEUR_PIN3 15 //GPIO 15 a verifier 
+#define CAPTEUR_PIN3 26 //GPIO 26 a verifier 
 
 
 
