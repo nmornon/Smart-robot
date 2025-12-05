@@ -7,36 +7,32 @@
 #define	IN2  5 // GPIO 5
 #define	IN3 4   // GPIO 4 
 #define	IN4 18    // GPIO 18
-#define	EN1 13  //GPIO 13 ici en a utiliser car iul sont des pin pwm deja definie
-#define	EN2 12    //GPIO 12 ici en a utiliser car iul sont des pin pwm deja definie
-#define CAPTEUR_PIN1 13  //GPIO 13
-#define CAPTEUR_PIN2 14 //GPIO 14 
-#define CAPTEUR_PIN3 15 //GPIO 15 a tester dans le lab car en cest pas pour linstant le pin 
+#define	EN1 12  //GPIO 24 
+#define	EN2 13    //GPIO 25
+#define CAPTEUR_PIN1 24  //GPIO 13
+#define CAPTEUR_PIN2 25 //GPIO 14 
+#define CAPTEUR_PIN3 15 //GPIO 15 a verifier 
 
 
 
 void setup(){
-
 	wiringPiSetupGpio();
 	pinMode(IN1,OUTPUT);
 	pinMode(IN2,OUTPUT);
 	pinMode(IN3,OUTPUT);
 	pinMode(IN4,OUTPUT);
-	pinMode(EN1, PWM_OUTPUT);
-	pinMode(EN2, PWM_OUTPUT);
-	pinMode(CAPTEUR_PIN1, INPUT); 
-	pinMode(CAPTEUR_PIN2, INPUT);
-	pinMode(CAPTEUR_PIN3, INPUT);  
-	
-	}
-	
-	
+	pinMode(EN1,PWM_OUTPUT);
+	pinMode(EN2,PWM_OUTPUT);
+    pinMode(CAPTEUR_PIN1, INPUT); 
+    pinMode(CAPTEUR_PIN2, INPUT);
+    pinMode(CAPTEUR_PIN3, INPUT);  
+}
+
 void setSpeed(int speed) {  // 0-100 en pourcentage
     speed = speed * 1024 / 100;
     pwmWrite(EN1, speed);
     pwmWrite(EN2, speed);
 }
-
 void Gauche(){
 	digitalWrite(IN1,1);
 	digitalWrite(IN2,0);
@@ -89,45 +85,36 @@ void capteur(){
     
     int valeur1 = digitalRead(CAPTEUR_PIN1);
     int valeur2 = digitalRead(CAPTEUR_PIN2);
-    int valeur2 = digitalRead(CAPTEUR_PIN3);
-    int speed=50;//ralentir la vitesse au moitie
-    int speed1=100;// revenir a la vitesse intitial 
-	    
-    
-    if (valeur1 == 0 ) {
-    
-       
-    
+    int valeur3 = digitalRead(CAPTEUR_PIN3);
+
+    if (valeur1 == 0 && valeur2 == 0 && valeur3 ==0) {
         Arret();
+        delay(200);
         
-    } else {
+        
+    } else if (valeur1 == 1 && valeur2 == 0 && valeur3 == 0) {
         Avance();
    
-    }
     
-    if (valeur2 == 0) {
-        Arret();
-        
-    } else {
-    	setSpeed(speed);//quand en detecte a gauche en ralenti la vitesse a 50% puis en tourne
+    
+
+    } else if (valeur1 == 0 && valeur2 == 1 && valeur3 == 0) {
+        setSpeed(speed);//quand en detecte a gauche en ralenti la vitesse a 50% puis en tourne
     	delay(200);
         Droite();//ici en tourne 
         delay(200);
         setSpeed(speed1);// ici en remet la vitesse initial et en continu a la vitesse intial
         Avance();
         
-    }
-  
-
-    if (valeur3 == 0) {
-        Arret();
-        
-    } else {
+    } else if (valeur1 == 0 && valeur2 == 0 && valeur3 == 1) {
         setSpeed(speed);
         delay(200)
         Gauche();
         delay(200);
         setSpeed(speed1);
+        Avance();
+        
+    } else if (valeur1 == 1 && valeur2 == 1 && valeur3 == 1) {
         Avance();
         
     }
