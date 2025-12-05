@@ -91,7 +91,7 @@ void capteur(){
 
     if (valeur1 == 0 && valeur2 == 0 && valeur3 ==0) {
         Arret();
-        delay(200);
+    
         
         
     } else if (valeur1 == 1 && valeur2 == 0 && valeur3 == 0) {
@@ -118,9 +118,6 @@ void capteur(){
         Avance();
         
     } else if (valeur1 == 1 && valeur2 == 1 && valeur3 == 1) {
-        Avance();
-        
-    } else if (valeur1 == 1 && valeur2 == 1 && valeur3 == 1)) {
         Avance();
         
     }
