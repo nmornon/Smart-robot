@@ -86,6 +86,8 @@ void capteur(){
     int valeur1 = digitalRead(CAPTEUR_PIN1);
     int valeur2 = digitalRead(CAPTEUR_PIN2);
     int valeur3 = digitalRead(CAPTEUR_PIN3);
+	int speed=50;//ralentir la vitesse au moitie
+    int speed1=100;// revenir a la vitesse intitial 
 
     if (valeur1 == 0 && valeur2 == 0 && valeur3 ==0) {
         Arret();
@@ -100,11 +102,9 @@ void capteur(){
 
     } else if (valeur1 == 0 && valeur2 == 1 && valeur3 == 0) {
 
-        setSpeed(speed);//quand en detecte a gauche en ralenti la vitesse a 50% puis en tourne
-
-        Droite();
-
-        delay(200);
+        setSpeed(speed);//quand en detecte a droite en ralenti la vitesse a 50% puis en tourne
+		Droite();
+	    delay(200);
         setSpeed(speed1);// ici en remet la vitesse initial et en continu a la vitesse intial
         Avance();
         
@@ -112,9 +112,7 @@ void capteur(){
 
         setSpeed(speed);
         delay(200)
-
-
-        Gauche();
+	    Gauche();
         delay(200);
         setSpeed(speed1);
         Avance();
