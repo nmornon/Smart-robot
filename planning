@@ -1,13 +1,15 @@
 Planning Algo : 
 1. faire un TAD labyrinthe
-2. Analyse descendante des opérations suivantes
+2. faire un TAD direction
+3. faire un TAD coordonnée
+4. Analyse descendante des opérations suivantes
 
      chemins : Labyrinthe -> Liste<NaturelNonNul>
     ordresRobot : Liste<NaturelNonnul> -> Liste<Ordre>
-3. Conception préliminaire + conception détaillée
-4. Développement des .h, des .c vide et des tests unitaires
-5. Développement des .c
-6. Intégration
+5. Conception préliminaire + conception détaillée
+6. Développement des .h, des .c vide et des tests unitaires
+7. Développement des .c
+8. Intégration
 
 
 
@@ -16,4 +18,5 @@ Planning Elec :
 1. Choix positions  des capteurs 
 2. Idée du schéma électrique à réaliser
 3. test ecran LCD, detection des couleurs et le buzzer 
-4. Design du robot
+4. faire le circuit
+5. design du robot
