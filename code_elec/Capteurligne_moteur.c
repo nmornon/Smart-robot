@@ -99,22 +99,30 @@ void capteur(){
     
 
     } else if (valeur1 == 0 && valeur2 == 1 && valeur3 == 0) {
+
         setSpeed(speed);//quand en detecte a gauche en ralenti la vitesse a 50% puis en tourne
-    	delay(200);
-        Droite();//ici en tourne 
+
+        Droite();
+
         delay(200);
         setSpeed(speed1);// ici en remet la vitesse initial et en continu a la vitesse intial
         Avance();
         
     } else if (valeur1 == 0 && valeur2 == 0 && valeur3 == 1) {
+
         setSpeed(speed);
         delay(200)
+
+
         Gauche();
         delay(200);
         setSpeed(speed1);
         Avance();
         
     } else if (valeur1 == 1 && valeur2 == 1 && valeur3 == 1) {
+        Avance();
+        
+    } else if (valeur1 == 1 && valeur2 == 1 && valeur3 == 1)) {
         Avance();
         
     }
