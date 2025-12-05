@@ -22,15 +22,15 @@ Le critère de performance est le **temps le plus court** pour réaliser l'inté
 La ville est modélisée par une grille de cases formant un carré.
 
 
-Le problème est décrit à l'aide d'un **flux texte** structuré qui définit:
+Le problème est décrit à l'aide d'un **flux texte structuré** qui définit:
 * La largeur $l$ de la ville en nombre de cases
-* [cite_start]La case de départ et son orientation initiale (N, E, S, O)
-* [cite_start]Les passages entre les cases (ex: `1-2`)
-* [cite_start]Les numéros des cases contenant les points de passage obligatoires (pastilles bleues)
+* La case de départ et son orientation initiale (N, E, S, O)
+* Les passages entre les cases (ex: `1-2`)
+* Les numéros des cases contenant les points de passage obligatoires (pastilles bleues)
 
 ## Architecture Logicielle et Contrôle
 
-L'exécution du projet repose sur une architecture en deux programmes communicants, orchestrés par un script `bash`[cite: 126, 127].
+L'exécution du projet repose sur une architecture en deux programmes communicants, orchestrés par un script `bash`.
 
 | Composant | Rôle | Description |
 | :--- | :--- | :--- |
@@ -39,10 +39,12 @@ L'exécution du projet repose sur une architecture en deux programmes communican
 | **Programme 2** | Contrôleur / Driver | **Lit les ordres depuis son entrée standard**, les interprète, et pilote les composants du robot (moteurs, capteurs) |
 
 ### Les Ordres de Contrôle 
-Le robot est guidé à l'aide de trois ordres :
+Le robot est guidé à l'aide d'ordres tels que :
 * `AV` : **Avancer** jusqu'au prochain croisement
-* `TG` : **Tourner à Gauche** (n'avance pas)
-* `TD` : **Tourner à Droite** (n'avance pas)
+* `TG` : **Tourner à Gauche**
+* `TD` : **Tourner à Droite**
+* `STOP`
+* `...`
 
 ---
 
@@ -53,15 +55,15 @@ Le robot est équipé des composants suivants:
 * **Déplacement :** 2 moteurs + roues + supports.
 * **Capteurs :** 1 Capteur couleur, 3 Capteurs détecteurs de ligne.
 * **Interface :** Buzzers, LED, Écran LCD (pour afficher les manœuvres en continu et les couleurs détectées en émettant un bip).
-* **Batteries :** 1 batterie USB-C pour la Raspberry Pi, 2 batteries NIMH 3,7V + support.
+* **Batteries :** 1 batterie USB-C pour la Raspberry Pi 4, 2 batteries NIMH 3,7V + support.
 
 ---
 
 ## Utilisation et Démonstration
 
 Le jour de la démonstration:
-1.  **Transfert du Fichier :** Copier le fichier de description de la ville sur le robot
-2.  **Connexion :** Se connecter en `SSH` sur le robot
+1.  **Connexion :** Se connecter en `SSH` sur le robot
+2.  **Transfert du Fichier :** Copier le fichier de description de la ville sur le robot
 3.  **Lancement :** Lancer le script `bash` en lui passant le nom du fichier de description en paramètre
 
 ```bash
