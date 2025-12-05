@@ -84,7 +84,7 @@ void capteur(){
     if (valeur1 == 0 && valeur2 == 0 && valeur3 ==0) {
         Arret();
         delay(200);
-        //demi tour();
+        
         
     } else if (valeur1 == 1 && valeur2 == 0 && valeur3 == 0) {
         Avance();
