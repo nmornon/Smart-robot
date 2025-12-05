@@ -1,4 +1,4 @@
-# 🤖 PI SMART ROBOT (IT13)
+# 🤖 PI SMART ROBOT
 
 ### Projet d'Intégration (PI) 2025-2026 - INSA Rouen
 
