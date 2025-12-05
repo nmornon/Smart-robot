@@ -1,6 +1,6 @@
 # 🤖 PI SMART ROBOT
 
-### Projet d'Intégration (PI) 2025-2026 - INSA Rouen
+### Projet Intégratif - Groupe 6 - 2025-2026 - INSA Rouen
 
 ---
 
