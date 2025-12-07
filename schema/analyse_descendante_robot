@@ -1,0 +1,39 @@
+Detail des fonctions et procédures pour l'analyse descendante version elec
+
+Robot(liste<Commande>) : cette procédure fait avancer le robot en lisant la suite d'instruction donnée en entrée 
+
+
+Initialiser_robot() :Entier, Entier , va configurer les PIN de tous les capteurs, le LCD , les PWM renvoie le handle (identifiant unique qui représente une ressource système) et le capteur
+
+Initialiser_LCD() : Entier ,  initialise le LCD , l'entier est le handle qui est utlisé pour afficher dessus
+
+Initialiser_Capteur_RGB() : Entier ,initialise la capteur RGB , l'entier sert pour utiliser le capteur 
+
+Executer_Commande(Liste<Commande>, handle : Entier , capteur : Entier) : va lire les commandes 1 par 1 et les éxécuter 
+
+Tourner_Droite() : fait tourner à droite le robot 
+
+Toruner_Gauche() : fait toruner à gauche le robot
+
+Avancer(handle : Entier , capteur : Entier ) : fait avancer le robot en suivant bien la ligne noire
+
+Arreter() : le robot arrete d'avancer
+
+Diriger(Commande): actualise IN1 IN2 IN3 IN4 EN1 EN2 donc la vitesse en fonction de la commande en cours
+
+Recadrer(Commande): recadre le robot sur la ligne noir si y'a un léger décallage 
+
+Detecter_Intersection() : Booleen  un des capteurs de derrière à detecter une intersection
+
+Detecter_Pastille(capteur : Entier) :Booleen a detecté une couleur qui est rouge ou verte 
+
+lire_couleur(capteur:Entier): chaine de caractère , capteur RGB lit en continue les couleurs et renvoie vrai dès que c'est rouge ou vert 
+
+read16 (capteur : Entier , adresse registre : Entier ) aide pour lire le registre 
+
+Afficher_couleur(couleur : chaine de caractère, handle : Entier ) : affiche la couleur sur le lcd 
+
+Activer_buzer() il s'active à chaque pastille ou intersection je sais plus  
+
+lien de l'analyse descendante : https://www.canva.com/design/DAG614fXwmo/bapIBcVTE0LtQyUYekXYlA/edit?utm_content=DAG614fXwmo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
