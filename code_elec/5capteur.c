@@ -11,15 +11,14 @@
 #define EN1 12  
 #define EN2 13    
 
-// ------------------- CAPTEURS BAS (déjà existants) -------------------
-#define CAPTEUR_BG 24   // Bas Gauche
-#define CAPTEUR_BM 25   // Bas Milieu
-#define CAPTEUR_BD 26   // Bas Droite
-
-// ------------------- CAPTEURS HAUT (NOUVEAUX) -------------------
+// ------------------- CAPTEURS HAUT (3 capteurs) -------------------
 #define CAPTEUR_HG 17   // Haut Gauche
 #define CAPTEUR_HM 27   // Haut Milieu
 #define CAPTEUR_HD 22   // Haut Droite
+
+// ------------------- CAPTEURS BAS LATERAUX (2 capteurs) -------------------
+#define CAPTEUR_BG 24   // Bas Gauche
+#define CAPTEUR_BD 26   // Bas Droite
 
 
 // ------------------- SETUP -------------------
@@ -35,15 +34,14 @@ void setup() {
     pinMode(EN1,PWM_OUTPUT);
     pinMode(EN2,PWM_OUTPUT);
 
-    // Capteurs bas
-    pinMode(CAPTEUR_BG, INPUT); 
-    pinMode(CAPTEUR_BM, INPUT);
-    pinMode(CAPTEUR_BD, INPUT);
-
     // Capteurs haut
     pinMode(CAPTEUR_HG, INPUT);
     pinMode(CAPTEUR_HM, INPUT);
     pinMode(CAPTEUR_HD, INPUT);
+
+    // Capteurs bas
+    pinMode(CAPTEUR_BG, INPUT); 
+    pinMode(CAPTEUR_BD, INPUT);
 }
 
 
@@ -92,15 +90,14 @@ void Arret() {
 // ------------------- LOGIQUE CAPTEURS -------------------
 void capteur() {
 
-    // Capteurs bas
-    int BG = digitalRead(CAPTEUR_BG);
-    int BM = digitalRead(CAPTEUR_BM);
-    int BD = digitalRead(CAPTEUR_BD);
-
     // Capteurs haut
     int HG = digitalRead(CAPTEUR_HG);
     int HM = digitalRead(CAPTEUR_HM);
     int HD = digitalRead(CAPTEUR_HD);
+
+    // Capteurs bas
+    int BG = digitalRead(CAPTEUR_BG);
+    int BD = digitalRead(CAPTEUR_BD);
 
     int slow = 50;
     int normal = 100;
@@ -109,27 +106,22 @@ void capteur() {
     // -------------------------------------------------
     // 1) PERTE TOTALE (aucun capteur ne voit la ligne)
     // -------------------------------------------------
-    if (!BG && !BM && !BD && !HG && !HM && !HD) {
+    if (!HG && !HM && !HD && !BG && !BD) {
         Arret();
         return;
-    }
-
-
-    // -------------------------------------------------
+           // -------------------------------------------------
     // 2) DECISIONS PRINCIPALES (capteurs BAS)
     // -------------------------------------------------
 
     // tourner à gauche
-    if (BG == 1 && BD == 0) {
+    }else if(BG == 1 && BD == 0) {
         setSpeed(slow);
         Gauche();
         delay(120);
         setSpeed(normal);
         return;
-    }
-
-    // tourner à droite
-    if (BD == 1 && BG == 0) {
+          // tourner à droite
+    }else if(BD == 1 && BG == 0) {
         setSpeed(slow);
         Droite();
         delay(120);
@@ -138,12 +130,19 @@ void capteur() {
     }
 
 
+ 
+
+
+  
+   
+
+
     // -------------------------------------------------
-    // 3) CORRECTIONS FINES (capteurs du haut)
+    // 3) CORRECTIONS FINES (capteurs du HAUT)
     // -------------------------------------------------
 
-    // Correction vers la droite
-    if (HG == 1 && HD == 0) {
+    // robot dévie à gauche → corriger à droite
+   else if (HG == 1 && HD == 0) {
         setSpeed(slow);
         Droite();
         delay(50);
@@ -152,8 +151,8 @@ void capteur() {
         return;
     }
 
-    // Correction vers la gauche
-    if (HD == 1 && HG == 0) {
+    // robot dévie à droite → corriger à gauche
+   else if (HD == 1 && HG == 0) {
         setSpeed(slow);
         Gauche();
         delay(50);
@@ -162,14 +161,14 @@ void capteur() {
         return;
     }
 
-    // Capteur haut milieu détecte → ligne droite
-    if (HM == 1) {
+    // ligne détectée au milieu = tout droit
+   else if (HM == 1) {
         Avance();
         return;
     }
 
     // -------------------------------------------------
-    // 4) AVANCER PAR DEFAUT
+    // 4) PAR DÉFAUT : AVANCER
     // -------------------------------------------------
     Avance();
 }
