@@ -4,21 +4,21 @@
 #include <softPwm.h>
 
 // ------------------- MOTEURS -------------------
-#define IN1 6  
-#define IN2 5  
-#define IN3 4   
-#define IN4 18    
+#define IN1 26 
+#define IN2 21 
+#define IN3 27  
+#define IN4 24    
 #define EN1 12  
 #define EN2 13    
 
 // ------------------- CAPTEURS HAUT (3 capteurs) -------------------
-#define CAPTEUR_HG 17   // Haut Gauche
-#define CAPTEUR_HM 27   // Haut Milieu
+#define CAPTEUR_HG 20   // Haut Gauche
+#define CAPTEUR_HM 19   // Haut Milieu
 #define CAPTEUR_HD 22   // Haut Droite
 
 // ------------------- CAPTEURS BAS LATERAUX (2 capteurs) -------------------
-#define CAPTEUR_BG 24   // Bas Gauche
-#define CAPTEUR_BD 26   // Bas Droite
+#define CAPTEUR_BG 17   // Bas Gauche
+#define CAPTEUR_BD 24   // Bas Droite
 
 
 // ------------------- SETUP -------------------
