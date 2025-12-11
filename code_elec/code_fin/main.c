@@ -9,7 +9,7 @@
 #include "commande_final.h"
 #include "configurer.h"
 
-// gcc -o robot main.c lcd_bip.c rgb_sensor.c lecture_fichier.c -lwiringPi -lpthread -lwiringPiDev -lm
+// gcc -o robot main.c lcd_bip.c rgb_sensor.c lecture_fichier.c commande_final.c configurer.c -lwiringPi -lpthread -lwiringPiDev -lm
 
 const char* Instruction_en_chaine(Instruction instruc) {
     switch (instruc) {
