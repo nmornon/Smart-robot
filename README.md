@@ -43,8 +43,6 @@ Le robot est guidé à l'aide d'ordres tels que :
 * `AV` : **Avancer** jusqu'au prochain croisement
 * `TG` : **Tourner à Gauche**
 * `TD` : **Tourner à Droite**
-* `STOP`
-* `...`
 
 ---
 
