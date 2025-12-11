@@ -6,7 +6,7 @@
 #include "case.h"
 #include "chemin.h"
 #include "IHM.h"
-#include "direction.h" // Nécessaire pour directionOpposee
+#include "direction.h" 
 
 Ch_Chemin* Ch_creerChemin() {
     Ch_Chemin *c = (Ch_Chemin*)malloc(sizeof(Ch_Chemin));
