@@ -1,19 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <wiringPi.h>
-#include <pcf8574.h>
-#include <lcd.h>
-#include "lcd.h"
+#include "lcd_bip.h"
 
-#define AF_BASE 100
-#define  AF_RS (AF_BASE+0)
-#define  AF_E (AF_BASE+2)
-#define  AF_DB4 (AF_BASE+4)
-#define  AF_DB5 (AF_BASE+5)
-#define  AF_DB6 (AF_BASE+6)
-#define  AF_DB7 (AF_BASE+7)
-#define  AF_RW (AF_BASE+1)
-#define  AF_LED (AF_BASE+3)
+// gcc -o lcd_bip lcd_bip.c -lwiringPi -lpthread -lwiringPiDev -lm
 
 int IHM_initialiserLcd()
 {
@@ -49,4 +36,15 @@ void IHM_afficherCouleur(int handle, const char* couleur)
 
     lcdPosition(handle, 0, 1); // position deuxième ligne
     lcdPuts(handle, couleur); //affiche la couleur
+}
+
+void init_Bip() {
+    pinMode(PIN_BUZZER, OUTPUT);
+    digitalWrite(PIN_BUZZER, LOW);
+}
+
+void bip() {
+    digitalWrite(PIN_BUZZER, HIGH);
+    delay(2000);
+    digitalWrite(PIN_BUZZER, LOW);
 }
