@@ -53,17 +53,7 @@ POS_Direction POS_getDirection(POS_Position p) {
     return p.d;
 }
 
-// Rotations
 
-POS_Position POS_rotationGauche(POS_Position p) {
-    p.d = POS_tournerGauche(p.d);
-    return p;
-}
-
-POS_Position POS_rotationDroit(POS_Position p) {
-    p.d = POS_tournerDroit(p.d);
-    return p;
-}
 
 // Avancement & Test d'égalité
 
