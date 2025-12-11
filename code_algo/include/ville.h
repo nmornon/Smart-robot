@@ -23,7 +23,7 @@
 typedef struct {
     unsigned int largeur;            /*!< Largeur de la ville (nombre de colonnes) */
     unsigned int nb_cases;           /*!< Nombre total de cases (largeur * largeur) */
-    C_Case * tab_cases;              /*!< Tableau dynamique contenant toutes les cases */
+    C_Case* tab_cases;              /*!< Tableau dynamique contenant toutes les cases */
     unsigned int num_case_depart;    /*!< Numéro de la case où le robot commence */
     Direction dir_depart;            /*!< Direction initiale du robot au départ */
 } V_Ville;
@@ -55,6 +55,8 @@ void V_liberer(V_Ville *ville);
  * \return Un pointeur vers la case demandée, ou NULL si l'ID est invalide.
  */
 C_Case* V_obtenirCase(V_Ville *ville, unsigned int numero_case);
+
+C_Case* V_obtenirToutesLesCases(V_Ville *ville);
 
 /**
  * \brief Configure la position et l'orientation de départ du robot.

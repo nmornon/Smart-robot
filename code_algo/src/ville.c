@@ -48,6 +48,10 @@ C_Case* V_obtenirCase(V_Ville *ville, unsigned int numero_case) {
     return &(ville->tab_cases[numero_case - 1]);
 }
 
+C_Case* V_obtenirToutesLesCases(V_Ville *ville) {
+    return ville->tab_cases;
+}
+
 void V_fixerDepart(V_Ville *ville, unsigned int numero_case, Direction dir) {
     ville->num_case_depart = numero_case;
     ville->dir_depart = dir;

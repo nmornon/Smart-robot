@@ -11,7 +11,8 @@
 #include "IHM.h"
 #include "ville.h"
 #include "case.h"
-#include "direction.h" // Assure que Direction est connu
+#include "direction.h"
+#include "chemin.h"
 
 #define MAX_LIGNE 256
 
@@ -54,7 +55,7 @@ static Direction determinerDirection(unsigned int case_dep, unsigned int case_ad
 }
 
 // -----------------------------------------------------------------------------
-// Fonction publique
+// Fonctions publiques
 // -----------------------------------------------------------------------------
 
 V_Ville* IHM_chargerVilleDepuisFichier(const char *nom_fichier) {
@@ -156,4 +157,125 @@ V_Ville* IHM_chargerVilleDepuisFichier(const char *nom_fichier) {
 
     fclose(f);
     return ville;
+}
+
+void IHM_afficherChemin(Ch_Chemin *chemin) {
+    if (chemin == NULL) {
+        printf("\n>> Erreur : Pointeur de chemin NULL.\n");
+        return;
+    }
+    if (Ch_nbrCases(chemin) == 0 && chemin->tab_cases == NULL) {
+        printf("\n>> Resultat : Aucun chemin valide trouve avec ces contraintes.\n");
+        return;
+    }
+
+    printf("\n=======================================\n");
+    printf("       CHEMIN OPTIMAL TROUVE           \n");
+    printf("=======================================\n");
+    
+    // Affichage de la longueur
+    printf("Longueur du trajet : %d deplacements\n", Ch_nbrCases(chemin));
+    
+    printf("Sequence du parcours :\n");
+    printf("[ ");
+
+    // On parcourt de 0 à nb_cases inclus (car N déplacements = N+1 cases visitées)
+    for (int i = 0; i <= Ch_nbrCases(chemin); i++) {
+        unsigned int num = chemin->tab_cases[i].numero_case;
+        
+        printf("%u", num);
+
+        // Affiche une flèche si ce n'est pas la dernière case
+        if (i < Ch_nbrCases(chemin)) {
+            printf(" -> ");
+        }
+    }
+    printf(" ]\n");
+}
+
+// Fonction d'affichage pour vérifier les données chargées
+void IHM_afficher_ville(V_Ville *v) {
+    if (v == NULL) {
+        printf("Erreur : Ville non chargée.\n");
+        return;
+    }
+    
+    // Affichage des informations générales
+    printf("\n--- Chargement de la ville réussi ---\n");
+    printf("Largeur: %u, Total cases: %u\n", V_obtenirLargeur(v), V_obtenirNbCases(v));
+    printf("Départ: Case %u, Direction: %d\n", V_obtenirNumCaseDepart(v), V_obtenirDirDepart(v));
+
+    // Affichage détaillé des cases et des connexions
+    for (unsigned int i = 1; i <= V_obtenirNbCases(v); i++) {
+        C_Case *c = V_obtenirCase(v, i);
+        if (c != NULL) {
+            printf("Case %2u: ", C_obtenirNumeroCase(*c));
+            printf("Obligatoire: %s | ", C_estObligatoire(*c) ? "OUI" : "NON");
+            printf("Voisins: N=%u, E=%u, S=%u, O=%u\n", 
+                   C_obtenirVoisin(*c, NORD), 
+                   C_obtenirVoisin(*c, EST), 
+                   C_obtenirVoisin(*c, SUD), 
+                   C_obtenirVoisin(*c, OUEST));
+        }
+    }
+}
+
+void IHM_genererOrdres(Ch_Chemin *chemin) {
+    // Vérification de sécurité via le getter existant
+    int nb_mouvements = Ch_nbrCases(chemin);
+    if (chemin == NULL || nb_mouvements <= 0) {
+        printf(".\n"); // Aucun ordre si chemin vide
+        return;
+    }
+
+    // Récupération de l'orientation initiale via le getter
+    Direction dir_courante = Ch_obtenirDirDepart(chemin);
+
+    for (int i = 0; i < nb_mouvements; i++) {
+        C_Case *case_actuelle = Ch_obtenirCaseAuChemin(chemin, i);
+        C_Case *case_suivante = Ch_obtenirCaseAuChemin(chemin, i + 1);
+
+        if (case_actuelle == NULL || case_suivante == NULL) break;
+
+        unsigned int num_suivante = C_obtenirNumeroCase(*case_suivante);
+
+        // Trouver dans quelle direction se trouve la case suivante
+        Direction dir_cible = NORD; // Valeur par defaut
+        bool direction_trouvee = false;
+
+        // On teste les 4 directions cardinales (0 à 3)
+        for (int d = 0; d < 4; d++) {
+            // Utilisation du TAD Case pour connaître le voisin
+            if (C_obtenirVoisin(*case_actuelle, (Direction)d) == num_suivante) {
+                dir_cible = (Direction)d;
+                direction_trouvee = true;
+                break;
+            }
+        }
+
+        if (direction_trouvee) {
+            // Calcul de la rotation nécessaire
+            int diff = (dir_cible - dir_courante + 4) % 4;
+
+            if (diff == 1) {
+                printf("TD\n"); // Tourner Droite
+            } else if (diff == 3) {
+                printf("TG\n"); // Tourner Gauche
+            } else if (diff == 2) {
+                // Cas rare de demi-tour (TD + TD)
+                printf("TD\n");
+                printf("TD\n");
+            }
+            // Si diff == 0, on est aligné, on ne tourne pas
+
+            // Ordre de mouvement
+            printf("AV\n");
+
+            // Mise à jour de la direction du robot pour la prochaine itération
+            dir_courante = dir_cible;
+        }
+    }
+
+    // Marqueur de fin
+    printf(".\n");
 }

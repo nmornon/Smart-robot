@@ -9,6 +9,7 @@
 #define __IHM__
 
 #include "ville.h"
+#include "chemin.h"
 
 /**
  * \brief Charge une ville à partir d'un fichier texte de description.
@@ -23,5 +24,17 @@
  * \return Un pointeur vers la ville créée (V_Ville*), ou NULL en cas d'erreur.
  */
 V_Ville* IHM_chargerVilleDepuisFichier(const char *nom_fichier);
+
+/**
+ * \brief Affiche le chemin optimal et sa longueur dans la console.
+ * \param chemin Le pointeur vers la structure du chemin calculé.
+ */
+void IHM_afficherChemin(Ch_Chemin *chemin);
+
+V_Ville* IHM_chargerVilleDepuisFichier(const char *nom_fichier);
+
+void IHM_afficher_ville(V_Ville *v);
+
+void IHM_genererOrdres(Ch_Chemin *chemin);
 
 #endif
