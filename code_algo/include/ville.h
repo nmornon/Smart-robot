@@ -70,6 +70,36 @@ void V_fixerDepart(V_Ville *ville, unsigned int numero_case, Direction dir);
  * \param ville Pointeur vers la ville.
  * \return La largeur (nombre de colonnes).
  */
+ 
+ /**
+ * \brief Récupère le nombre total de cases dans la ville.
+ * \param ville Pointeur vers la ville.
+ * \return Le nombre total de cases (largeur * largeur).
+ */
+unsigned int V_obtenirNbCases(V_Ville *ville);
+
+/**
+ * \brief Récupère le numéro de la case de départ du robot.
+ * \param ville Pointeur vers la ville.
+ * \return Le numéro de la case de départ.
+ */
+unsigned int V_obtenirNumCaseDepart(V_Ville *ville);
+
+/**
+ * \brief Récupère la direction de départ initiale du robot.
+ * \param ville Pointeur vers la ville.
+ * \return La direction de départ.
+ */
+Direction V_obtenirDirDepart(V_Ville *ville);
+
 unsigned int V_obtenirLargeur(V_Ville *ville);
+
+/**
+ * \brief Charge une ville à partir d'un fichier texte de description.
+ *
+ * \param nom_fichier Le chemin du fichier décrivant la ville.
+ * \return Un pointeur vers la ville créée (V_Ville*), ou NULL en cas d'erreur.
+ */
+V_Ville* V_chargerVilleDepuisFichier(const char *nom_fichier);
 
 #endif

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ville.h"
+#include "case.h"
 
 V_Ville* V_creerVille(unsigned int largeur) {
     V_Ville *v = (V_Ville*)malloc(sizeof(V_Ville));
@@ -53,4 +55,16 @@ void V_fixerDepart(V_Ville *ville, unsigned int numero_case, Direction dir) {
 
 unsigned int V_obtenirLargeur(V_Ville *ville) {
     return ville->largeur;
+}
+
+unsigned int V_obtenirNumCaseDepart(V_Ville *ville) {
+    return ville->num_case_depart;
+}
+
+unsigned int V_obtenirNbCases(V_Ville *ville) {
+    return ville->nb_cases;
+}
+
+Direction V_obtenirDirDepart(V_Ville *ville) {
+    return ville->dir_depart;
 }
