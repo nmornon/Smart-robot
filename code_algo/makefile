@@ -5,7 +5,7 @@ EXEC       = robot_main
 CC         = gcc
 CFLAGS     = -Wall -Wextra -pedantic -g -std=c99 -I$(INCLUDEDIR)
 LDFLAGS    = -lm 
-C_SOURCES  = main.c IHM.c ville.c case.c direction.c chemin.c
+C_SOURCES  = main.c IHM.c ville.c case.c direction.c
 O_OBJECTS  = $(addprefix $(SRCDIR)/, $(C_SOURCES:.c=.o))
 
 all : directories $(BINDIR)/$(EXEC)
