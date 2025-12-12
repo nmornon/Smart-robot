@@ -100,8 +100,16 @@ unsigned int V_obtenirLargeur(V_Ville *ville);
  * \brief Charge une ville à partir d'un fichier texte de description.
  *
  * \param nom_fichier Le chemin du fichier décrivant la ville.
- * \return Un pointeur vers la ville créée (V_Ville*), ou NULL en cas d'erreur.
+ * \return Un pointeur vers la ville créée (V_Ville*)
  */
 V_Ville* V_chargerVilleDepuisFichier(const char *nom_fichier);
+
+/**
+ * \brief permet de donner le nombre de cases obligatoires dans la ville
+ *
+ * \param ville Le chemin du fichier décrivant la ville.
+ * \return Un pointeur vers la ville créée (V_Ville*)
+ */
+int V_nbCasesObligatoire(V_Ville* ville);
 
 #endif
