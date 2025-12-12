@@ -221,15 +221,17 @@ void IHM_afficher_ville(V_Ville *v) {
 }
 
 void IHM_genererOrdres(Ch_Chemin *chemin) {
-    // Vérification de sécurité via le getter existant
     int nb_mouvements = Ch_nbrCases(chemin);
+    
+    // Sécurité
     if (chemin == NULL || nb_mouvements <= 0) {
-        printf(".\n"); // Aucun ordre si chemin vide
+        printf(".\n");
         return;
     }
 
-    // Récupération de l'orientation initiale via le getter
     Direction dir_courante = Ch_obtenirDirDepart(chemin);
+
+    printf("AV\n");
 
     for (int i = 0; i < nb_mouvements; i++) {
         C_Case *case_actuelle = Ch_obtenirCaseAuChemin(chemin, i);
@@ -238,14 +240,11 @@ void IHM_genererOrdres(Ch_Chemin *chemin) {
         if (case_actuelle == NULL || case_suivante == NULL) break;
 
         unsigned int num_suivante = C_obtenirNumeroCase(*case_suivante);
-
-        // Trouver dans quelle direction se trouve la case suivante
-        Direction dir_cible = NORD; // Valeur par defaut
+        Direction dir_cible = NORD;
         bool direction_trouvee = false;
 
-        // On teste les 4 directions cardinales (0 à 3)
+        // Trouver où l'on va (Direction cible)
         for (int d = 0; d < 4; d++) {
-            // Utilisation du TAD Case pour connaître le voisin
             if (C_obtenirVoisin(*case_actuelle, (Direction)d) == num_suivante) {
                 dir_cible = (Direction)d;
                 direction_trouvee = true;
@@ -254,28 +253,40 @@ void IHM_genererOrdres(Ch_Chemin *chemin) {
         }
 
         if (direction_trouvee) {
-            // Calcul de la rotation nécessaire
+            // Détecter si on est sur une intersection
+            Direction dir_gauche_relative = (dir_courante + 3) % 4;
+            Direction dir_droite_relative = (dir_courante + 1) % 4;
+
+            bool route_a_gauche = (C_obtenirVoisin(*case_actuelle, dir_gauche_relative) != 0);
+            bool route_a_droite = (C_obtenirVoisin(*case_actuelle, dir_droite_relative) != 0);
+            
+            bool est_intersection = (route_a_gauche || route_a_droite);
+
+            // Calcul du mouvement
             int diff = (dir_cible - dir_courante + 4) % 4;
 
             if (diff == 1) {
-                printf("TD\n"); // Tourner Droite
-            } else if (diff == 3) {
-                printf("TG\n"); // Tourner Gauche
-            } else if (diff == 2) {
-                // Cas rare de demi-tour (TD + TD)
+                // On tourne à droite
                 printf("TD\n");
-                printf("TD\n");
+                printf("AV\n");
+            } 
+            else if (diff == 3) {
+                // On tourne à gauche
+                printf("TG\n");
+                printf("AV\n");
+            } 
+            else if (diff == 0) {
+                // Intersection détectée mais on va tout droit
+                if (est_intersection) {
+                    printf("AV\n");
+                }
+                // Sinon le robot suit la ligne.
             }
-            // Si diff == 0, on est aligné, on ne tourne pas
 
-            // Ordre de mouvement
-            printf("AV\n");
-
-            // Mise à jour de la direction du robot pour la prochaine itération
+            // Mise à jour pour le tour suivant
             dir_courante = dir_cible;
         }
     }
 
-    // Marqueur de fin
     printf(".\n");
 }
