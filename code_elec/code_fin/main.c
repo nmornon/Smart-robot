@@ -31,6 +31,7 @@ void afficher_instruction(int lcd, Instruction instruc){
 
 void deplacer(Instruction* listeInstructions,int nb_instruc,int lcd){
 	for (int i = 0; i < nb_instruc; i++){
+                printf("%s\n",Instruction_en_chaine(listeInstructions[i]));
 		afficher_instruction(lcd,listeInstructions[i]);
 		switch (listeInstructions[i]) {
 			case AV: 
@@ -59,7 +60,9 @@ int main()
     
     Instruction instruc[MAX];
     unsigned int nbreInstruc=0;
-    
+    lcdClear(lcd);
+    lcdPuts(lcd,"INIT OK");
+    delay(1000);
     lire_fichier(instruc,&nbreInstruc);
     
     deplacer(instruc,nbreInstruc,lcd);

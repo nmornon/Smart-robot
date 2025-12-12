@@ -69,7 +69,7 @@ void recadrer(Instruction dir) {
 void avancer() {
     diriger(AV);
     delay(300);
-    while ((!detecter_Intersec())&&(!detecter_pastille())) {
+    while ((!detecter_Intersec())) {
         if (digitalRead(PIN_CAPT_AV_D) && (!digitalRead(PIN_CAPT_AV_M))) {
             recadrer(TD);
         } else if (digitalRead(PIN_CAPT_AV_G) && (!digitalRead(PIN_CAPT_AV_M))) {
