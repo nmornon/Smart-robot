@@ -4,7 +4,7 @@
 
 bool detecter_pastille(){
 
-return((!digitalRead(PIN_CAPT_AV_D))&(!digitalRead(PIN_CAPT_AV_G))&(!digitalRead(PIN_CAPT_AV_M)));
+return((!digitalRead(PIN_CAPT_AV_M)));
 }
 
 bool detecter_Intersec() {
