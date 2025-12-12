@@ -141,17 +141,9 @@ Ch_Chemin* Ch_genererCheminBrute(V_Ville *v) {
     unsigned int depart_id = V_obtenirNumCaseDepart(v);
     Direction dir_depart = V_obtenirDirDepart(v);
 
-    int obj_total = 0;
+    int obj_total = V_nbCasesObligatoire(v);
 
-    /* Compter le nombre d'objectifs obligatoires */
-    for (unsigned int i = 1; i <= nb_cases; i++) {
-        C_Case *c = V_obtenirCase(v, i);
-        if (c != NULL && C_estObligatoire(*c)) {
-            obj_total++;
-        }
-    }
-
-    /* Taille maximale raisonnable (prévenir overflow) */
+    /* Taille maximale raisonnable */
     int taille_max = (int)((nb_cases * 2) + 2);
     if (taille_max < 4) taille_max = 4; /* sécurité minimale */
 
