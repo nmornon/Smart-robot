@@ -16,7 +16,7 @@
 #define  AF_DB7 (AF_BASE+7)
 #define  AF_RW (AF_BASE+1)
 #define  AF_LED (AF_BASE+3)
-#define PIN_BUZZER 4
+#define PIN_BUZZER 25
 
 int IHM_initialiserLcd();
 void IHM_afficherCouleur(int handle, const char* couleur);
