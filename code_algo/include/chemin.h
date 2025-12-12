@@ -2,7 +2,7 @@
 #define __CHEMIN__
 
 #include <stdbool.h>
-#include "ville.h"
+#include "ville.h" /on inclut le TAD ville
 
 typedef struct{
     unsigned int nb_cases;
