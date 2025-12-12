@@ -1,7 +1,7 @@
 SRCDIR     = src
 INCLUDEDIR = include
 BINDIR     = bin
-EXEC       = robot_main
+EXEC       = textEnInstruction
 CC         = gcc
 CFLAGS     = -Wall -Wextra -pedantic -g -std=c99 -I$(INCLUDEDIR)
 LDFLAGS    = -lm 
