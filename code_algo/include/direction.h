@@ -19,7 +19,7 @@ typedef enum {
     NORD = 0,   /**< Orientation vers le Nord (Haut de la grille) */
     EST = 1,    /**< Orientation vers l'Est (Droite de la grille) */
     SUD = 2,    /**< Orientation vers le Sud (Bas de la grille) */
-    OUEST = 3   /**< Orientation vers l'Ouest (Gauche de la grille) *
+    OUEST = 3   /**< Orientation vers l'Ouest (Gauche de la grille) */
 } Direction;
 
 /**
