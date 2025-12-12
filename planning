@@ -20,3 +20,9 @@ Planning Elec :
 3. test ecran LCD, detection des couleurs et le buzzer 
 4. faire le circuit
 5. design du robot
+
+
+Précisions sur l'appel du make
+- make génére un éxecutable du programe pricipale en créant un dossier bin et le mettant dedans 
+   -bin/programmePricipal (quelque chose comme ça)
+- commande pour l'éxecuter depuis le fichier /bin - programmePricipale ../ville.txt (exemple)
