@@ -4,7 +4,7 @@
  * \author Groupe 2-6
  * \date 07/12/2025
  *
- * Ce module gère la structure globale de la ville, qui contient l'ensemble
+ * Ce .h gère la structure globale de la ville, qui contient l'ensemble
  * des cases. Il fait le lien entre la grille (largeur) et le graphe (connexions).
  * Il stocke également les informations de départ du robot.
  */

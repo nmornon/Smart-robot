@@ -6,6 +6,6 @@ Direction directionOpposee(Direction dir) {
         case SUD:  return NORD;
         case EST:  return OUEST;
         case OUEST: return EST;
-        default:   return -1; 
+        default:   return PAS_DE_DIRECTION; 
     }
 }

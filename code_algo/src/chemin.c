@@ -21,18 +21,19 @@ Ch_Chemin* Ch_creerChemin() {
 }
 
 Direction Ch_obtenirDirDepart(Ch_Chemin *c) {
-    return (c != NULL) ? c->dir_depart : NORD; 
+    if (c != NULL) {
+        return c->dir_depart;
+    } else {
+        return PAS_DE_DIRECTION;;
+    }
 }
 
 C_Case* Ch_obtenirCaseAuChemin(Ch_Chemin *c, unsigned int index) {
-    if (c == NULL || c->tab_cases == NULL || index > c->nb_cases) {
-        return NULL;
-    }
     return &(c->tab_cases[index]);
 }
 
 int Ch_nbrCases(Ch_Chemin *c) {
-    return c ? c->nb_cases : 0;
+    return c->nb_cases;
 }
 
 void Ch_liberer(Ch_Chemin *c) {

@@ -4,7 +4,7 @@
  * \author Groupe 2-6
  * \date 07/12/2025
  *
- * Ce module définit la structure d'une case, qui est l'élément atomique
+ * Ce .h définit la structure d'une case, qui est l'élément atomique
  * de la ville. Une case connait ses voisins (adjacences) et ses propriétés
  * (si elle est une étape obligatoire ou non).
  */

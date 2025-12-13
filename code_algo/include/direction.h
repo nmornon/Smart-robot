@@ -22,6 +22,8 @@ typedef enum {
     OUEST = 3   /**< Orientation vers l'Ouest (Gauche de la grille) */
 } Direction;
 
+#define PAS_DE_DIRECTION -1 // En cas d'erreur 
+
 /**
  * \brief Calcule la direction opposée à une direction donnée.
  *
