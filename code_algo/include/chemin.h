@@ -15,6 +15,8 @@
 #include "ville.h" 
 #include "direction.h"
 
+#define TAILLE_MAX_CHEMIN 100
+
 /**
  * \struct Ch_Chemin
  * \brief Structure représentant un chemin (suite de cases).
