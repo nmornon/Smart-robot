@@ -26,3 +26,5 @@ Précisions sur l'appel du make
 - make génére un éxecutable du programe pricipale en créant un dossier bin et le mettant dedans 
    -bin/programmePricipal (quelque chose comme ça)
 - commande pour l'éxecuter depuis le fichier /bin - programmePricipale ../ville.txt (exemple)
+-même chose pour les tests unitaires make tests
+   - un fichier tests est créé dans lequel se trouve l'éxecutable des tests unitaire
