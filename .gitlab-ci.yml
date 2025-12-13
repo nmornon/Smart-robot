@@ -1,0 +1,15 @@
+image: texlive/texlive:latest
+
+stages:
+  - build
+
+build_pdf:
+  stage: build
+  script:
+    - pdflatex main.tex
+    - biber main || true
+    - pdflatex main.tex
+    - pdflatex main.tex
+  artifacts:
+    paths:
+      - main.pdf
