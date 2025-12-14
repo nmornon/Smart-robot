@@ -1,14 +1,45 @@
-\section{Schéma}
+\section{Schéma électrique}
 Insérer le schéma de mathis quand il sera fini
 
+\section{Choix de câblage et choix technique}
+Cette section détaille le choix de câblage des différents composants de notre système ainsi qque les raisons techniques de ces choix.
+
+\subsection{Ecran LCD} 
+L'écran LCD communique avec la Raspberry Pi par le protocole I2C. Nous avons donc utilisé :
+\begin{itemize}
+    \item le GPIO 2 pour la ligne SDA (Data)
+    \item le GPIO 3 pour la ligne SCL (Clock)
+\end{itemize}
+L'écran est alimenté en 5V depuis la Raspberry Pi.
+
+\subsection{Capteur RGB}  
+Le capteur RGB fonctionne également avec le protocole de communication I2C. La Raspberry Pi ne dispose que d'un seul couple de GPIO pour SDA et SCL, nous avons du utilisé des dominos afin de brancher à la fois l'écran LCD et le capteur RGB sur les mêmes lignes I2C.
+
+\subsection{Buzzer}
+Le buzzer ne nécessite pas de protocole particulier. Nous l'avons donc connecté sur le GPIO 25.
+
+\subsection{Capteurs de ligne}
+Les capteurs de lignes ont été mis sur des GPIO n'ayant pas de particularité c'est à dire le GPIO.... Ce choix permet une lecture simple des signaux numériques.
+
+\subsection{Moteur}  
+Les connexions pour le moteur ont été choisies de la manière suivante :
+\begin{itemize}
+    \item EN1 et EN2 sur les GPIO 13 et 12 pour le contrôle en PWM. Ces 2 GPIO vont permeterre de controler la vitesse des moteurs.
+    \item IN1,IN2,IN3,IN4 ont été mit sur des GPIO standards. Ils nous permettront de définir le sens de rotation des moteurs.
+\end{itemize}
+Cette configuration permet un contrôle indépendant des moteurs et une modulation de la vitesse essentielle pour la navigation précise du robot.
+
+\section{Bilan de puissance et estimation de l'autonomie}
+????
+
 \section{Rôles des composants}
-Expliquer le rôle de chaque composant utilisé.
+Expliquer le rôle de chaque composant utilisé ainsi que leur fonctionnement.
 
-\section{Câblage des composants}
-Décrire comment on a fait.
-
-\section{Stratégie adoptée}
-Expliquer pourquoi on a mis 5 capteurs ...
+\section{Organigramme du rôle et du principe de fonctionnement des composants}
+?????
 
 \section{Programmation}
-Déatillée les codes utilisés
+Détaillée les codes utilisés
+
+\section{Dificultés rencontrées et pistes d'améliorations}
+
