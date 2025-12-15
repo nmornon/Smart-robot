@@ -1,13 +1,9 @@
 #!/bin/bash
 
-FICHIER="directions.txt"
-DEST="./commande_final.c"
+make clean -C ./code_algo
+make -C ./code_algo
 
-# Vérifier que le fichier existe
-if [ ! -f "$FICHIER" ]; then
-    echo "Erreur : fichier $FICHIER introuvable"
-    exit 1
-fi
+ALGO="./code_algo/bin/textEnInstruction";
+DEST="./code_elec/code_fin/fichier.txt";
 
-# Envoyer le contenu du fichier vers l'autre programme
-cat "$FICHIER" | $DEST
+$ALGO $1 > $DEST;
