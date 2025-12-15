@@ -33,7 +33,42 @@ Cette configuration permet un contrôle indépendant des moteurs et une modulati
 ????
 
 \section{Rôles des composants}
-Expliquer le rôle de chaque composant utilisé ainsi que leur fonctionnement.
+
+\subsection{Raspberry Pi}
+La Raspberry Pi est comme le cerveau du robot, elle éxécute les programmes pour contrôler les moteur et elle interprète les données des capteurs.
+
+\subsection{batterie USB-C}
+Cette batterie permet d'alimenter la Raspberry Pi. Cette batterie permet d'assurer que la Raspberry Pi reste toujours allumée même si les moteurs sont éteints.
+
+\subsection{Pile}
+Les piles vont fournir un courant plus élevé aux moteurs, ces piles sont nécessaires pour transmettre un courant assez élevé aux moteurs sans surcharger la Raspberry Pi.
+
+\subsection{Ecran LCD} 
+Le rôle de l'écran LCD est d'assurer l'interface homme-machine du robot. Il affiche en temps réel les informations suivante : les ordres éxécutés (AV, TG, TD), la couleur détectée par le capteur RGB ainsi que l'état du robot (initialisation, arret).
+L'écran LCD est un afficheur utilisé par le protocole de communication I2C et à partir d'un module d'extension ( PCF8574) qui va nous faciliter les branchements.
+Le protocole I2C permet de réduire le nombre de fils nécessaires en utilisants seulement : SDA (données) et SCL (clock).
+
+\subsection{Capteur RGB}
+Le capteur RGB permet au robot de détecter la couleur des pastilles présentes sur le circuit. Au départ il evra détecter une pastille rouge puis il devra détecter les pastilles vertes qui seront les points de passage obligatoire, et pour finir il devra revenir à la pastille rouge. Lorqu'une de ces couleurs est détectée, le robor doit afficher cette information sur l'écran LCD et activer le buzzer.
+Ce capteur mesue donc l'intensité de la lumière réfléchie par trois composantes qui sont les trois couleurs primaires, le rouge , le vert et le bleu. Une LED est intégrée à ce module et permet d'éclairer la surface à analyser. Des photodiodes internes mesurent la lumière réfléchie et le capteur convertit ces mesures en valeurs numériques. Ces valeurs sont transmises vers la Rasbpberry Pi via le protocole bus I2C. 
+Le programme devra donc comparer les valeurs R, G,B afin de déterminer la couleur dominante détectée.
+
+\subsection{Buzzer}
+Le buzzer va permettre d'mettre un bip lorsque le robot atteint un point de passage obligatoire, c'est à dire lorsque le capteur RGB a détecté une pastille rouge ou verte.
+Le buzzer est commandée directement par une sortie GPIO de la Raspberry Pi. Lorsque la broche GPIO est mise à l'état haut le buzzer est alimenté et produira en conséquence un son. 
+
+\subsection{Capteurs de ligne }
+Les capteurs de ligne permettent au robot de suivre les lignes noires tarcées sur le sol et de détecter les croisements. Ils sont indispensables pour assurer le guidage précis du robot dans la ville.
+Chaque capetur fonctionne à l'aide d'une LED infrarouge et d'un phototransistor. Une surface claire réfléchit fortement la lumière alors qu'une ligne sombre va absorbé cette lumière. Selon cette quantité de lumière reçue, le capteur fournira un signal logique (0 ou 1) à la Raspberry Pi. 
+
+\subsection{Moteurs}
+Les moteurs assurent les déplacements du robot : avancer en ligne droite,tourner à gauche, tourner à droite et s'arréter.
+Le robot utilise deux moteurs à courant continu, un pour chaque roue. Nous allons pouvoir contrôler le sens et la vitesse de chaque moteur via PWM.
+
+\subsection{Interrupteur}
+L'interrupteur va nous permettre de couper ou de remettre l'alimentation électrique des moteurs sans affecter la Raspberry Pi. Ce composant va permettre de mettre le robot en sécurité avant l'intervention, de démarrer ou d'arrêter le déplacement du robot facilement et de préserver la Raspberry Pi lorsqu'on manipule le robot.
+
+
 
 \section{Organigramme du rôle et du principe de fonctionnement des composants}
 ?????
