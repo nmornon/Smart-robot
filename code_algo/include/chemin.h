@@ -4,7 +4,7 @@
  * \author Groupe 2-6
  * \date 13/12/2025
  *
- * Ce .h dÃ©finit la structure d'un chemin qui sera la structure qui permet de reprÃ©senter
+ * Ce .h défini la structure d'un chemin qui sera la structure qui permet de reprÃ©senter
  * de maniÃ¨re cohÃ©rente le chemin le plus court que le robot va parcourir
  */
 
@@ -21,7 +21,7 @@
 typedef struct {
     int distance;
     unsigned int *predecesseurs; 
-} BFSResult;
+} ResultatBFS;
 
 
 /**

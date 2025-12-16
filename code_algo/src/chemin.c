@@ -9,12 +9,7 @@
 #include "direction.h" 
 
 #define INFINITY INT_MAX 
-#define MAX_OBJECTIFS 10 // Utilisation pour la matrice de distance du TSP
 
-typedef struct {
-    int distance;                    // Nombre de cases du chemin
-    unsigned int *predecesseurs;     // Tableau pour reconstruire le chemin
-} ResultatBFS;
 
 Ch_Chemin* Ch_creerChemin() {
     Ch_Chemin *c = (Ch_Chemin*)malloc(sizeof(Ch_Chemin));
@@ -94,8 +89,8 @@ static ResultatBFS bfs_chemin_court(V_Ville *v, unsigned int depart, unsigned in
     // Démarrer la recherche
     int debut = 0, fin = 0;
     distances[depart] = 0;
-    file[fin] = depart;  // 1. Je mets le voisin dans la case pointée par 'fin'
-    fin = fin + 1;       // 2. J'avance le curseur 'fin' d'un cran vers la droite
+    file[fin] = depart;  
+    fin = fin + 1;       
 
     // Parcours en largeur (comme un arbre niveau par niveau)
     while (debut < fin) {
@@ -135,9 +130,8 @@ static ResultatBFS bfs_chemin_court(V_Ville *v, unsigned int depart, unsigned in
     return resultat;
 }
 
-/**
- * Reconstruit le chemin à partir des prédécesseurs du BFS
- */
+//Reconstruit le chemin à partir des prédécesseurs du BFS
+
 static int reconstruire_chemin(unsigned int depart, unsigned int arrivee,
                                unsigned int *predecesseurs, int *chemin_sortie) {
     if (predecesseurs == NULL) return -1;
@@ -151,7 +145,6 @@ static int reconstruire_chemin(unsigned int depart, unsigned int arrivee,
         chemin_sortie[longueur++] = (int)actuel;
         if (actuel == depart) break;
         actuel = predecesseurs[actuel];
-        if (longueur > 1000) return -1; // Sécurité
     }
 
     // Inverser le chemin
@@ -164,15 +157,13 @@ static int reconstruire_chemin(unsigned int depart, unsigned int arrivee,
     return longueur - 1;
 }
 
-/**
- * Exploration récursive pour trouver le meilleur ordre de visite
- */
+// Exploration récursive pour trouver le meilleur ordre de visite
 static void explorer_ordre_objectifs(int position, int nb_obj,
                                      int *sequence_temp, bool *visites,
                                      int cout_actuel, int **distances,
                                      int *meilleure_sequence, int *min_cout) {
     
-    // Optimisation : abandonner si déjà  trop long
+    // On abandonne si c'est trop long 
     if (cout_actuel >= *min_cout) return;
 
     // Tous les objectifs sont placés
@@ -192,7 +183,7 @@ static void explorer_ordre_objectifs(int position, int nb_obj,
         return;
     }
 
-    // Essayer chaque objectif non visité
+    // On essaie chaque objectif 
     for (int i = 1; i < nb_obj; i++) {
         if (!visites[i]) {
             int cout_segment = distances[sequence_temp[position - 1]][i];
@@ -210,18 +201,16 @@ static void explorer_ordre_objectifs(int position, int nb_obj,
     }
 }
 
-/**
- * GÃ©nÃ¨re le chemin optimal qui visite tous les objectifs obligatoires
- * en utilisant BFS pour les distances et TSP pour l'ordre de visite
- */
+
+// Génère le chemin optimal qui visite tous les objectifs obligatoires
 Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
     if (!v) return Ch_creerChemin();
 
     unsigned int nb_cases = V_obtenirNbCases(v);
     unsigned int depart = V_obtenirNumCaseDepart(v);
     
-    // === Ã‰TAPE 1 : Identifier les objectifs obligatoires ===
-    
+   
+   // Ici on cherche tous les objectifs obligatoires  
     unsigned int *objectifs = malloc((nb_cases + 1) * sizeof(unsigned int));
     objectifs[0] = depart;  // Le dÃ©part est toujours le premier
     
@@ -233,7 +222,7 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
         }
     }
     
-    // Cas simple : aucun objectif
+    //  Le cas où aucun objectif
     if (nb_objectifs <= 1) {
         Ch_Chemin *res = construire_chemin_final(v, (int*)&depart, 0, depart, 
                                                  V_obtenirDirDepart(v));
@@ -241,14 +230,8 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
         return res;
     }
     
-    // Limite de sÃ©curitÃ©
-    if (nb_objectifs > MAX_OBJECTIFS) {
-        fprintf(stderr, "Trop d'objectifs (%d > %d)\n", nb_objectifs, MAX_OBJECTIFS);
-        free(objectifs);
-        return Ch_creerChemin();
-    }
     
-    // === Ã‰TAPE 2 : Calculer les distances entre objectifs avec BFS ===
+    // On calcule les distances entre objectifs avec BFS
     
     int **distances = malloc(nb_objectifs * sizeof(int*));
     unsigned int ***predecesseurs = malloc(nb_objectifs * sizeof(unsigned int**));
@@ -267,8 +250,7 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
                 predecesseurs[i][j] = res.predecesseurs;
                 
                 if (res.distance == INT_MAX) {
-                    fprintf(stderr, "Erreur: objectif inatteignable\n");
-                    // Nettoyage simplifiÃ©
+                    // libération de la mémoire
                     free(objectifs);
                     for (int k = 0; k <= i; k++) {
                         for (int l = 0; l < nb_objectifs; l++) {
@@ -285,14 +267,13 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
         }
     }
     
-    // === Ã‰TAPE 3 : Trouver le meilleur ordre de visite (TSP) ===
-    
+    // Ici on cherche le meilleur ordre des visites des points obligatoires
     int *sequence_temp = malloc(nb_objectifs * sizeof(int));
     int *meilleure_sequence = malloc(nb_objectifs * sizeof(int));
     bool *visites = calloc(nb_objectifs, sizeof(bool));
     int min_cout = INT_MAX;
     
-    sequence_temp[0] = 0;  // Commencer au dÃ©part
+    sequence_temp[0] = 0; 
     visites[0] = true;
     
     explorer_ordre_objectifs(1, nb_objectifs, sequence_temp, visites, 0,
@@ -316,7 +297,7 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
         return Ch_creerChemin();
     }
     
-    // === Ã‰TAPE 4 : Assembler le chemin complet ===
+    // On assemble le chemin complét
     
     int taille_max = (int)(nb_cases * 2) + 2;
     int *chemin_final = malloc(taille_max * sizeof(int));
@@ -325,7 +306,13 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
     // Pour chaque segment entre objectifs
     for (int i = 0; i < nb_objectifs; i++) {
         int idx_depart = meilleure_sequence[i];
-        int idx_arrivee = (i == nb_objectifs - 1) ? 0 : meilleure_sequence[i + 1];
+        int idx_arrivee;
+
+        if (i == nb_objectifs - 1) {
+            idx_arrivee = 0;
+        } else {
+        idx_arrivee = meilleure_sequence[i + 1];
+        } 
         
         int *segment = malloc((nb_cases + 1) * sizeof(int));
         int longueur_segment = reconstruire_chemin(objectifs[idx_depart],
@@ -338,8 +325,13 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
             continue;
         }
         
-        // Copier le segment (Ã©viter les doublons aux jonctions)
-        int debut = (i == 0) ? 0 : 1;
+        // Copier le segment et permet d'éviter les doublons aux jonctions
+        int debut;
+        if (i == 0) {
+        debut = 0;
+        } else {
+        debut = 1;
+        }
         for (int j = debut; j <= longueur_segment; j++) {
             chemin_final[longueur_totale++] = segment[j];
         }
@@ -347,14 +339,12 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
         free(segment);
     }
     
-    // === Ã‰TAPE 5 : Construire le chemin final ===
-    
+    // Construction du chemin final
     Ch_Chemin *resultat = construire_chemin_final(v, chemin_final, 
                                                   longueur_totale - 1,
                                                   depart, V_obtenirDirDepart(v));
     
-    // === Ã‰TAPE 6 : LibÃ©rer la mÃ©moire ===
-    
+    // libération de la mémoire
     free(objectifs);
     free(chemin_final);
     free(sequence_temp);
