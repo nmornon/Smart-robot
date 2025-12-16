@@ -29,13 +29,8 @@ int main(int argc, char *argv[]) {
 
     // Traitement du résultat
     if (ville != NULL) {
-        printf("Le fichier '%s' a été chargé avec succès.\n", nom_fichier);
-        IHM_afficher_ville(ville);
         
         Ch_Chemin* chemin_opti = Ch_genererCheminOptimal(ville);
-        if (chemin_opti != NULL){
-           IHM_afficherChemin(chemin_opti);
-        }
         
         IHM_genererOrdres(chemin_opti);
         
