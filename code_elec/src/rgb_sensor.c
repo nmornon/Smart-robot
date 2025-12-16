@@ -42,11 +42,11 @@ void lireCouleur(int capteur, int *r, int *g, int *b){
 
 const char* detecterCouleur(int r, int g, int b){
 
-	if (r<=130 && g>=154 && b<=130){
+	if (r<g && b<=130){
 		return "Vert";
 	}
 	
-	if (r>=170 && g<=150 && b<=135){
+	if (r>=170 && g<=130 && b<=135){
 		return "Rouge";
 	}
 	
