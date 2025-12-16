@@ -68,5 +68,6 @@ Le jour de la démonstration:
 
 ```bash
 # Exemple de lancement :
+scp -r ./code_elec <fichier_ville> pi@<adresse_ip_robot>:<adresse_destination>
 ssh pi@<adresse_ip_robot>
-./run.sh mon_fichier_ville.txt
+./pipeline.sh mon_fichier_ville.txt
