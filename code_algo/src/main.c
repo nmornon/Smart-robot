@@ -15,7 +15,7 @@
  * \return EXIT_SUCCESS ou EXIT_FAILURE.
  */
 int main(int argc, char *argv[]) {
-    // 1. Vérification du nombre d'argumentss
+    // Vérification du nombre d'argumentss
     if (argc != 2) {
         fprintf(stderr, "Erreur: Usage: %s <fichier_de_description_ville>\n", argv[0]);
         // Il est crucial de s'assurer que le premier argument est le nom du fichier 
@@ -24,10 +24,10 @@ int main(int argc, char *argv[]) {
 
     const char *nom_fichier = argv[1];
 
-    // 2. Chargement de la ville
+    // Chargement de la ville
     V_Ville *ville = IHM_chargerVilleDepuisFichier(nom_fichier);
 
-    // 3. Traitement du résultat
+    // Traitement du résultat
     if (ville != NULL) {
         printf("Le fichier '%s' a été chargé avec succès.\n", nom_fichier);
         IHM_afficher_ville(ville);
