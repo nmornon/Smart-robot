@@ -8,6 +8,6 @@
 #define MAX 100
 
 Instruction Chaine_en_Instructions(char* instruc);
-void lire_fichier(Instruction* instructions,unsigned int* nombreInstruc);
+void lire_entree_standard(Instruction* instructions,unsigned int* nombreInstruc);
 
 #endif

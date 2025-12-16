@@ -2,7 +2,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <wiringPi.h>
-#include "lecture_fichier.h"
+#include "lecture_instruction.h"
 #include "lcd_bip.h"
 #include "rgb_sensor.h"
 #include <stdbool.h> 
@@ -11,7 +11,7 @@
 #include <pthread.h>
 #include "pastille_detect.h"
 
-// gcc -o robot main.c lcd_bip.c rgb_sensor.c lecture_fichier.c commande_final.c configurer.c pastille_detect.c -lwiringPi -lpthread -lwiringPiDev -lm
+// gcc -o robot main.c lcd_bip.c rgb_sensor.c lecture_instruction.c commande_final.c configurer.c pastille_detect.c -lwiringPi -lpthread -lwiringPiDev -lm
 
 int main()
 {
@@ -34,10 +34,10 @@ int main()
     	return 1;
     }
     
-    lire_fichier(instruc,&nbreInstruc);
+    lire_entree_standard(instruc,&nbreInstruc);
     
     deplacer(instruc,nbreInstruc,lcd);   
-    
+        
     pthread_mutex_lock(&mutex_pastille);
     threadEnCours=false;
     pthread_mutex_unlock(&mutex_pastille);

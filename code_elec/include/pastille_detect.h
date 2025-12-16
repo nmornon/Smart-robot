@@ -13,12 +13,12 @@
 extern volatile bool pastilleDetectee;
 extern volatile bool threadEnCours;
 extern pthread_mutex_t mutex_pastille;
-
+extern char derniereCouleur[20];
 // Handle de l'écran LCD pour l'affichage dans le thread
 extern int lcd_handle_global;
 
 // Prototypes
-void* thread_detection_pastille(void* arg);
+void* thread_detection_pastille();
 void initialiser_variables_globales();
 
 #endif

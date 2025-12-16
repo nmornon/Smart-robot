@@ -1,4 +1,4 @@
-#include "lecture_fichier.h"
+#include "lecture_instruction.h"
 
 Instruction Chaine_en_Instructions(char* instruc)
 {
@@ -16,7 +16,7 @@ Instruction Chaine_en_Instructions(char* instruc)
 	}
 }
 
-void lire_fichier(Instruction* instructions,unsigned int* nombreInstruc)
+void lire_entree_standard(Instruction* instructions,unsigned int* nombreInstruc)
 {
 	char entree[MAX];
 	Instruction instruc;
@@ -26,8 +26,8 @@ void lire_fichier(Instruction* instructions,unsigned int* nombreInstruc)
 		entree[strcspn(entree,"\n")]='\0';
 		
 		instruc=Chaine_en_Instructions(entree);
-		if (instruc!=-1)
-			instructions[*nombreInstruc]=instruc;
+		
+		instructions[*nombreInstruc]=instruc;
 		
 		(*nombreInstruc)++;
 	}

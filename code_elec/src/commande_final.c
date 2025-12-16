@@ -59,7 +59,7 @@ void recadrer(Instruction dir) {
         }
 }
 
-void avancer() {
+void avancer(bool estLaFin) {
     diriger(AV);
     delay(300);
     while ((!detecter_Intersec())) {
@@ -70,11 +70,18 @@ void avancer() {
                 } else {
                  diriger(AV);
          }
-         
-         pthread_mutex_lock(&mutex_pastille);
-         bool pastille=pastilleDetectee;
-         pthread_mutex_unlock(&mutex_pastille);
-         usleep(10000);//pour ne pas saturer le processeur
+         if (estLaFin){
+              pthread_mutex_lock(&mutex_pastille);
+              bool stopMaintenant=(pastilleDetectee && strcmp(derniereCouleur,"Rouge"))==0;
+              pthread_mutex_unlock(&mutex_pastille);
+              if (stopMaintenant){
+                   printf("Arrêt finale pastille detectée!\n");
+                   arreter();
+                   exit(0);
+              }
+         }
+         struct timespec ts = {0, 10000000}; // 10 ms
+	 nanosleep(&ts, NULL);//pour ne pas saturer le processeur
     }
    
 }
@@ -82,7 +89,8 @@ void avancer() {
 void tournerDroite() {
 
         diriger(TG);
-        usleep(TEMPS_TOURNER);
+        struct timespec ts = {0, TEMPS_TOURNER};
+	nanosleep(&ts, NULL);
 
         while (1) {
                 if (digitalRead(PIN_CAPT_AV_G)){ 
@@ -92,7 +100,8 @@ void tournerDroite() {
 }
 void tournerGauche() {
         diriger(TD);
-        usleep(TEMPS_TOURNER);
+        struct timespec ts = {0, TEMPS_TOURNER};
+	nanosleep(&ts, NULL);
 
         while (1){
                 if (digitalRead(PIN_CAPT_AV_D)){  
@@ -112,9 +121,10 @@ void deplacer(Instruction* listeInstructions,int nb_instruc,int lcd){
                 }
                 pthread_mutex_unlock(&mutex_pastille);
 		afficher_instruction(lcd,listeInstructions[i]);
+                bool estDerniereInstruction=(i==nb_instruc-1);
 		switch (listeInstructions[i]) {
 			case AV: 
-				avancer();
+				avancer(estDerniereInstruction);
 				break;
 			case TG: 
 				tournerGauche();
