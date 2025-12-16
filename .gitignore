@@ -1,4 +1,6 @@
 *.o
 
+./code_elec/robot
+
 ./code_algo/bin
 ./code_algo/tests

@@ -26,6 +26,12 @@ void lire_fichier(Instruction* instructions,unsigned int* nombreInstruc)
 		entree[strcspn(entree,"\n")]='\0';
 		
 		instruc=Chaine_en_Instructions(entree);
+		if(instruc !=-1){
+			printf("Instructions lues : %s\n",entree);
+		}else{
+			printf("Instruction non reconnue : %s\n", entree);
+		}
+		
 		if (instruc!=-1)
 			instructions[*nombreInstruc]=instruc;
 		
