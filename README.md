@@ -2,6 +2,8 @@
 
 ### Projet Intégratif - Groupe 6 - 2025-2026 - INSA Rouen
 
+![Image schema électrique](https://gitlab.insa-rouen.fr/pi-smartrobot/25-26-pi-smartrobot-26/-/raw/main/schema/shema_elec_16_12_2025.png)
+
 ---
 
 ## Objectif du Projet
@@ -66,5 +68,6 @@ Le jour de la démonstration:
 
 ```bash
 # Exemple de lancement :
+scp <fichier_ville> pi@<adresse_ip_robot>:<adresse_destination>
 ssh pi@<adresse_ip_robot>
-./run.sh mon_fichier_ville.txt
+./pipeline.sh fichier_ville.txt
