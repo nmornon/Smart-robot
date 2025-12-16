@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
         printf("Le fichier '%s' a été chargé avec succès.\n", nom_fichier);
         IHM_afficher_ville(ville);
         
-        Ch_Chemin* chemin_opti = Ch_genererCheminBrute(ville);
+        Ch_Chemin* chemin_opti = Ch_genererCheminOptimal(ville);
         if (chemin_opti != NULL){
            IHM_afficherChemin(chemin_opti);
         }

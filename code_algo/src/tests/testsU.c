@@ -162,7 +162,7 @@ void test_Chemin_algo_boucle_carre() {
     C_fixerObligatoire(c4, true);
 
     //Lancement de l'algo
-    Ch_Chemin *resultat = Ch_genererCheminBrute(v);
+    Ch_Chemin *resultat = Ch_genererCheminOptimal(v);
 
     CU_ASSERT_PTR_NOT_NULL(resultat);
     
