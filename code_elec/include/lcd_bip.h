@@ -18,7 +18,7 @@
 #define  AF_DB7 (AF_BASE+7)
 #define  AF_RW (AF_BASE+1)
 #define  AF_LED (AF_BASE+3)
-#define PIN_BUZZER 16
+#define PIN_BUZZER 25
 
 int InitialiserLcd();
 void AfficherCouleur(int handle, const char* couleur);
