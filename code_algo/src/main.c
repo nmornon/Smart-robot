@@ -29,7 +29,6 @@ int main(int argc, char *argv[]) {
 
     // Traitement du résultat
     if (ville != NULL) {
-        
         Ch_Chemin* chemin_opti = Ch_genererCheminOptimal(ville);
         
         IHM_genererOrdres(chemin_opti);
