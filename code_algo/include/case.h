@@ -54,7 +54,7 @@ bool C_estObligatoire(C_Case c);
  *
  * \param c La case actuelle.
  * \param dir La direction dans laquelle regarder (NORD, EST, SUD, OUEST).
- * \return Le numéro de la case voisine, ou une valeur sentinelle (ex: 0) s'il n'y a pas de voisin (mur).
+ * \return Le numéro de la case voisine, ou une valeur sentinelle (ex: 0) s'il n'y a pas de voisin.
  */
 unsigned int C_obtenirVoisin(C_Case c, Direction dir);
 
