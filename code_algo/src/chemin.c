@@ -29,11 +29,6 @@ C_Case* Ch_obtenirCaseAuChemin(Ch_Chemin *c, unsigned int index) {
     return &(c->tab_cases[index]);
 }
 
-int Ch_nbrCases(Ch_Chemin *c) {
-    return c->nb_cases;
-}
-
-
 static Ch_Chemin* construire_chemin_final(V_Ville *v, int *ids_chemin, 
                                          int longueur, unsigned int depart, 
                                          Direction dir) {
