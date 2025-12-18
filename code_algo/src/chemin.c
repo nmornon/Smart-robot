@@ -33,14 +33,6 @@ int Ch_nbrCases(Ch_Chemin *c) {
     return c->nb_cases;
 }
 
-void Ch_liberer(Ch_Chemin *c) {
-    if (c != NULL) {
-        if (c->tab_cases != NULL) {
-            free(c->tab_cases);
-        }
-        free(c);
-    }
-}
 
 static Ch_Chemin* construire_chemin_final(V_Ville *v, int *ids_chemin, 
                                          int longueur, unsigned int depart, 
