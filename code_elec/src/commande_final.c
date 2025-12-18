@@ -76,7 +76,6 @@ void avancer(bool estLaFin) {
               pthread_mutex_unlock(&mutex_pastille);
               if (stopMaintenant){
                    printf("Arrêt finale pastille detectée!\n");
-                   arreter();
                    exit(0);
               }
          }
@@ -88,23 +87,23 @@ void avancer(bool estLaFin) {
 
 void tournerDroite() {
 
-        diriger(TG);
+        diriger(TD);
         struct timespec ts = {0, TEMPS_TOURNER};
 	nanosleep(&ts, NULL);
 
         while (1) {
-                if (digitalRead(PIN_CAPT_AV_G)){ 
+                if (digitalRead(PIN_CAPT_AV_D)){ 
                         break;
                 }
         }
 }
 void tournerGauche() {
-        diriger(TD);
+        diriger(TG);
         struct timespec ts = {0, TEMPS_TOURNER};
 	nanosleep(&ts, NULL);
 
         while (1){
-                if (digitalRead(PIN_CAPT_AV_D)){  
+                if (digitalRead(PIN_CAPT_AV_G)){  
                         break;
                 }
         }
