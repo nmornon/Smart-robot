@@ -32,9 +32,7 @@ Le critère de performance est le **temps le plus court** pour réaliser l'inté
 │   │   ├── include/
 │   │   ├── bin/
 │   │   ├── lib/
-│   │   ├── doc/
-│   │   ├── makefile
-│   │   └── Doxyfile
+│   │   └── makefile
 │   └──  code_elec/
 │       ├── src/
 │       ├── include/
