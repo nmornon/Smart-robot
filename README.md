@@ -79,3 +79,15 @@ ssh pi@<adresse_ip_robot>
 
 Pour changer l'algorithme de résolution de la ville il suffit d'ouvre le fichier `makefile` situé dans le dossier `./programmes/code_algo`.
 La variable `algorithme` peut prendre les valeurs `chemin_bfs` ou `chemin_force_brute`.
+
+---
+
+## Tests unitaires et documentation des algorithmes
+
+Pour accéder aux tests unitaires et à la documentation des algorithmes il faut se déplacer dans le dossier `./programmes/code_algo` et taper une des commandes suivantes au choix : 
+```bash
+make #Pour compiler normalement les algorithmes
+make tests #Pour compiler les tests
+make doc #Pour générer la doc
+make clean #Pour supprimer l'excés
+```
