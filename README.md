@@ -19,6 +19,35 @@ Le critère de performance est le **temps le plus court** pour réaliser l'inté
 
 ---
 
+## Structure du projet
+```
+25-26-PI-SMART-ROBOT/
+├── programmes/
+│   ├── code_algo/
+│   │   ├── src/
+│   │   ├── include/
+│   │   ├── bin/
+│   │   ├── lib/
+│   │   ├── doc/
+│   │   ├── makefile
+│   │   └── Doxyfile
+│   └──  code_elec/
+│       ├── src/
+│       ├── include/
+│       ├── bin/
+│       ├── doc/
+│       ├── makefile
+│       └── Doxyfile
+├── rapport/
+│       ├── analyse_descendente/
+│       ├── schema/
+│       ├── sections/
+│       ├── images/
+│       └── main.tex
+├── pipeline.sh
+└── README.md
+```
+
 ## Modélisation et Description de la Ville
 
 La ville est modélisée par une grille de cases formant un carré.
