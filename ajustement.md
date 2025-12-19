@@ -2,7 +2,7 @@
 
 ### Projet Intégratif - Groupe 6 - 2025-2026 - INSA Rouen
 
-![Image schema électrique](https://gitlab.insa-rouen.fr/pi-smartrobot/25-26-pi-smartrobot-26/-/raw/main/schema/shema_elec_16_12_2025.png)
+![Image schema électrique](https://gitlab.insa-rouen.fr/pi-smartrobot/25-26-pi-smartrobot-26/-/raw/main/rapport/schema/shema_elec_16_12_2025.png)
 
 ---
 
