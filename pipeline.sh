@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ALGO="./code_algo";
-DEST="./code_elec";
+ALGO="./programmes/code_algo";
+DEST="./programmes/code_elec";
 
 make clean -C $ALGO
 make -C $ALGO
