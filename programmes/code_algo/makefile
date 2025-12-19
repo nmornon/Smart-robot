@@ -5,6 +5,7 @@ TESTBINDIR = tests
 EXEC       = textEnInstruction
 EXEC_TEST  = testsUnitaires
 
+# Choisir entre l'algo "chemin_bfs" OU "chemin_force_brute"
 ALGORITHME = chemin_bfs
 
 CC         = gcc
