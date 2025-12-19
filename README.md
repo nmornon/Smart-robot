@@ -25,6 +25,10 @@ Le critère de performance est le **temps le plus court** pour réaliser l'inté
 ├── programmes/
 │   ├── code_algo/
 │   │   ├── src/
+│   │   │    ├── tests/
+│   │   │    ├── chemin_force_brute/
+│   │   │    ├── chemin_bfs/
+│   │   │    └── .../
 │   │   ├── include/
 │   │   ├── bin/
 │   │   ├── lib/
