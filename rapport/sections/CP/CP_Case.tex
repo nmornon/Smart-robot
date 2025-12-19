@@ -1,0 +1,30 @@
+\begin{algorithme}
+    \signatureFonction{creerCase}
+        {num : \naturelNonNul, obligatoire : \booleen}{Case}
+
+    \vspace{1.5em}
+
+    \signatureFonction{obtenirNumeroCase}
+        {c : Case}{\naturelNonNul}
+
+    \vspace{1.5em}
+
+    \signatureFonction{estObligatoire}
+        {c : Case}{\booleen}
+
+    \vspace{1.5em}
+
+    \signatureFonction{obtenirVoisin}
+        {c : Case, dir : Direction}{\naturel}
+
+    \vspace{1.5em}
+
+    \signatureProcedure{fixerObligatoire}
+        {\paramEntreeSortie{c : Case}, \paramEntree{obligatoire : \booleen}}
+
+    \vspace{1.5em}
+
+    \signatureProcedure{fixerCaseAdj}
+        {\paramEntreeSortie{c : Case}, \paramEntree{dir : Direction, num\_case\_adj : \naturelNonNul}}
+
+\end{algorithme}

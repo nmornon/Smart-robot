@@ -1,16 +1,127 @@
-\section{Analyse}
-\subsection{TAD}
-\subsection{Analyse Descendante}
+\section{Algorithme}
+Ce chapitre détaille l'approche algorithmique mise en œuvre pour générer la séquence d'instructions du chemin le plus court. La solution doit respecter deux contraintes majeures : visiter l'ensemble des points de passage obligatoires et revenir à la case de départ. Nous expliquerons ici comment cette solution optimale est calculée pour être transmise au robot.
 
-\begin{figure}[h!]
+Pour être plus rigoureux, nous présenterons d'abord les structures de données (types simples et abstraits) élaborées pour le projet. Cette présentation suivra les étapes classiques du Cycle en V :
+\begin{itemize}
+\item Analyse
+\item Conception préliminaire
+\item Conception détaillée
+\item Développement
+\end{itemize}
+
+\section{Analyse, types et TADs}
+
+\subsection{Analyse descendante}
+
+Notre première idée était de réaliser la résolution de ce problème par force brute. En effet on c'était dit que la taille du problème n'étant pas si élevée, il fallait mieux implémenter une version un peu plus facile. Par curiosité, nous avons essayé une autre méthode plus optimisée qui est le parcours en largeur. Nous allons donc vous expliquer la démarche réalisée pour parvenir à l'implémentation de ces deux algorithmes.
+
+L'analyse étant assez importante nous l'avons découpée en plusieurs morceaux. Mais si vous voulez la voir entièrement vous pouvez aller sur le lien suivant :
+\href{https://www.canva.com/design/DAG62an317c/3s4-ixAc3roh58rsiQIZfg/edit?utm_content=DAG62an317c&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton}{Analyse Descendante complète}.
+
+Les quatre parties suivantes sont donc appelées par la main :
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{analyse_descendante_algo.png}
-    \caption{Analyse descendante}
-    \label{fig:analyse}
+    \includegraphics[width=1.0\textwidth]{image/Analyse_1.png}
+    \caption{Analyse Descendante de generer\_Ordre}
+    \label{fig:capteurs}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{image/Analyse_2.png}
+    \caption{Analyse Descendante de chargerVilleDepuisFichier }
+    \label{fig:capteurs}
+\end{figure}
+
+Ces dernières parties dépendent de la façon dont l'on veut résoudre le problème. 
+
+Cette analyse descendante est pour une résolution avec le parcours en largeur.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{image/Analyse_4.png}
+    \caption{Analyse Descendante pour la résolution avec le parcours en largeur }
+    \label{fig:capteurs}
+\end{figure}
+
+Cette analyse descendante est pour une résolution avec la force brute.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{image/Analyse_3.png}
+    \caption{Analyse Descendante pour la résolution avec la force brute }
+    \label{fig:capteurs}
+\end{figure}
+
+\begin{algorithme}
+    \type{Direction}{\{NORD, EST, SUD, OUEST\}}
+    \type{Commande}{\{AV, TD, TG\}}
+\end{algorithme}
+\subsection{TAD Ville}
+\input{sections/Analyse/TAD_Ville}
+\subsection{TAD Case}
+\input{sections/Analyse/TAD_Case}
+\subsection{TAD Chemin}
+\input{sections/Analyse/TAD_Chemin}
+
+
 \section{Conception préliminaire}
+\subsection{Opérations du TAD Ville}
+\input{sections/CP/CP_Ville}
+\subsection{Opérations du TAD Case}
+\input{sections/CP/CP_Case}
+\subsection{Opérations du TAD Chemin}
+\input{sections/CP/CP_Chemin}
+\subsection{IHM}
+\input{sections/CP/CP_IHM}
+\subsection{Logique métier}
+\input{sections/CP/CP_logique_metier}
 
 \section{Conception détaillée}
+\subsection{Structures}
+\input{sections/CD/CD_structures}
+\subsection{Pseudo code du plus court chemin par parcours en largeur}
+\input{sections/CD/CD_Chemin_BFS}
+\subsection{Pseudo code de la fonction explorer ordre objectifs }
+\input{sections/CD/CD_Explorer_ordre_objectif}
+\subsection{Pseudo code de la fonction reconstruire chemin}
+\input{sections/CD/CD_reconstruire_chemin}
+\subsection{Pseudo code de la fonction  construire chemin final}
+\input{sections/CD/CD_ construire_chemin_final}
+\subsection{Pseudo code de la fonction bfs chemin court}
+\input{sections/CD/CD_bfs_chemin_court}
+\subsection{Pseudo code du plus court chemin par force brute}
+\input{sections/CD/CD_Chemin_Brute}
+\subsection{IHM}
+\input{sections/CD/CD_IHM}
 
 \section{Conception en c}
+\subsection{Structures}
+\input{sections/DEV/DEV_structures}
+\subsection{Code du plus court chemin par parcours en largeur}
+\input{sections/DEV/DEV_Chemin_BFS}
+\subsection{Code de la fonction explorer ordre objectifs }
+\input{sections/DEV/DEV_Explorer_ordre_objectif}
+\subsection{Code de la fonction reconstruire chemin}
+\input{sections/DEV/DEV_reconstruire_chemin}
+\subsection{Code de la fonction  construire chemin final}
+\input{sections/DEV/DEV_construire_chemin_final}
+\subsection{Code de la fonction bfs chemin court}
+\input{sections/DEV/DEV_bfs_chemin_court}
+\subsection{Code du plus court chemin par force brute}
+\input{sections/DEV/DEV_Chemin_Brute}
+\subsection{Code de l'IHM}
+\input{sections/DEV/DEV_IHM}
+
+
+\section {Comparaison des approches et retour d'expériences}
+Au cours du développement, nous avons implémenté deux stratégies distinctes pour la résolution du problème : une approche par force brute (récursive) et une approche optimisée combinant un parcours en largeur (BFS) avec une résolution du problème du Voyageur de Commerce (TSP).
+
+Initialement, l'approche par force brute nous a attiré par sa simplicité d'implémentation . Cependant, nous avons observé que sa complexité temporelle devenait prohibitive dès que la taille de la ville dépassait une grille de 7x7. L'incertitude concernant la taille des villes de test lors de l'évaluation finale nous a donc motivé à développer la seconde approche (BFS + TSP), nettement plus optimale en termes de temps de calcul et capable de traiter de grands graphes instantanément.
+
+Lors de la démonstration en soutenance, nous avons été confrontés à un cas pratique illustrant parfaitement le compromis entre performance et fiabilité. Notre premier essai avec l'algorithme optimisé (BFS) a échoué en raison d'un cas limite non anticipé : la gestion des demi-tours, que notre algorithme calculait correctement mathématiquement mais que l'interface de commande traduisait mal pour le robot. Face à cet échec, nous avons basculé sur notre première solution, la force brute, pour le second essai. Bien que plus coûteuse en ressources, cette méthode s'est révélée plus fiable sur la configuration donnée et a permis au robot de parcourir le chemin.
+
+Une différence fondamentale explique cet échec initial. Contrairement à notre approche par force brute qui simulait le déplacement physique du robot en tenant compte de son orientation à chaque pas (interdisant par exemple les retours brusques), l'algorithme BFS raisonne de manière purement topologique. Il calcule le chemin le plus court entre deux cases sans prendre en considération l'orientation courante du robot.
+
+Cette expérience nous a permis de tirer une conclusion importante: il peut exister un choix à faire entre une solution très rapide mais potentiellement sensible aux cas limites, et une solution plus "lourde" mais dont le comportement est totalement prédictible. Dans notre cas, la redondance des algorithmes a été la clé du succès final.

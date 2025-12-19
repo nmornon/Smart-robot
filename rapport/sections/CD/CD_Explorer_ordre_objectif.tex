@@ -1,0 +1,62 @@
+\begin{algorithme}
+    \procedure{explorer\_ordre\_objectifs}
+        {
+            \paramEntree{position : \naturel}, 
+            \paramEntree{nb\_obj : \naturelNonNul}, 
+            \paramEntreeSortie{sequence\_temp : \tableauUneDimension{}{de}{\naturel}}, 
+            \paramEntreeSortie{visites : \tableauUneDimension{}{de}{\booleen}}, 
+            \paramEntree{cout\_actuel : \naturel}, 
+            \paramEntree{distances : \tableauDeuxDimensions{}{}{de}{\naturel}}, 
+            \paramEntreeSortie{meilleure\_sequence : \tableauUneDimension{}{de}{\naturel}}, 
+            \paramEntreeSortie{min\_cout : \entier} 
+        }
+        {
+            cout\_retour, cout\_total, cout\_segment, i : \naturel
+        }
+    {
+        \sialors{cout\_actuel < \valeurPointeur{min\_cout}} 
+        {
+            \sialorssinon{position = nb\_obj}
+            {
+                \affecter{cout\_retour}{distances[sequence\_temp[nb\_obj - 1]][0]}
+                
+                \sialors{cout\_retour \neq \infty}
+                {
+                    \affecter{cout\_total}{cout\_actuel + cout\_retour}
+
+                    \sialors{cout\_total < \valeurPointeur{min\_cout}}
+                    {
+                        \affecter{\valeurPointeur{min\_cout}}{cout\_total}
+
+                        \pour{i}{0}{nb\_obj - 1}{}{
+                            \affecter{meilleure\_sequence[i]}{sequence\_temp[i]}
+                        }
+                    }
+                }
+            }
+            {
+                \pour{i}{1}{nb\_obj - 1}{}{
+                    \sialors{non visites[i]}
+                    {
+                        \affecter{cout\_segment}{distances[sequence\_temp[position - 1]][i]}
+                        \sialors{cout\_segment \neq \infty}
+                        {
+                            \affecter{visites[i]}{vrai}
+                            \affecter{sequence\_temp[position]}{i}
+                            \instruction{explorer\_ordre\_objectifs(
+                                position + 1, nb\_obj,
+                                sequence\_temp, visites,
+                                cout\_actuel + cout\_segment,
+                                distances,
+                                meilleure\_sequence,
+                                min\_cout)}
+
+                            \affecter{visites[i]}{faux}
+                        }
+                    }
+                }
+            }
+        }
+    }
+\end{algorithme}
+

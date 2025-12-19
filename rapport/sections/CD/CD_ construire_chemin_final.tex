@@ -1,0 +1,31 @@
+\begin{algorithme}
+    \fonction{construire\_chemin\_final}
+        {v : Ville,
+         ids\_chemin : \tableauUneDimension{}{de}{\entier},
+         longueur : \entier,
+         depart : \naturelNonNul,
+         dir : Direction}
+        {Chemin}
+        {c : Chemin \\
+         i : \entier \\
+         case\_orig : Case}
+    {
+        \affecter{c}{creerChemin()}
+
+        \affecter{c.nb\_cases}{longueur}
+        \affecter{c.num\_case\_depart}{depart}
+        \affecter{c.dir\_depart}{dir}
+
+        \affecter{c.tab\_cases}{allouer(longueur + 1)}
+
+        \pour{i}{0}{longueur}{}{
+            \affecter{case\_orig}{obtenirCase(v, ids\_chemin[i])}
+            \sialors{case\_orig $\neq$ \motclefPointeurNULL}
+            {
+                \affecter{c.tab\_cases[i]}{\valeurPointeur{case\_orig}}
+            }
+        }
+
+        \retourner{c}
+    }
+\end{algorithme}

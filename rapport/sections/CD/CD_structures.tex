@@ -1,0 +1,28 @@
+\begin{algorithme}
+    \begin{itemize}
+        \item[$\bullet$] 
+        \begin{enregistrement}{Case}
+            \champEnregistrement{numero\_case}{\naturelNonNul}
+            \champEnregistrement{est\_obligatoire}{\booleen} 
+            \champEnregistrement{cases\_adjacents}{\tableauUneDimension{4}{de }{\naturelNonNul}}
+        \end{enregistrement}
+
+        \item[$\bullet$] 
+        \begin{enregistrement}{Chemin}
+            \champEnregistrement{nb\_cases}{\naturelNonNul}  
+            \champEnregistrement{tab\_cases}{\tableauUneDimension{nb\_cases}{de}{Case}}
+            \champEnregistrement{num\_case\_depart}{\naturelNonNul}
+            \champEnregistrement{dir\_depart}{Direction}        
+        \end{enregistrement}
+
+        \item[$\bullet$] 
+        \begin{enregistrement}{Ville}
+            \champEnregistrement{largeur}{\naturel}             
+            \champEnregistrement{nb\_cases}{\naturel}          
+            \champEnregistrement{tab\_cases}{\tableauUneDimension{nb\_cases}{de}{Case}} 
+            \champEnregistrement{num\_case\_depart}{\naturel}  
+            \champEnregistrement{dir\_depart}{Direction}        
+        \end{enregistrement}
+        
+    \end{itemize}
+\end{algorithme}

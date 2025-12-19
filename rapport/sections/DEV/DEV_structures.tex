@@ -1,0 +1,26 @@
+\begin{lstlisting}[caption={structure dans case.h}]
+typedef struct {
+    unsigned int numero_case;        /*!< Identifiant unique de la case (de 1 à largeur au carré) */
+    bool est_obligatoire;            /*!< Indique si le robot doit obligatoirement passer par ici */
+    unsigned int cases_adjacents[4]; /*!< Tableau stockant les ID des voisins (indexé par Direction) */
+} C_Case;
+\end{lstlisting}
+
+\begin{lstlisting}[caption={structure dans chemin.h}]
+typedef struct{
+    unsigned int nb_cases;           /*!< Nombre de déplacements (longueur du chemin) */
+    C_Case* tab_cases;               /*!< Tableau des cases visitées dans l'ordre */
+    unsigned int num_case_depart;    /*!< Numéro de la case où le robot commence */
+    Direction dir_depart;            /*!< Direction initiale du robot au départ */
+} Ch_Chemin;
+\end{lstlisting}
+
+\begin{lstlisting}[caption={structure dans ville.h}]
+typedef struct {
+    unsigned int largeur;            /*!< Largeur de la ville (nombre de colonnes) */
+    unsigned int nb_cases;           /*!< Nombre total de cases (largeur * largeur) */
+    C_Case* tab_cases;               /*!< Tableau dynamique contenant toutes les cases */
+    unsigned int num_case_depart;    /*!< Numéro de la case où le robot commence */
+    Direction dir_depart;            /*!< Direction initiale du robot au départ */
+} V_Ville;
+\end{lstlisting}

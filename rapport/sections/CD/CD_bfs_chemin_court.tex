@@ -1,0 +1,95 @@
+\begin{algorithme}
+    \fonction{bfs\_chemin\_court}
+        {v : Ville,
+         depart : \naturelNonNul,
+         arrivee : \naturelNonNul}
+        {ResultatBFS}
+        {resultat : ResultatBFS \\
+         nb\_cases : \naturel \\
+         distances : \tableauUneDimension{}{de}{\entier} \\
+         file : \tableauUneDimension{}{de}{\naturel} \\
+         debut, fin, i : \entier \\
+         case\_actuelle, voisin : \naturel \\
+         ptr\_case : Case \\
+         trouve : \booleen}
+    {
+        \affecter{resultat.distance}{\infty}
+        \affecter{resultat.predecesseurs}{\motclefPointeurNULL}
+        \affecter{trouve}{faux}
+
+        \sialors{depart = arrivee}
+        {
+            \affecter{resultat.distance}{0}
+            \retourner{resultat}
+        }
+
+        \affecter{nb\_cases}{obtenirNbCases(v)}
+        \affecter{resultat.predecesseurs}{allouer(nb\_cases + 1)}
+        \affecter{distances}{allouer(nb\_cases + 1)}
+        \affecter{file}{allouer(nb\_cases + 1)}
+
+        \pour{i}{0}{nb\_cases}{}{
+            \affecter{distances[i]}{\infty}
+        }
+
+        \affecter{debut}{0}
+        \affecter{fin}{0}
+        \affecter{distances[depart]}{0}
+        \affecter{file[fin]}{depart}
+        \affecter{fin}{fin + 1}
+
+        \tantque{debut < fin \textbf{et} non trouve}
+        {
+            \affecter{case\_actuelle}{file[debut]}
+            \affecter{debut}{debut + 1}
+
+            \sialorssinon{case\_actuelle = arrivee}
+            {
+                \affecter{resultat.distance}{distances[arrivee]}
+                \affecter{trouve}{vrai}
+            }
+            {
+                \affecter{ptr\_case}{obtenirCase(v, case\_actuelle)}
+
+                \sialors{ptr\_case $\neq$ \motclefPointeurNULL}
+                {
+                    \pour{i}{0}{3}{}{
+                        \affecter{voisin}{
+                            obtenirVoisin(
+                                \valeurPointeur{ptr\_case},
+                                entierVersDirection(i))
+                        }
+
+                        \sialors{
+                            voisin $\neq$ 0
+                            \textbf{et}
+                            distances[voisin] = \infty
+                        }
+                        {
+                            \affecter{distances[voisin]}
+                                     {distances[case\_actuelle] + 1}
+                            \affecter{resultat.predecesseurs[voisin]}
+                                     {case\_actuelle}
+                            \affecter{file[fin]}{voisin}
+                            \affecter{fin}{fin + 1}
+                        }
+                    }
+                }
+            }
+        }
+
+        \sialors{non trouve}
+        {
+            \instruction{desallouer(resultat.predecesseurs)}
+            \affecter{resultat.predecesseurs}{\motclefPointeurNULL}
+        }
+
+        \instruction{desallouer(file)}
+        \instruction{desallouer(distances)}
+
+        \retourner{resultat}
+    }
+\end{algorithme}
+
+
+

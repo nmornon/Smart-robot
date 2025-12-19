@@ -1,0 +1,191 @@
+\begin{algorithme}
+    \fonction{charToDirection}
+        {c : Caractere}
+        {Direction}
+        {}
+        {
+            \cas{c}
+            {
+                {\casclausegenerale{'N'}{\retourner{NORD}}} 
+                {\casclausegenerale{'E'}{\retourner{EST}}}  
+                {\casclausegenerale{'S'}{\retourner{SUD}}} 
+                {\casclausegenerale{'O'}{\retourner{OUEST}}}  
+            }
+        }
+\end{algorithme}
+\vspace{1cm}
+\begin{algorithme}
+    \fonction{determinerDirection}
+        {caseDep : \naturel, caseAdj : \naturel, largeur : \naturel}
+        {Direction}
+        {}
+        {
+        \sialors{caseAdj = caseDep + 1} {\retourner{EST}}
+        \sialors{caseAdj = caseDep - 1} {\retourner{OUEST}}
+        \sialors{caseAdj = caseDep + largeur} {\retourner{SUD}}
+        \sialors{caseAdj = caseDep - largeur} {\retourner{NORD}}
+        
+        \retourner{-1}
+        }
+\end{algorithme}
+\vspace{1cm}
+\begin{algorithme}
+    \fonction{chargerVilleDepuisFichier}
+        {nomFichier : Chaine}
+        {\typePointeur{Ville}}
+        {f : Fichier \\ ville : \typePointeur{Ville} \\ ligne : Chaine \\ etat, largeur, numDep, c1, c2 : \naturel \\ dirChar : Caractere \\ ptrC1, ptrC2 : \typePointeur{Case} \\ dir1, dir2 : Direction}
+        {
+            \affecter{f}{ouvrir(nomFichier, "r")}
+            \sialors{f = \motclefPointeurNULL}
+            {
+                \ecrire{"Erreur lors de l'ouverture du fichier de ville"}
+                \retourner{\motclefPointeurNULL}
+            }
+
+            \affecter{ville}{\motclefPointeurNULL}
+            \affecter{etat}{0}
+
+            \tantque{lireLigne(f, ligne)}
+            {
+                \sialors{estVide(ligne)} {\continuer}
+                \sialors{ligne = "."} {\sortirBoucle}
+
+                \sialorssinon{etat = 0}
+                {
+                    \sialorssinon{formatValide(ligne, "\%u", largeur) et largeur > 0}
+                    {
+                        \affecter{ville}{creerVille(largeur)}
+                        \sialors{ville = \motclefPointeurNULL}
+                        {
+                            \instruction{fermer(f)}
+                            \retourner{\motclefPointeurNULL}
+                        }
+                        \affecter{etat}{1}
+                    }
+                    {
+                        \ecrire{"Erreur de format ou largeur invalide"}
+                        \instruction{fermer(f)}
+                        \retourner{\motclefPointeurNULL}
+                    }
+                }
+                {
+                    \sialorssinon{etat = 1}
+                    {
+                        \sialorssinon{formatValide(ligne, "\%u\%c", numDep, dirChar)}
+                        {
+                            \sialorssinon{obtenirCase(ville, numDep) $\neq$ \motclefPointeurNULL}
+                            {
+                                \instruction{fixerDepart(ville, numDep, charToDirection(dirChar))}
+                                \affecter{etat}{2}
+                            }
+                            {
+                                \ecrire{"Erreur : Case de départ invalide"}
+                                \instruction{liberer(ville)}
+                                \instruction{fermer(f)}
+                                \retourner{\motclefPointeurNULL}
+                            }
+                        }
+                        {
+                            \ecrire{"Erreur de format pour le départ et la direction"}
+                            \instruction{liberer(ville)}
+                            \instruction{fermer(f)}
+                            \retourner{\motclefPointeurNULL}
+                        }
+                    }
+                    {
+                        \sialorssinon{formatValide(ligne, "\%u-\%u", c1, c2)}
+                        {
+                            \affecter{ptrC1}{obtenirCase(ville, c1)}
+                            \affecter{ptrC2}{obtenirCase(ville, c2)}
+                            
+                            \sialorssinon{ptrC1 $\neq$ \motclefPointeurNULL et ptrC2 $\neq$ \motclefPointeurNULL}
+                            {
+                                \affecter{dir1}{determinerDirection(c1, c2, largeur)}
+                                \affecter{dir2}{determinerDirection(c2, c1, largeur)}
+
+                                \sialorssinon{dir1 $\neq$ -1 et dir2 $\neq$ -1}
+                                {
+                                    \instruction{fixerCaseAdj(ptrC1, dir1, c2)}
+                                    \instruction{fixerCaseAdj(ptrC2, dir2, c1)}
+                                }
+                                {
+                                     \ecrire{"Avertissement : Passage non orthogonal ou non adjacent ignoré"}
+                                }
+                            }
+                            {
+                                \ecrire{"Avertissement: Passage entre cases non valides ignoré"}
+                            }
+                        } 
+                        {
+                            \sialorssinon{formatValide(ligne, "\%u", c1)}
+                            {
+                                \affecter{ptrC1}{obtenirCase(ville, c1)}
+                                \sialorssinon{ptrC1 $\neq$ \motclefPointeurNULL}
+                                {
+                                    \instruction{fixerObligatoire(ptrC1, VRAI)}
+                                }
+                                {
+                                    \ecrire{"Avertissement: Case obligatoire non valide ignorée"}
+                                }
+                            } 
+                            {
+                                \ecrire{"Avertissement: Ligne ignorée avec format non reconnu"}
+                            }
+                        }
+                    }
+                }
+            }
+
+            \instruction{fermer(f)}
+            \retourner{ville}
+        }
+
+
+\begin{algorithme}
+\procedure{genererOrdres}
+{chemin : \typePointeur{Chemin}}
+{nbMouv, i, d, diff : \naturel \\ dirCourante, dirCible : Direction \\ caseActu, caseSuiv : \typePointeur{Case} \\ routeGauche, routeDroite, estInter, dirTrouvee : \booleen}
+{
+    \affecter{nbMouv}{nbrCases(chemin)}
+    \affecter{dirCourante}{obtenirDirDepart(chemin)}
+    \ecrire{"AV"}
+
+    \pour{i}{0}{nbMouv - 1}{}
+    {
+        \affecter{caseActu}{obtenirCaseAuChemin(chemin, i)}
+        \affecter{caseSuiv}{obtenirCaseAuChemin(chemin, i + 1)}
+
+        \sialors{caseActu \neq \motclefPointeurNULL \text{ \textbf{et} } caseSuiv \neq \motclefPointeurNULL}
+        {
+            \affecter{dirCible}{NORD}
+            \affecter{dirTrouvee}{FAUX}
+
+            \pour{d}{0}{3}{}
+            {
+                \sialors{non dirTrouvee \text{ \textbf{et} } obtenirVoisin(\valeurPointeur{caseActu}, d) = obtenirNumeroCase(caseSuiv)}
+                {
+                    \affecter{dirCible}{d}
+                    \affecter{\text{dirTrouvee}}{VRAI}
+                }
+            }
+
+            \sialors{dirTrouvee}
+            {
+                \affecter{routeGauche}{obtenirVoisin(\valeurPointeur{caseActu}, (dirCourante + 3) \% 4) \neq 0}
+                \affecter{routeDroite}{obtenirVoisin(\valeurPointeur{caseActu}, (dirCourante + 1) \% 4) \neq 0}
+                \affecter{estInter}{routeGauche \text{ \textbf{ou} } routeDroite}
+                \affecter{diff}{(dirCible - dirCourante + 4) \% 4}
+
+                \cas{diff}
+                {
+                    {\casclausegenerale{1}{\ecrire{"TD"} \ecrire{"AV"}}}
+                    {\casclausegenerale{3}{\ecrire{"TG"} \ecrire{"AV"}}}
+                    {\casclausegenerale{0}{\sialors{estInter}{\ecrire{"AV"}}}}
+                }
+                \affecter{dirCourante}{dirCible}
+            }
+        }
+    }
+    \ecrire{"."}
+}
+\end{algorithme}

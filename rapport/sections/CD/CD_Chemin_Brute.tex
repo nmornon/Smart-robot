@@ -1,0 +1,150 @@
+\begin{algorithme}
+
+\procedure{ExplorerForceBrute}
+{
+    \paramEntree{v : Ville},
+    \paramEntree{idCase : \naturelNonNul},
+    \paramEntree{idDepart : \naturelNonNul},
+    \paramEntree{dirActuelle : Direction},
+    \paramEntreeSortie{cheminTemp : \tableauUneDimension{}{de}{\naturel}},
+    \paramEntree{profondeur : \naturel},
+    \paramEntree{objTrouves : \naturel},
+    \paramEntree{objTotal : \naturel},
+    \paramEntreeSortie{meilleurChemin : \tableauUneDimension{}{de}{\naturel}},
+    \paramEntreeSortie{minLen : \entier},
+    \paramEntreeSortie{objCollectes : \tableauUneDimension{}{de}{\booleen}},
+    \paramEntree{tailleMax : \naturel}
+}
+{
+    cActuelle : Case \\
+    voisinId : \naturel \\
+    dir, i : \entier \\
+    aRamasseObjet : \booleen
+}
+{
+    \sialors{profondeur < tailleMax \textbf{ et } profondeur < minLen}
+    {
+        \affecter{cActuelle}{obtenirCase(v, idCase)}
+
+        \sialors{cActuelle \neq \motclefPointeurNULL}
+        {
+            \affecter{cheminTemp[profondeur]}{idCase}
+            \affecter{aRamasseObjet}{faux}
+
+
+            \sialors{estObligatoire(cActuelle) \textbf{ et } non objCollectes[idCase]}
+            {
+                \affecter{objCollectes[idCase]}{vrai}
+                \affecter{objTrouves}{objTrouves + 1}
+                \affecter{aRamasseObjet}{vrai}
+            }
+
+
+            \sialors{idCase = idDepart \textbf{ et } profondeur > 0 \textbf{ et } objTrouves \geq objTotal}
+            {
+                \affecter{minLen}{profondeur}
+                \pour{i}{0}{profondeur}{}{
+                    \affecter{meilleurChemin[i]}{cheminTemp[i]}
+                }
+            }
+
+            \pour{dir}{0}{3}{}{
+                \sialors{entierVersDirection(dir) \neq directionOpposee(dirActuelle)}
+                {
+                    \affecter{voisinId}{obtenirVoisin(cActuelle, entierVersDirection(dir))}
+                    \sialors{voisinId \neq 0}
+                    {
+                        \instruction{ExplorerForceBrute(
+                            v,
+                            voisinId,
+                            idDepart,
+                            entierVersDirection(dir),
+                            cheminTemp,
+                            profondeur + 1,
+                            objTrouves,
+                            objTotal,
+                            meilleurChemin,
+                            minLen,
+                            objCollectes,
+                            tailleMax
+                        )}
+                    }
+                }
+            }
+
+            \sialors{aRamasseObjet}
+            {
+                \affecter{objCollectes[idCase]}{faux}
+            }
+        }
+    }
+}
+
+
+\vspace{1cm}
+
+\begin{algorithme}
+\fonction{GenererCheminBrute}
+{v : Ville}
+{Chemin}
+{
+    nbCases, departId, objTotal, tailleMax, minLen : Naturel \\
+    dirDepart : Direction \\
+    cheminTemp, meilleurChemin : \tableauUneDimension{}{de}{Naturel} \\
+    objectifs : \tableauUneDimension{}{de}{Naturel} \\
+    resultat : Chemin
+}
+{
+    \sialors{v = \motclefPointeurNULL}
+    {
+        \retourner{creerCheminVide()}
+    }
+
+    \affecter{nbCases}{obtenirNbCases(v)}
+
+    \affecter{tailleMax}{(nbCases * 2) + 2}
+    \sialors{tailleMax < 4}
+    {
+        \affecter{tailleMax}{4}
+    }
+
+    \affecter{departId}{obtenirNumCaseDepart(v)}
+    \affecter{dirDepart}{obtenirDirDepart(v)}
+    \affecter{objTotal}{nbCasesObligatoire(v)}
+
+    \allouer{cheminTemp, tailleMax}\\
+    \allouer{meilleurChemin, tailleMax}\\
+    \allouer{objectifs, nbCases + 1}\\
+
+    \affecter{minLen}{TAILLE\_MAX\_CHEMIN}
+
+    \instruction{ExplorerForceBrute(
+        v,
+        departId,
+        departId,
+        dirDepart,
+        cheminTemp,
+        0,
+        0,
+        objTotal,
+        meilleurChemin,
+        minLen,
+        objectifs,
+        tailleMax
+    )}
+
+    \affecter{resultat}{construireCheminFinal(
+        v,
+        meilleurChemin,
+        minLen,
+        departId,
+        dirDepart
+    )}
+
+    \desallouer{cheminTemp}\\
+    \desallouer{meilleurChemin}\\
+    \desallouer{objectifs}\\
+
+    \retourner{resultat}
+}
+\end{algorithme}

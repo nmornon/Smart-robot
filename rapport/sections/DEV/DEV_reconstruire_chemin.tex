@@ -1,0 +1,27 @@
+\begin{lstlisting}[caption={reconstruire\_chemin}]
+static int reconstruire_chemin(unsigned int depart, unsigned int arrivee,
+                               unsigned int *predecesseurs, int *chemin_sortie) {
+    if (predecesseurs == NULL) return -1;
+    if (predecesseurs[arrivee] == 0 && depart != arrivee) return -1;
+
+    int longueur = 0;
+    unsigned int actuel = arrivee;
+    
+    // Remonter de l'arrivée au départ
+    while (actuel != 0) {
+        chemin_sortie[longueur++] = (int)actuel;
+        if (actuel == depart) break;
+        actuel = predecesseurs[actuel];
+    }
+
+    // Inverser le chemin
+    for (int i = 0; i < longueur / 2; i++) {
+        int temp = chemin_sortie[i];
+        chemin_sortie[i] = chemin_sortie[longueur - 1 - i];
+        chemin_sortie[longueur - 1 - i] = temp;
+    }
+    
+    return longueur - 1;
+}
+
+\end{lstlisting}

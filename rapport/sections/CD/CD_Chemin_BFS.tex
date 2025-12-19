@@ -1,0 +1,186 @@
+
+L'approche BFS génère deux informations distinctes et nécessaires : la distance minimale (un naturel) qui valide l'existence d'un chemin, et la trace des prédécesseurs (un tableau) qui permet de remonter de l'arrivée vers le départ pour reconstituer l'itinéraire. Le langage C ne permettant pas le retour de valeurs multiples, l'encapsulation de ces deux données dans la structure ResultatBFS permet de récupérer l'intégralité du résultat de l'exploration en une seule opération.
+
+Nous avons donc ajouté une structure afin de nous aider dans notre démarche.
+
+\item[$\bullet$] 
+        \begin{enregistrement}{ResultatBFS}
+            \champEnregistrement{Distance}{\naturel}             
+            \champEnregistrement{predecesseurs}{\tableauUneDimension{ }de {\naturelNonNul}    }      
+        \end{enregistrement}
+        
+\vspace{1cm}
+
+\begin{algorithme}
+    \fonction{genererCheminOptimal}
+        {v : Ville}
+        {Chemin}
+        {nb\_cases, depart, nb\_objectifs, i ,j , k ,l, taille\_max , idx\_depart , idx\_arrivee : \naturelNonNul \\
+        longueur\_totale, longueur\_segment, debut  : \naturel\\
+        min\_cout  : \entier\\
+        distances : \tableauDeuxDimensions{ } { } {de} {\entier} \\
+        objectifs , sequence\_temp, meilleure\_sequence, chemin\_final, segment : \tableauUneDimension{ } de {\naturelNonNul} \\
+        visites : \tableauUneDimension{ } de {\bool}\\
+        predecesseurs : \tableauDeuxDimensions{ } { } {de} {\naturel} \\
+        resBFS : ResultatBFS \\
+        resultat : Chemin \\
+        } 
+        {
+        \sialors{v = \motclefPointeurNULL}
+            {\retourner{creerChemin()}}
+
+        \affecter{nb\_cases}{obtenirNbCases(v)}
+        \affecter{depart}{obtenirNumCaseDepart(v)}
+
+        \affecter{objectifs}{allouer(nb\_cases + 1)}
+        \affecter{objectifs[0]}{depart}
+        \affecter{nb\_objectifs}{1}
+
+        \pour{i}{1}{nb\_cases}{}{
+            \affecter{c}{obtenirCase(v, i)}
+            \sialors{estObligatoire(c) et i $\neq$ depart}
+            {
+                \affecter{objectifs[nb\_objectifs]}{i}
+                \affecter{nb\_objectifs}{nb\_objectifs + 1}
+            }
+        }
+
+        \sialors{nb\_objectifs $\leq$ 1}
+        {
+            \affecter{resultat}{construire\_chemin\_final(v, depart, 0, depart, obtenirDirDepart(v))}
+            \instruction{desallouer(objectifs)}
+            \retourner{resultat}
+        }
+
+        \affecter{distances}{allouerMatrice(nb\_objectifs, nb\_objectifs)}
+        \affecter{predecesseurs}{allouerMatrice(nb\_objectifs, nb\_objectifs)}
+
+        \pour{i}{0}{nb\_objectifs - 1}{}{
+            \affecter{distances[i]}{allouer(nb\_objectifs)}
+            \affecter{predecesseurs[i]}{allouer(nb\_objectifs)}
+
+            \pour{j}{0}{nb\_objectifs - 1}{}{
+                \sialorssinon{i = j}
+                {
+                    \affecter{distances[i][j]}{0}
+                    \affecter{predecesseurs[i][j]}{\motclefPointeurNULL}
+                }
+                {
+                    \affecter{resBFS}{bfs\_chemin\_court(v, objectifs[i], objectifs[j])}
+                    \affecter{distances[i][j]}{resBFS.distance}
+                    \affecter{predecesseurs[i][j]}{resBFS.predecesseurs}
+
+                    \sialors{resBFS.distance = {\infty }}
+                    {
+                        \instruction{desallouer(objectifs)}
+                        \pour{k}{0}{i}{}{
+                            \pour{l}{0}{nb\_objectifs - 1}{}{
+                                \sialors{predecesseurs[k][l] $\neq$ \motclefPointeurNULL}
+                                    {\instruction{desallouer(predecesseurs[k][l])}}
+                            }
+                            \instruction{desallouer(predecesseurs[k])}
+                            \instruction{desallouer(distances[k])}
+                        }
+                        \instruction{desallouer(predecesseurs)}
+                        \instruction{desallouer(distances)}
+                        \retourner{creerChemin()}
+                    }
+                }
+            }
+        }
+
+        \affecter{sequence\_temp}{allouer(nb\_objectifs)}
+        \affecter{meilleure\_sequence}{allouer(nb\_objectifs)}
+        \affecter{visites}{allouer(nb\_objectifs)}
+        \affecter{min\_cout}{\infty}
+
+        \affecter{sequence\_temp[0]}{0}
+        \affecter{visites[0]}{vrai}
+
+        \instruction{explorer\_ordre\_objectifs(1, nb\_objectifs,
+                     sequence\_temp, visites, 0,
+                     distances, meilleure\_sequence, \&min\_cout)}
+
+        \sialors{min\_cout = \infty}
+        {
+            \instruction{desallouer(sequence\_temp)}
+            \instruction{desallouer(meilleure\_sequence)}
+            \instruction{desallouer(visites)}
+            \instruction{desallouer(objectifs)}
+            \pour{i}{0}{nb\_objectifs - 1}{}{
+                \pour{j}{0}{nb\_objectifs - 1}{}{
+                    \sialors{predecesseurs[i][j] $\neq$ \motclefPointeurNULL}
+                        {\instruction{desallouer(predecesseurs[i][j])}}
+                }
+                \instruction{desallouer(predecesseurs[i])}
+                \instruction{desallouer(distances[i])}
+            }
+            \instruction{desallouer(predecesseurs)}
+            \instruction{desallouer(distances)}
+            \retourner{creerChemin()}
+        }
+
+        \affecter{taille\_max}{2 \times {nb\_cases} + 2}
+        \affecter{chemin\_final}{allouer(taille\_max)}
+        \affecter{longueur\_totale}{0}
+
+        \pour{i}{0}{nb\_objectifs - 1}{}{
+            \affecter{idx\_depart}{meilleure\_sequence[i]}
+            \sialorssinon{i = nb\_objectifs - 1}
+                {\affecter{idx\_arrivee}{0}}
+                {\affecter{idx\_arrivee}{meilleure\_sequence[i + 1]}}
+
+            \affecter{segment}{allouer(nb\_cases + 1)}
+            \affecter{longueur\_segment}{reconstruire\_chemin(
+                objectifs[idx\_depart],
+                objectifs[idx\_arrivee],
+                predecesseurs[idx\_depart][idx\_arrivee],
+                segment)}
+
+            \sialors{longueur\_segment < 0}
+            {
+                \instruction{desallouer(segment)}
+                \continuer
+            }
+
+            \sialorssinon{i = 0}
+                {\affecter{debut}{0}}
+                {\affecter{debut}{1}}
+
+            \pour{j}{debut}{longueur\_segment}{}{
+                \affecter{chemin\_final[longueur\_totale]}{segment[j]}
+                \affecter{longueur\_totale}{longueur\_totale + 1}
+            }
+
+            \instruction{desallouer(segment)}
+        }
+
+        \affecter{resultat}{construire\_chemin\_final(
+            v, chemin\_final, longueur\_totale - 1,
+            depart, obtenirDirDepart(v))}
+
+        \instruction{desallouer(objectifs)}
+        \instruction{desallouer(chemin\_final)}
+        \instruction{desallouer(sequence\_temp)}
+        \instruction{desallouer(meilleure\_sequence)}
+        \instruction{desallouer(visites)}
+
+        \pour{i}{0}{nb\_objectifs - 1}{}{
+            \pour{j}{0}{nb\_objectifs - 1}{}{
+                \sialors{i $\neq$ j et predecesseurs[i][j] $\neq$ \motclefPointeurNULL}
+                    {\instruction{desallouer(predecesseurs[i][j])}}
+            }
+            \instruction{desallouer(predecesseurs[i])}
+            \instruction{desallouer(distances[i])}
+        }
+
+        \instruction{desallouer(predecesseurs)}
+        \instruction{desallouer(distances)}
+
+        \retourner{resultat}
+    }
+\end{algorithme}
+
+
+
+

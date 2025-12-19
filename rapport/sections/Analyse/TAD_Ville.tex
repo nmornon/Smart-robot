@@ -1,0 +1,71 @@
+\begin{tad}
+    \tadNom{Ville}
+    \tadDependances{\naturelNonNul, Direction, \booleen, Case}
+
+    \begin{tadOperations}{obtenirNumCaseDepart}
+
+        \tadOperation{creerVille}{\tadParams{\naturelNonNul}}{\tadParams{Ville}}
+        
+        \tadOperationAvecPreconditions{obtenirCase}{\tadParams{Ville, \naturelNonNul}}{\tadParams{Case}}
+        
+        \tadOperation{obtenirToutesLesCases}{\tadParams{Ville}}{\tadParams{Liste<Case>}}
+        
+        \tadOperationAvecPreconditions{fixerDepart}{\tadParams{Ville, \naturelNonNul, Direction}}{\tadParams{Ville}}
+        
+        \tadOperation{obtenirLargeur}{\tadParams{Ville}}{\tadParams{\naturelNonNul}}
+        
+        \tadOperation{obtenirNumCaseDepart}{\tadParams{Ville}}{\tadParams{\naturelNonNul}}
+        
+        \tadOperation{obtenirNbCases}{\tadParams{Ville}}{\tadParams{\naturelNonNul}}
+        
+        \tadOperation{obtenirDirDepart}{\tadParams{Ville}}{\tadParams{Direction}}
+        
+        \tadOperation{nbCasesObligatoire}{\tadParams{Ville}}{\tadParams{\naturel}}
+
+    \end{tadOperations}
+    \begin{tadPreconditions}{obtenirNumCaseDepart}
+
+        \tadPrecondition{obtenirCase}{num\_case $\leq$ obtenirNbCases(ville)}
+        \tadPrecondition{fixerDepart}{num\_case $\leq$ obtenirNbCases(ville)}
+    \end{tadPreconditions}
+    \begin{tadSemantiques}{obtenirNumCaseDepart}
+
+        \tadSemantique{creeVille}{ Créer une ville dont la largeur est le paramètre largeur.}
+        
+        \tadSemantique{obtenirCase}{ Permet d'obtenir la case dans la ville à partir de son numéro.}
+        
+        \tadSemantique{ObtenirToutesLesCases}{ Permet d'obtenir le tableau contenant toutes les cases de la ville, normalement de taille largeur$^2$.}
+        
+        \tadSemantique{fixerDepart}{ Configure la position et l'orientation de départ dans la ville.}
+        
+        \tadSemantique{obtenirLargeur}{ Renvoie la largeur de la ville.}
+
+        \tadSemantique{obtenirNumCaseDepart}{ Renvoie le numéro de la case de départ dans la ville.}
+
+        \tadSemantique{obtenirNbCases}{ Renvoie le nombre de cases dans la ville.}
+        
+        \tadSemantique{obtenirDirDepart}{ Renvoie la direction de la case de départ dans la ville.}
+        
+         \tadSemantique{nbCasesObligatoire}{ Renvoie le nombre de cases obligatoires dans la ville.}
+    \end{tadSemantiques}
+
+    \begin{tadAxiomes}
+
+        \tadAxiome{obtenirLargeur(creerVille(l)) = $l$}
+        
+        \tadAxiome{obtenirNbCases(creerVille(l)) = $l \times l$}
+        
+        \tadAxiome{obtenirCase(v, n) $\in$ obtenirToutesLesCases(v)}
+        
+        \tadAxiome{obtenirNumCaseDepart(fixerDepart(v, n, d)) = n}
+        
+        \tadAxiome{obtenirDirDepart(fixerDepart(v, n, d)) = d}
+        
+        \tadAxiome{obtenirLargeur(fixerDepart(v, n, d)) = obtenirLargeur(v)}
+
+        \tadAxiome{nbCasesObligatoire(v) $\leq$ obtenirNbCases(v)}
+    
+    \end{tadAxiomes}
+
+
+\end{tad}

@@ -1,0 +1,57 @@
+\begin{tad}
+    \tadNom{Case}
+    \tadDependances{\naturel, \naturelNonNul, Direction, \booleen}
+
+    \begin{tadOperations}{obtenirNumeroCase}
+
+        \tadOperation{creerCase}{\tadParams{\naturelNonNul, \booleen}}{\tadParams{Case}}
+        
+        \tadOperation{obtenirNumeroCase}{\tadParams{Case}}{\tadParams{\naturelNonNul}}
+        
+        \tadOperation{estObligatoire}{\tadParams{Case}}{\tadParams{\booleen}}
+        
+        \tadOperation{obtenirVoisin}{\tadParams{Case, Direction}}{\tadParams{\naturel}}
+        
+        \tadOperation{fixerObligatoire}{\tadParams{Case, \booleen}}{\tadParams{Case}}
+        
+        \tadOperation{fixerCaseAdj}{\tadParams{Case, Direction, \naturelNonNul}}{\tadParams{Case}}
+
+    \end{tadOperations}
+    \begin{tadSemantiques}{obtenirNumeroCase}
+
+        \tadSemantique{creerCase}{Crée une case identifiée par son numéro et son statut obligatoire.}
+        
+        \tadSemantique{obtenirNumeroCase}{Retourne le numéro unique de la case.}
+        
+        \tadSemantique{estObligatoire}{Indique si la case est un point de passage obligatoire.}
+        
+        \tadSemantique{obtenirVoisin}{Retourne le numéro de la case voisine dans la direction donnée (0 si pas de voisin).}
+        
+        \tadSemantique{fixerObligatoire}{Modifie le statut "obligatoire" de la case.}
+        
+        \tadSemantique{fixerCaseAdj}{Définit le numéro de la case voisine dans une direction donnée.}
+
+    \end{tadSemantiques}
+
+    \begin{tadAxiomes}
+
+        \tadAxiome{obtenirNumeroCase(creerCase(n, obl)) = n}
+        
+        \tadAxiome{estObligatoire(creerCase(n, obl)) = obl}
+        
+        \tadAxiome{obtenirVoisin(creerCase(n, obl), d) = 0} 
+        
+        \tadAxiome{estObligatoire(fixerObligatoire(c, obl)) = obl}
+        
+        \tadAxiome{obtenirNumeroCase(fixerObligatoire(c, obl)) = obtenirNumeroCase(c)}
+        
+        \tadAxiome{obtenirVoisin(fixerCaseAdj(c, d, n), d) = n}
+        
+        \tadAxiome{obtenirNumeroCase(fixerCaseAdj(c, d, n)) = obtenirNumeroCase(c)}
+        
+        \tadAxiome{estObligatoire(fixerCaseAdj(c, d, n)) = estObligatoire(c)}
+    
+    \end{tadAxiomes}
+
+\end{tad}
+

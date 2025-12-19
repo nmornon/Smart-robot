@@ -1,0 +1,51 @@
+\begin{tad}
+    \tadNom{Chemin}
+    \tadDependances{\naturel, Ville, Case, Direction}
+
+    \begin{tadOperations}{obtenirCaseAuChemin}
+
+        \tadOperation{creerChemin}{\tadUnParam{\void}}{\tadParams{Chemin}}
+        
+        \tadOperation{genererCheminBrute}{\tadParams{Ville}}{\tadParams{Chemin}}
+
+        \tadOperation{nbrCases}{\tadParams{Chemin}}{\tadParams{\naturel}}
+
+        \tadOperation{obtenirDirDepart}{\tadParams{Chemin}}{\tadParams{Direction}}
+
+        \tadOperationAvecPreconditions{obtenirCaseAuChemin}{\tadParams{Chemin, \naturel}}{\tadParams{Case}}
+
+    \end{tadOperations}
+
+    \begin{tadPreconditions}{obtenirCaseAuChemin}
+
+        \tadPrecondition{obtenirCaseAuChemin}{obtenirCaseAuChemin(c, i) : i $\geq$ 0 et i$<$ nbrCases(chemin)}
+
+    \end{tadPreconditions}
+
+    \begin{tadSemantiques}{obtenirCaseAuChemin}
+
+        \tadSemantique{creerChemin}{Initialise un chemin vide.}
+
+        \tadSemantique{genererCheminBrute}{Génère un chemin valide dans la ville donnée en utilisant un algorithme de force brute (respectant les contraintes de passage)(genererCheminOptimal - pour l'approche BFS).}
+
+        \tadSemantique{nbrCases}{Retourne le nombre total de cases constituant le chemin.}
+
+        \tadSemantique{obtenirDirDepart}{Retourne la direction initiale du robot au début ce chemin.}
+
+        \tadSemantique{obtenirCaseAuChemin}{Retourne la case située à l'index donné dans le chemin.}
+
+    \end{tadSemantiques}
+
+    \begin{tadAxiomes}
+
+        \tadAxiome{nbrCases(creerChemin()) = 0}
+
+        % Le chemin généré part de la même direction que la configuration de la ville
+        \tadAxiome{obtenirDirDepart(genererCheminBrute(v)) = obtenirDirDepart(v)}
+
+        % La première case du chemin (index 0) correspond au départ de la ville
+        \tadAxiome{obtenirNumeroCase(obtenirCaseAuChemin(genererCheminBrute(v), 0)) = obtenirNumCaseDepart(v)}
+
+    \end{tadAxiomes}
+
+\end{tad}

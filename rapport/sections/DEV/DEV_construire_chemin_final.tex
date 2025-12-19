@@ -1,0 +1,20 @@
+\begin{lstlisting}[caption={construire\_chemin\_final}]
+static Ch_Chemin* construire_chemin_final(V_Ville *v, int *ids_chemin, 
+                                         int longueur, unsigned int depart, 
+                                         Direction dir) {
+    Ch_Chemin *c = Ch_creerChemin();
+    c->nb_cases = longueur;
+    c->num_case_depart = depart;
+    c->dir_depart = dir;
+    c->tab_cases = (C_Case*)malloc((longueur + 1) * sizeof(C_Case));
+    
+    for (int i = 0; i <= longueur; i++) {
+        C_Case *case_orig = V_obtenirCase(v, ids_chemin[i]);
+        if (case_orig) {
+            c->tab_cases[i] = *case_orig;
+        }
+    }
+    return c;
+}
+
+\end{lstlisting}

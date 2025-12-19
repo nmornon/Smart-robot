@@ -1,0 +1,47 @@
+\begin{algorithme}
+    \procedure{reconstruire\_chemin}
+        {
+            \paramEntree{depart : \naturelNonNul},
+            \paramEntree{arrivee : \naturelNonNul},
+            \paramEntree{predecesseurs : \tableauUneDimension{}{de}{\naturel}},
+            \paramEntreeSortie{chemin\_sortie : \tableauUneDimension{}{de}{\naturel}},
+            \paramEntreeSortie{longueur\_resultat : \entier}
+        }
+        {
+            longueur : \entier \\
+            actuel : \naturel \\
+            i, temp : \entier
+        }
+    {
+        \sialorssinon{ (predecesseurs = \motclefPointeurNULL) ou ((predecesseurs[arrivee] = 0) et (depart \neq arrivee)) }
+        {
+            \affecter{\valeurPointeur{longueur\_resultat}}{-1}
+        }
+        {
+            \affecter{longueur}{0}
+            \affecter{actuel}{arrivee}
+
+            \tantque{actuel \neq 0}
+            {
+                \affecter{chemin\_sortie[longueur]}{actuel}
+                \affecter{longueur}{longueur + 1}
+
+                \sialorssinon{actuel = depart}
+                {
+                    \affecter{actuel}{0}
+                }
+                {
+                    \affecter{actuel}{predecesseurs[actuel]}
+                }
+            }
+
+            \pour{i}{0}{(longueur / 2) - 1}{}{
+                \affecter{temp}{chemin\_sortie[i]}
+                \affecter{chemin\_sortie[i]}{chemin\_sortie[longueur - 1 - i]}
+                \affecter{chemin\_sortie[longueur - 1 - i]}{temp}
+            }
+
+            \affecter{\valeurPointeur{longueur\_resultat}}{longueur - 1}
+        }
+    }
+\end{algorithme}

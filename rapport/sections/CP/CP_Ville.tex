@@ -1,0 +1,47 @@
+\begin{algorithme}
+    \signatureFonction{creerVille}
+        {largeur : \naturelNonNul}{Ville}
+
+    \vspace{1.5em}
+
+    \signatureFonctionAvecPreconditions{obtenirCase}
+        {ville : Ville, num\_case : \naturelNonNul}{Case}
+        {num\_case $\leq$ obtenirNbCases(ville)}
+
+    \vspace{1.5em}
+
+    \signatureFonction{obtenirToutesLesCases}
+        {ville : Ville}{Liste<Case>}
+
+    \vspace{1.5em}
+
+    \signatureProcedureAvecPreconditions{fixerDepart}
+        {\paramEntreeSortie{ville : Ville}, \paramEntree{num\_case : \naturelNonNul, dir : Direction}}
+        {num\_case $\leq$ obtenirNbCases(ville)}
+
+    \vspace{1.5em}
+
+    \signatureFonction{obtenirNbCases}
+        {ville : Ville}{\naturelNonNul}
+
+    \vspace{1.5em}
+
+    \signatureFonction{obtenirNumCaseDepart}
+        {ville : Ville}{\naturelNonNul}
+
+    \vspace{1.5em}
+
+    \signatureFonction{obtenirDirDepart}
+        {ville : Ville}{Direction}
+
+    \vspace{1.5em}
+
+    \signatureFonction{obtenirLargeur}
+        {ville : Ville}{\naturelNonNul}
+
+    \vspace{1.5em}
+
+    \signatureFonction{nbCasesObligatoire}
+        {ville : Ville}{\naturel}
+
+\end{algorithme}

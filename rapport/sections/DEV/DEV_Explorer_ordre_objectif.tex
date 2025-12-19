@@ -1,0 +1,44 @@
+\begin{lstlisting}[caption={explorer\_ordre\_objectifs}]
+static void explorer_ordre_objectifs(int position, int nb_obj,
+                                     int *sequence_temp, bool *visites,
+                                     int cout_actuel, int **distances,
+                                     int *meilleure_sequence, int *min_cout) {
+    
+    // On abandonne si c'est trop long 
+    if (cout_actuel >= *min_cout) return;
+
+    // Tous les objectifs sont placés
+    if (position == nb_obj) {
+        // Ajouter le cout du retour au départ
+        int cout_retour = distances[sequence_temp[nb_obj - 1]][0];
+        if (cout_retour == INT_MAX) return;
+        
+        int cout_total = cout_actuel + cout_retour;
+        
+        if (cout_total < *min_cout) {
+            *min_cout = cout_total;
+            for (int i = 0; i < nb_obj; i++) {
+                meilleure_sequence[i] = sequence_temp[i];
+            }
+        }
+        return;
+    }
+
+    // On essaie chaque objectif 
+    for (int i = 1; i < nb_obj; i++) {
+        if (!visites[i]) {
+            int cout_segment = distances[sequence_temp[position - 1]][i];
+            if (cout_segment == INT_MAX) continue;
+            
+            visites[i] = true;
+            sequence_temp[position] = i;
+            
+            explorer_ordre_objectifs(position + 1, nb_obj, sequence_temp, visites,
+                                    cout_actuel + cout_segment, distances,
+                                    meilleure_sequence, min_cout);
+            
+            visites[i] = false;
+        }
+    }
+}
+\end{lstlisting}
