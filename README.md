@@ -71,6 +71,7 @@ Le jour de la démonstration:
 scp <fichier_ville> pi@<adresse_ip_robot>:<adresse_destination>
 ssh pi@<adresse_ip_robot>
 ./pipeline.sh fichier_ville.txt
+```
 
 ---
 
