@@ -1,4 +1,4 @@
-\doxysection{include/chemin\+\_\+bfs/chemin.h File Reference}
+\doxysection{Référence du fichier include/chemin\+\_\+bfs/chemin.h}
 \hypertarget{chemin__bfs_2chemin_8h}{}\label{chemin__bfs_2chemin_8h}\index{include/chemin\_bfs/chemin.h@{include/chemin\_bfs/chemin.h}}
 
 
@@ -8,9 +8,9 @@ Gestion de la strucutre de données représentante le plus court chemin du robot
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include "{}ville.\+h"{}}\newline
 {\ttfamily \#include "{}direction.\+h"{}}\newline
-Include dependency graph for chemin.\+h\+:
+Graphe des dépendances par inclusion de chemin.\+h\+:
 % FIG 0
-\doxysubsubsection*{Data Structures}
+\doxysubsubsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structResultatBFS}{Resultat\+BFS}}
@@ -24,7 +24,7 @@ struct \mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}}
 \item 
 \#define \mbox{\hyperlink{chemin__bfs_2chemin_8h_a4cc72772b6b0a775edc03653d96cb8a7}{MAX\+\_\+\+OBJECTIFS}}~10
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{chemin__bfs_2chemin_8h_a63629a6fa149296c1cc347f3dd8fa262}{Ch\+\_\+creer\+Chemin}} ()
@@ -41,10 +41,10 @@ int \mbox{\hyperlink{chemin__bfs_2chemin_8h_abb06f389f727659f968e1a30a9d8bdf1}{C
 \begin{DoxyCompactList}\small\item\em Récupère une case spécifique du chemin à un index donné. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Gestion de la strucutre de données représentante le plus court chemin du robot. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Groupe 2-\/6 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -52,7 +52,7 @@ Groupe 2-\/6
 \end{DoxyDate}
 Ce .h défini la structure d\textquotesingle{}un chemin qui sera la structure qui permet de représenter de manière cohérente le chemin le plus court que le robot va parcourir 
 
-\doxysubsection{Macro Definition Documentation}
+\doxysubsection{Documentation des macros}
 \Hypertarget{chemin__bfs_2chemin_8h_a4cc72772b6b0a775edc03653d96cb8a7}\label{chemin__bfs_2chemin_8h_a4cc72772b6b0a775edc03653d96cb8a7} 
 \index{chemin.h@{chemin.h}!MAX\_OBJECTIFS@{MAX\_OBJECTIFS}}
 \index{MAX\_OBJECTIFS@{MAX\_OBJECTIFS}!chemin.h@{chemin.h}}
@@ -67,7 +67,7 @@ Ce .h défini la structure d\textquotesingle{}un chemin qui sera la structure qu
 
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \Hypertarget{chemin__bfs_2chemin_8h_a63629a6fa149296c1cc347f3dd8fa262}\label{chemin__bfs_2chemin_8h_a63629a6fa149296c1cc347f3dd8fa262} 
 \index{chemin.h@{chemin.h}!Ch\_creerChemin@{Ch\_creerChemin}}
 \index{Ch\_creerChemin@{Ch\_creerChemin}!chemin.h@{chemin.h}}
@@ -78,17 +78,17 @@ Ce .h défini la structure d\textquotesingle{}un chemin qui sera la structure qu
 
 Alloue et initialise un chemin vide. 
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un pointeur vers la structure \doxylink{structCh__Chemin}{Ch\+\_\+\+Chemin} initialisée.
 \end{DoxyReturn}
 Alloue et initialise un chemin vide.
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un pointeur vers le chemin créé.
 \end{DoxyReturn}
 Alloue et initialise un chemin vide.
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un pointeur vers la structure \doxylink{structCh__Chemin}{Ch\+\_\+\+Chemin} initialisée. 
 \end{DoxyReturn}
 \Hypertarget{chemin__bfs_2chemin_8h_a023f91da9f348b50ee78654a3bf107b0}\label{chemin__bfs_2chemin_8h_a023f91da9f348b50ee78654a3bf107b0} 
@@ -102,26 +102,26 @@ Un pointeur vers la structure \doxylink{structCh__Chemin}{Ch\+\_\+\+Chemin} init
 Génère le chemin le plus court visitant tous les points obligatoires et revenant au départ, en utilisant une approche optimisée (BFS + TSP sur objectifs). 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em v} & La ville à parcourir. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Le chemin trouvé (peut ếtre vide si aucune solution).
 \end{DoxyReturn}
 Génère le chemin le plus court visitant tous les points obligatoires et revenant au départ, en utilisant une approche optimisée (BFS + TSP sur objectifs).
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em v} & Pointeur vers la ville. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un objet \doxylink{structCh__Chemin}{Ch\+\_\+\+Chemin} contenant l\textquotesingle{}itinéraire complet (retour au départ inclus). 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
 % FIG 1
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 2
 \Hypertarget{chemin__bfs_2chemin_8h_a2e3e83d065da5101e9553f6868de8059}\label{chemin__bfs_2chemin_8h_a2e3e83d065da5101e9553f6868de8059} 
 \index{chemin.h@{chemin.h}!Ch\_liberer@{Ch\_liberer}}
@@ -134,7 +134,7 @@ Here is the caller graph for this function\+:
 Libère la mémoire associée à un chemin. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & Le chemin à libérer.\\
 \hline
 \end{DoxyParams}
@@ -149,11 +149,11 @@ Libère la mémoire associée à un chemin. \Hypertarget{chemin__bfs_2chemin_8h_
 Récupère le nombre de cases (Etapes) dans le chemin. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & Le chemin. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Le nombre de cases.
 \end{DoxyReturn}
 Récupère le nombre de cases (Etapes) dans le chemin. \Hypertarget{chemin__bfs_2chemin_8h_af7baea9d65ab98554d2fbe326e4e9341}\label{chemin__bfs_2chemin_8h_af7baea9d65ab98554d2fbe326e4e9341} 
@@ -167,13 +167,13 @@ Récupère le nombre de cases (Etapes) dans le chemin. \Hypertarget{chemin__bfs_
 Récupère une case spécifique du chemin à un index donné. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & Le chemin. \\
 \hline
 {\em index} & L\textquotesingle{}index de la case dans le tableau (0 à nb\+\_\+cases). \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un pointeur vers la case ou NULL si l\textquotesingle{}index est hors limites.
 \end{DoxyReturn}
 Récupère une case spécifique du chemin à un index donné. \Hypertarget{chemin__bfs_2chemin_8h_af8766bec59090e06f921cb44a3547bf7}\label{chemin__bfs_2chemin_8h_af8766bec59090e06f921cb44a3547bf7} 
@@ -187,11 +187,11 @@ Récupère une case spécifique du chemin à un index donné. \Hypertarget{chemi
 Récupère la direction initiale du robot au début du chemin. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & Le chemin. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 La direction (NORD, EST, SUD, OUEST).
 \end{DoxyReturn}
 Récupère la direction initiale du robot au début du chemin. 

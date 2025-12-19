@@ -19,7 +19,39 @@ Le robot doit \+:
 Le critère de performance est le {\bfseries{temps le plus court}} pour réaliser l\textquotesingle{}intégralité du trajet.
 
 \DoxyHorRuler{0}
-\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md5}{}\doxysection{\texorpdfstring{Modélisation et Description de la Ville}{Modélisation et Description de la Ville}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md5}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md5}{}\doxysection{\texorpdfstring{Structure du projet}{Structure du projet}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25-\/26-\/PI-\/SMART-\/ROBOT/}
+\DoxyCodeLine{├──\ programmes/}
+\DoxyCodeLine{│\ \ \ ├──\ code\_algo/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ src/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ ├──\ tests/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ ├──\ chemin\_force\_brute/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ ├──\ chemin\_bfs/}
+\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ └──\ .../}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ include/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ bin/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ lib/}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ makefile}
+\DoxyCodeLine{│\ \ \ └──\ \ code\_elec/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ src/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ include/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ bin/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ doc/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ makefile}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ Doxyfile}
+\DoxyCodeLine{├──\ rapport/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ analyse\_descendente/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ schema/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ sections/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ images/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ main.tex}
+\DoxyCodeLine{├──\ pipeline.sh}
+\DoxyCodeLine{└──\ README.md}
+
+\end{DoxyCode}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md6}{}\doxysection{\texorpdfstring{Modélisation et Description de la Ville}{Modélisation et Description de la Ville}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md6}
 La ville est modélisée par une grille de cases formant un carré.
 
 Le problème est décrit à l\textquotesingle{}aide d\textquotesingle{}un {\bfseries{flux texte structuré}} qui définit\+:
@@ -28,7 +60,7 @@ Le problème est décrit à l\textquotesingle{}aide d\textquotesingle{}un {\bfse
 \item La case de départ et son orientation initiale (N, E, S, O)
 \item Les passages entre les cases (ex\+: {\ttfamily 1-\/2})
 \item Les numéros des cases contenant les points de passage obligatoires (pastilles bleues)
-\end{DoxyItemize}\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md6}{}\doxysection{\texorpdfstring{Architecture Logicielle et Contrôle}{Architecture Logicielle et Contrôle}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md6}
+\end{DoxyItemize}\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md7}{}\doxysection{\texorpdfstring{Architecture Logicielle et Contrôle}{Architecture Logicielle et Contrôle}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md7}
 L\textquotesingle{}exécution du projet repose sur une architecture en deux programmes communicants, orchestrés par un script {\ttfamily bash}.
 
 \tabulinesep=1mm
@@ -45,7 +77,7 @@ L\textquotesingle{}exécution du projet repose sur une architecture en deux prog
 {\bfseries{Programme 1}}   &Algorithme / Pathfinder   &Lit la description de la ville et {\bfseries{produit sur sa sortie standard les ordres}} que devra suivre le robot (séquence AV, TG, TD)    \\\cline{1-3}
 {\bfseries{Programme 2}}   &Contrôleur / Driver   &{\bfseries{Lit les ordres depuis son entrée standard}}, les interprète, et pilote les composants du robot (moteurs, capteurs)   \\\cline{1-3}
 \end{longtabu}
-\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md7}{}\doxysubsection{\texorpdfstring{Les Ordres de Contrôle}{Les Ordres de Contrôle}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md7}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md8}{}\doxysubsection{\texorpdfstring{Les Ordres de Contrôle}{Les Ordres de Contrôle}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md8}
 Le robot est guidé à l\textquotesingle{}aide d\textquotesingle{}ordres tels que \+:
 \begin{DoxyItemize}
 \item {\ttfamily AV} \+: {\bfseries{Avancer}} jusqu\textquotesingle{}au prochain croisement
@@ -54,7 +86,7 @@ Le robot est guidé à l\textquotesingle{}aide d\textquotesingle{}ordres tels qu
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md9}{}\doxysection{\texorpdfstring{Composants Matériels (\+Partie Électronique)}{Composants Matériels (Partie Électronique)}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md9}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md10}{}\doxysection{\texorpdfstring{Composants Matériels (\+Partie Électronique)}{Composants Matériels (Partie Électronique)}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md10}
 Le robot est équipé des composants suivants\+:
 \begin{DoxyItemize}
 \item {\bfseries{Contrôle/\+Alimentation \+:}} Châssis, Contrôleur L293D, Raspberry Pi, Interrupteur on/off.
@@ -65,7 +97,7 @@ Le robot est équipé des composants suivants\+:
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md11}{}\doxysection{\texorpdfstring{Utilisation et Démonstration}{Utilisation et Démonstration}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md11}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md12}{}\doxysection{\texorpdfstring{Utilisation et Démonstration}{Utilisation et Démonstration}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md12}
 Le jour de la démonstration\+:
 \begin{DoxyEnumerate}
 \item {\bfseries{Connexion \+:}} Se connecter en {\ttfamily SSH} sur le robot
@@ -84,5 +116,17 @@ Le jour de la démonstration\+:
 
 
 \DoxyHorRuler{0}
-\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md13}{}\doxysection{\texorpdfstring{Algorithme}{Algorithme}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md13}
-Pour changer l\textquotesingle{}algorithme de résolution de la ville il suffit d\textquotesingle{}ouvre le fichier {\ttfamily makefile} situé dans le dossier {\ttfamily ./programmes/code\+\_\+algo}. La variable {\ttfamily algorithme} peut prendre les valeurs {\ttfamily chemin\+\_\+bfs} ou {\ttfamily chemin\+\_\+force\+\_\+brute}. 
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md14}{}\doxysection{\texorpdfstring{Algorithme}{Algorithme}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md14}
+Pour changer l\textquotesingle{}algorithme de résolution de la ville il suffit d\textquotesingle{}ouvrir le fichier {\ttfamily makefile} situé dans le dossier {\ttfamily ./programmes/code\+\_\+algo}. La variable {\ttfamily algorithme} peut prendre les valeurs {\ttfamily chemin\+\_\+bfs} ou {\ttfamily chemin\+\_\+force\+\_\+brute}.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md16}{}\doxysection{\texorpdfstring{Tests unitaires et documentation des algorithmes}{Tests unitaires et documentation des algorithmes}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md16}
+Pour accéder aux tests unitaires et à la documentation des algorithmes il faut se déplacer dans le dossier {\ttfamily ./programmes/code\+\_\+algo} et taper une des commandes suivantes au choix \+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ \#Pour\ compiler\ normalement\ les\ algorithmes}
+\DoxyCodeLine{make\ tests\ \#Pour\ compiler\ les\ tests}
+\DoxyCodeLine{make\ doc\ \#Pour\ générer\ la\ doc}
+\DoxyCodeLine{make\ clean\ \#Pour\ supprimer\ l'excés}
+
+\end{DoxyCode}
+ 

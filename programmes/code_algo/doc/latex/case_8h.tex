@@ -1,4 +1,4 @@
-\doxysection{include/case.h File Reference}
+\doxysection{Référence du fichier include/case.h}
 \hypertarget{case_8h}{}\label{case_8h}\index{include/case.h@{include/case.h}}
 
 
@@ -8,16 +8,16 @@ Gestion des cases individuelles (sommets du graphe).
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include "{}direction.\+h"{}}\newline
-Include dependency graph for case.\+h\+:
+Graphe des dépendances par inclusion de case.\+h\+:
 % FIG 0
-This graph shows which files directly or indirectly include this file\+:
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 % FIG 1
-\doxysubsubsection*{Data Structures}
+\doxysubsubsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structC__Case}{C\+\_\+\+Case}}
 \begin{DoxyCompactList}\small\item\em Représente une case de la ville. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structC__Case}{C\+\_\+\+Case}} \mbox{\hyperlink{case_8h_a8a5115ade2713fad591ad26fa63003a2}{C\+\_\+creer\+Case}} (unsigned int num, bool obligatoire)
@@ -34,10 +34,10 @@ void \mbox{\hyperlink{case_8h_afd7f2bb1b617209aae831c3af1d9bfb3}{C\+\_\+fixer\+C
 \begin{DoxyCompactList}\small\item\em Définit une connexion (un passage) vers une case voisine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Gestion des cases individuelles (sommets du graphe). 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Groupe 2-\/6 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -45,7 +45,7 @@ Groupe 2-\/6
 \end{DoxyDate}
 Ce .h définit la structure d\textquotesingle{}une case, qui est l\textquotesingle{}élément atomique de la ville. Une case connait ses voisins (adjacences) et ses propriétés (si elle est une étape obligatoire ou non). 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \Hypertarget{case_8h_a8a5115ade2713fad591ad26fa63003a2}\label{case_8h_a8a5115ade2713fad591ad26fa63003a2} 
 \index{case.h@{case.h}!C\_creerCase@{C\_creerCase}}
 \index{C\_creerCase@{C\_creerCase}!case.h@{case.h}}
@@ -57,28 +57,28 @@ Ce .h définit la structure d\textquotesingle{}une case, qui est l\textquotesing
 Crée et initialise une case. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em num} & Le numéro unique de la case. \\
 \hline
 {\em obligatoire} & true si la case est un point de passage, false sinon. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Une structure \doxylink{structC__Case}{C\+\_\+\+Case} initialisée avec des voisins vides.
 \end{DoxyReturn}
 Crée et initialise une case.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em num} & Le numéro unique de la case. \\
 \hline
 {\em obligatoire} & Vrai si le robot doit absolument passer par ici. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Une structure \doxylink{structC__Case}{C\+\_\+\+Case} prête à l\textquotesingle{}emploi. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 2
 \Hypertarget{case_8h_aa65fd60d4d0c5f7fd6d41c8ca0696adf}\label{case_8h_aa65fd60d4d0c5f7fd6d41c8ca0696adf} 
 \index{case.h@{case.h}!C\_estObligatoire@{C\_estObligatoire}}
@@ -91,14 +91,14 @@ Here is the caller graph for this function\+:
 Vérifie si une case est un point de passage obligatoire. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & La case concernée. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 true si obligatoire, false sinon.
 \end{DoxyReturn}
-Vérifie si une case est un point de passage obligatoire. Here is the caller graph for this function\+:
+Vérifie si une case est un point de passage obligatoire. Voici le graphe des appelants de cette fonction \+:
 % FIG 3
 \Hypertarget{case_8h_afd7f2bb1b617209aae831c3af1d9bfb3}\label{case_8h_afd7f2bb1b617209aae831c3af1d9bfb3} 
 \index{case.h@{case.h}!C\_fixerCaseAdj@{C\_fixerCaseAdj}}
@@ -111,7 +111,7 @@ Vérifie si une case est un point de passage obligatoire. Here is the caller gra
 Définit une connexion (un passage) vers une case voisine. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & Pointeur vers la case à modifier. \\
 \hline
 {\em dir} & La direction de la connexion. \\
@@ -122,7 +122,7 @@ Définit une connexion (un passage) vers une case voisine.
 Définit une connexion (un passage) vers une case voisine.
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & Pointeur vers la case à modifier. \\
 \hline
 {\em dir} & Direction du voisin (NORD, EST, SUD, OUEST). \\
@@ -130,7 +130,7 @@ Définit une connexion (un passage) vers une case voisine.
 {\em num\+\_\+case\+\_\+adj} & Numéro de la case voisine à l\textquotesingle{}autre bout. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 4
 \Hypertarget{case_8h_a97947010939941d92149b1e0910d3464}\label{case_8h_a97947010939941d92149b1e0910d3464} 
 \index{case.h@{case.h}!C\_fixerObligatoire@{C\_fixerObligatoire}}
@@ -143,13 +143,13 @@ Here is the caller graph for this function\+:
 Modifie le statut "{}obligatoire"{} d\textquotesingle{}une case. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & Pointeur vers la case à modifier. \\
 \hline
 {\em est\+\_\+obligatoire} & Le nouveau statut (true/false).\\
 \hline
 \end{DoxyParams}
-Modifie le statut "{}obligatoire"{} d\textquotesingle{}une case. Here is the caller graph for this function\+:
+Modifie le statut "{}obligatoire"{} d\textquotesingle{}une case. Voici le graphe des appelants de cette fonction \+:
 % FIG 5
 \Hypertarget{case_8h_a65070bd2684b2bdb9cdad112d91786a9}\label{case_8h_a65070bd2684b2bdb9cdad112d91786a9} 
 \index{case.h@{case.h}!C\_obtenirNumeroCase@{C\_obtenirNumeroCase}}
@@ -162,14 +162,14 @@ Modifie le statut "{}obligatoire"{} d\textquotesingle{}une case. Here is the cal
 Récupère l\textquotesingle{}identifiant d\textquotesingle{}une case. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & La case concernée. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Le numéro de la case.
 \end{DoxyReturn}
-Récupère l\textquotesingle{}identifiant d\textquotesingle{}une case. Here is the caller graph for this function\+:
+Récupère l\textquotesingle{}identifiant d\textquotesingle{}une case. Voici le graphe des appelants de cette fonction \+:
 % FIG 6
 \Hypertarget{case_8h_a83b5ad4f1980351de8368af2ac4ae1ee}\label{case_8h_a83b5ad4f1980351de8368af2ac4ae1ee} 
 \index{case.h@{case.h}!C\_obtenirVoisin@{C\_obtenirVoisin}}
@@ -182,19 +182,19 @@ Récupère l\textquotesingle{}identifiant d\textquotesingle{}une case. Here is t
 Récupère l\textquotesingle{}identifiant du voisin dans une direction donnée. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em c} & La case actuelle. \\
 \hline
 {\em dir} & La direction dans laquelle regarder (NORD, EST, SUD, OUEST). \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Le numéro de la case voisine, ou une valeur sentinelle (ex\+: 0) s\textquotesingle{}il n\textquotesingle{}y a pas de voisin.
 \end{DoxyReturn}
 Récupère l\textquotesingle{}identifiant du voisin dans une direction donnée.
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Le numéro de la case voisine, ou 0 s\textquotesingle{}il n\textquotesingle{}y a pas de route. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 7

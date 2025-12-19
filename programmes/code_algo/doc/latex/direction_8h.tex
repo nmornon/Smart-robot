@@ -1,18 +1,18 @@
-\doxysection{include/direction.h File Reference}
+\doxysection{Référence du fichier include/direction.h}
 \hypertarget{direction_8h}{}\label{direction_8h}\index{include/direction.h@{include/direction.h}}
 
 
 Gestion des points cardinaux pour le robot.  
 
 
-This graph shows which files directly or indirectly include this file\+:
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 % FIG 0
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{direction_8h_a74d331c113c5bafd7450bf892758b958}{PAS\+\_\+\+DE\+\_\+\+DIRECTION}}~-\/1
 \begin{DoxyCompactList}\small\item\em Valeur de secours si aucune direction n\textquotesingle{}est définie. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Enumerations}
+\doxysubsubsection*{Énumérations}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \{ \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaaa1f529db9f2d334d9c41dcc5f6f6e2a7}{NORD}} = 0
@@ -21,17 +21,17 @@ enum \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}
 , \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaa564dddee8796eda21f35c76cb586aeb6}{OUEST}} = 3
  \}
 \begin{DoxyCompactList}\small\item\em Les 4 orientations possibles. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{direction_8h_a644b2cb7c37a33c2ad1bcd75f87296c4}{direction\+Opposee}} (\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} dir)
 \begin{DoxyCompactList}\small\item\em Donne la direction opposée (ex\+: NORD devient SUD). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Gestion des points cardinaux pour le robot. 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Groupe 2-\/6 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -39,7 +39,7 @@ Groupe 2-\/6
 \end{DoxyDate}
 Ce fichier définit comment le robot se repère sur la grille (Haut, Bas, Gauche, Droite) et permet de calculer facilement un demi-\/tour. 
 
-\doxysubsection{Macro Definition Documentation}
+\doxysubsection{Documentation des macros}
 \Hypertarget{direction_8h_a74d331c113c5bafd7450bf892758b958}\label{direction_8h_a74d331c113c5bafd7450bf892758b958} 
 \index{direction.h@{direction.h}!PAS\_DE\_DIRECTION@{PAS\_DE\_DIRECTION}}
 \index{PAS\_DE\_DIRECTION@{PAS\_DE\_DIRECTION}!direction.h@{direction.h}}
@@ -52,7 +52,7 @@ Valeur de secours si aucune direction n\textquotesingle{}est définie.
 
 
 
-\doxysubsection{Enumeration Type Documentation}
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
 \Hypertarget{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}\label{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
 \index{direction.h@{direction.h}!Direction@{Direction}}
 \index{Direction@{Direction}!direction.h@{direction.h}}
@@ -63,7 +63,7 @@ Valeur de secours si aucune direction n\textquotesingle{}est définie.
 
 Les 4 orientations possibles. 
 
-\begin{DoxyEnumFields}{Enumerator}
+\begin{DoxyEnumFields}{Valeurs énumérées}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{NORD@{NORD}!direction.h@{direction.h}}\index{direction.h@{direction.h}!NORD@{NORD}}}\Hypertarget{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaaa1f529db9f2d334d9c41dcc5f6f6e2a7}\label{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaaa1f529db9f2d334d9c41dcc5f6f6e2a7} 
 NORD&Vers le haut \\
 \hline
@@ -83,7 +83,7 @@ OUEST&Vers la gauche \\
 \end{DoxyEnumFields}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \Hypertarget{direction_8h_a644b2cb7c37a33c2ad1bcd75f87296c4}\label{direction_8h_a644b2cb7c37a33c2ad1bcd75f87296c4} 
 \index{direction.h@{direction.h}!directionOpposee@{directionOpposee}}
 \index{directionOpposee@{directionOpposee}!direction.h@{direction.h}}
@@ -100,11 +100,11 @@ Donne la direction opposée (ex\+: NORD devient SUD).
 \end{DoxyItemize}
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em dir} & La direction actuelle. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 La direction inverse.
 \end{DoxyReturn}
 Donne la direction opposée (ex\+: NORD devient SUD).
@@ -112,13 +112,13 @@ Donne la direction opposée (ex\+: NORD devient SUD).
 
 \begin{DoxyItemize}
 \item 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em dir} & La direction d\textquotesingle{}origine (NORD, SUD, EST, OUEST). \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 La direction inverse, ou PAS\+\_\+\+DE\+\_\+\+DIRECTION si l\textquotesingle{}entrée est invalide. 
 \end{DoxyReturn}
 
-\end{DoxyItemize}Here is the caller graph for this function\+:
+\end{DoxyItemize}Voici le graphe des appelants de cette fonction \+:
 % FIG 1

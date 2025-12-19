@@ -1,4 +1,4 @@
-\doxysection{src/chemin\+\_\+force\+\_\+brute/chemin.c File Reference}
+\doxysection{Référence du fichier src/chemin\+\_\+force\+\_\+brute/chemin.c}
 \hypertarget{chemin__force__brute_2chemin_8c}{}\label{chemin__force__brute_2chemin_8c}\index{src/chemin\_force\_brute/chemin.c@{src/chemin\_force\_brute/chemin.c}}
 
 
@@ -13,9 +13,9 @@ Logique de gestion et de génération de chemins dans la ville.
 {\ttfamily \#include "{}case.\+h"{}}\newline
 {\ttfamily \#include "{}chemin.\+h"{}}\newline
 {\ttfamily \#include "{}direction.\+h"{}}\newline
-Include dependency graph for chemin.\+c\+:
+Graphe des dépendances par inclusion de chemin.\+c\+:
 % FIG 0
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{chemin__force__brute_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262}{Ch\+\_\+creer\+Chemin}} ()
@@ -32,7 +32,7 @@ void \mbox{\hyperlink{chemin__force__brute_2chemin_8c_a2e3e83d065da5101e9553f686
 \begin{DoxyCompactList}\small\item\em Calcule le chemin optimal pour ramasser tous les objets de la ville. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Logique de gestion et de génération de chemins dans la ville. 
 
 
@@ -40,7 +40,7 @@ Logique de gestion et de génération de chemins dans la ville.
 \item Ce fichier contient les fonctions pour manipuler la structure de chemin et l\textquotesingle{}algorithme de recherche par force brute. 
 \end{DoxyItemize}
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \Hypertarget{chemin__force__brute_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262}\label{chemin__force__brute_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262} 
 \index{chemin.c@{chemin.c}!Ch\_creerChemin@{Ch\_creerChemin}}
 \index{Ch\_creerChemin@{Ch\_creerChemin}!chemin.c@{chemin.c}}
@@ -53,7 +53,7 @@ Crée un nouveau chemin vide en mémoire.
 
 Alloue et initialise un chemin vide.
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un pointeur vers la structure \doxylink{structCh__Chemin}{Ch\+\_\+\+Chemin} initialisée. 
 \end{DoxyReturn}
 \Hypertarget{chemin__force__brute_2chemin_8c_ab68d9aeb602a01e72b58ba8fdfd4e7e0}\label{chemin__force__brute_2chemin_8c_ab68d9aeb602a01e72b58ba8fdfd4e7e0} 
@@ -71,17 +71,17 @@ Génère un chemin valide en utilisant un algorithme de force brute.
 
 \begin{DoxyItemize}
 \item Cette fonction prépare les buffers nécessaires et lance l\textquotesingle{}exploration par force brute. 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em v} & La ville à parcourir. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Le chemin le plus court trouvé. 
 \end{DoxyReturn}
 
-\end{DoxyItemize}Here is the call graph for this function\+:
+\end{DoxyItemize}Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
 % FIG 1
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 2
 \Hypertarget{chemin__force__brute_2chemin_8c_a2e3e83d065da5101e9553f6868de8059}\label{chemin__force__brute_2chemin_8c_a2e3e83d065da5101e9553f6868de8059} 
 \index{chemin.c@{chemin.c}!Ch\_liberer@{Ch\_liberer}}

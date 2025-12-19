@@ -1,4 +1,4 @@
-\doxysection{include/\+IHM.h File Reference}
+\doxysection{Référence du fichier include/\+IHM.h}
 \hypertarget{IHM_8h}{}\label{IHM_8h}\index{include/IHM.h@{include/IHM.h}}
 
 
@@ -7,11 +7,11 @@ Gestion des interactions (fichiers et affichage console).
 
 {\ttfamily \#include "{}ville.\+h"{}}\newline
 {\ttfamily \#include "{}chemin.\+h"{}}\newline
-Include dependency graph for IHM.\+h\+:
+Graphe des dépendances par inclusion de IHM.\+h\+:
 % FIG 0
-This graph shows which files directly or indirectly include this file\+:
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 % FIG 1
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{IHM_8h_af9e50514f9c9e97be9e9489529bedf6c}{IHM\+\_\+charger\+Ville\+Depuis\+Fichier}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+fichier)
@@ -24,10 +24,10 @@ void \mbox{\hyperlink{IHM_8h_a06fd8ec756fbf3b14607a7c285785cf2}{IHM\+\_\+generer
 \begin{DoxyCompactList}\small\item\em Traduit un chemin en instructions concrètes (ordres de mouvement). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Gestion des interactions (fichiers et affichage console). 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Auteur}
 Groupe 2-\/6 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -35,7 +35,7 @@ Groupe 2-\/6
 \end{DoxyDate}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \Hypertarget{IHM_8h_afba9d8082a44d9b5cf2e764796cd4cce}\label{IHM_8h_afba9d8082a44d9b5cf2e764796cd4cce} 
 \index{IHM.h@{IHM.h}!IHM\_afficher\_ville@{IHM\_afficher\_ville}}
 \index{IHM\_afficher\_ville@{IHM\_afficher\_ville}!IHM.h@{IHM.h}}
@@ -47,11 +47,11 @@ Groupe 2-\/6
 Affiche la carte de la ville dans la console. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em v} & Pointeur vers la ville à visualiser.\\
 \hline
 \end{DoxyParams}
-Affiche la carte de la ville dans la console. Here is the call graph for this function\+:
+Affiche la carte de la ville dans la console. Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
 % FIG 2
 \Hypertarget{IHM_8h_aa1c338ca77e74aaef54390524108d014}\label{IHM_8h_aa1c338ca77e74aaef54390524108d014} 
 \index{IHM.h@{IHM.h}!IHM\_afficherChemin@{IHM\_afficherChemin}}
@@ -64,11 +64,11 @@ Affiche la carte de la ville dans la console. Here is the call graph for this fu
 Affiche le chemin final et sa distance totale. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em chemin} & Le chemin calculé à afficher.\\
 \hline
 \end{DoxyParams}
-Affiche le chemin final et sa distance totale. Here is the call graph for this function\+:
+Affiche le chemin final et sa distance totale. Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
 % FIG 3
 \Hypertarget{IHM_8h_af9e50514f9c9e97be9e9489529bedf6c}\label{IHM_8h_af9e50514f9c9e97be9e9489529bedf6c} 
 \index{IHM.h@{IHM.h}!IHM\_chargerVilleDepuisFichier@{IHM\_chargerVilleDepuisFichier}}
@@ -81,11 +81,11 @@ Affiche le chemin final et sa distance totale. Here is the call graph for this f
 Crée une ville à partir d\textquotesingle{}un fichier texte. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em nom\+\_\+fichier} & Chemin vers le fichier de description (.txt). \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Pointeur vers la ville créée, ou NULL si le fichier est invalide.
 \end{DoxyReturn}
 Crée une ville à partir d\textquotesingle{}un fichier texte.
@@ -99,17 +99,17 @@ Crée une ville à partir d\textquotesingle{}un fichier texte.
 \end{DoxyEnumerate}
 \begin{DoxyItemize}
 \item 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em nom\+\_\+fichier} & Chemin vers le fichier .txt \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un pointeur vers la ville créée, ou NULL en cas d\textquotesingle{}erreur. 
 \end{DoxyReturn}
 
-\end{DoxyItemize}Here is the call graph for this function\+:
+\end{DoxyItemize}Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
 % FIG 4
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 5
 \Hypertarget{IHM_8h_a06fd8ec756fbf3b14607a7c285785cf2}\label{IHM_8h_a06fd8ec756fbf3b14607a7c285785cf2} 
 \index{IHM.h@{IHM.h}!IHM\_genererOrdres@{IHM\_genererOrdres}}
@@ -122,7 +122,7 @@ Here is the caller graph for this function\+:
 Traduit un chemin en instructions concrètes (ordres de mouvement). 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em chemin} & Le chemin à convertir.\\
 \hline
 \end{DoxyParams}
@@ -131,7 +131,7 @@ Traduit un chemin en instructions concrètes (ordres de mouvement).
 
 \begin{DoxyItemize}
 \item Analyse chaque étape du chemin pour décider s\textquotesingle{}il faut tourner ou avancer en fonction de l\textquotesingle{}orientation actuelle. 
-\end{DoxyItemize}Here is the call graph for this function\+:
+\end{DoxyItemize}Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
 % FIG 6
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 7

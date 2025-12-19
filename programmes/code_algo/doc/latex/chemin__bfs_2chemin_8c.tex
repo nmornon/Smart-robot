@@ -1,4 +1,4 @@
-\doxysection{src/chemin\+\_\+bfs/chemin.c File Reference}
+\doxysection{Référence du fichier src/chemin\+\_\+bfs/chemin.c}
 \hypertarget{chemin__bfs_2chemin_8c}{}\label{chemin__bfs_2chemin_8c}\index{src/chemin\_bfs/chemin.c@{src/chemin\_bfs/chemin.c}}
 
 
@@ -14,14 +14,14 @@ Gestion des trajets et calcul d\textquotesingle{}itinéraires optimaux dans la v
 {\ttfamily \#include "{}case.\+h"{}}\newline
 {\ttfamily \#include "{}chemin.\+h"{}}\newline
 {\ttfamily \#include "{}direction.\+h"{}}\newline
-Include dependency graph for chemin.\+c\+:
+Graphe des dépendances par inclusion de chemin.\+c\+:
 % FIG 0
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{chemin__bfs_2chemin_8c_a956e2723d559858d08644ac99146e910}{INFINITY}}~INT\+\_\+\+MAX
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{chemin__bfs_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262}{Ch\+\_\+creer\+Chemin}} ()
@@ -38,7 +38,7 @@ void \mbox{\hyperlink{chemin__bfs_2chemin_8c_a2e3e83d065da5101e9553f6868de8059}{
 \begin{DoxyCompactList}\small\item\em Nettoie la mémoire et libère le chemin ainsi que son tableau de cases. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Description détaillée}
 Gestion des trajets et calcul d\textquotesingle{}itinéraires optimaux dans la ville. 
 
 
@@ -46,7 +46,7 @@ Gestion des trajets et calcul d\textquotesingle{}itinéraires optimaux dans la v
 \item Ce fichier contient les algorithmes pour créer des chemins, calculer des plus courts chemins (BFS) et optimiser l\textquotesingle{}ordre de passage par plusieurs points obligatoires. 
 \end{DoxyItemize}
 
-\doxysubsection{Macro Definition Documentation}
+\doxysubsection{Documentation des macros}
 \Hypertarget{chemin__bfs_2chemin_8c_a956e2723d559858d08644ac99146e910}\label{chemin__bfs_2chemin_8c_a956e2723d559858d08644ac99146e910} 
 \index{chemin.c@{chemin.c}!INFINITY@{INFINITY}}
 \index{INFINITY@{INFINITY}!chemin.c@{chemin.c}}
@@ -55,7 +55,7 @@ Gestion des trajets et calcul d\textquotesingle{}itinéraires optimaux dans la v
 
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Documentation des fonctions}
 \Hypertarget{chemin__bfs_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262}\label{chemin__bfs_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262} 
 \index{chemin.c@{chemin.c}!Ch\_creerChemin@{Ch\_creerChemin}}
 \index{Ch\_creerChemin@{Ch\_creerChemin}!chemin.c@{chemin.c}}
@@ -68,10 +68,10 @@ Initialise une nouvelle structure de chemin vide.
 
 Alloue et initialise un chemin vide.
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un pointeur vers le chemin créé. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 1
 \Hypertarget{chemin__bfs_2chemin_8c_a023f91da9f348b50ee78654a3bf107b0}\label{chemin__bfs_2chemin_8c_a023f91da9f348b50ee78654a3bf107b0} 
 \index{chemin.c@{chemin.c}!Ch\_genererCheminOptimal@{Ch\_genererCheminOptimal}}
@@ -86,16 +86,16 @@ Calcule le chemin complet optimal passant par tous les points obligatoires.
 Génère le chemin le plus court visitant tous les points obligatoires et revenant au départ, en utilisant une approche optimisée (BFS + TSP sur objectifs).
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Paramètres}
 {\em v} & Pointeur vers la ville. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Renvoie}
 Un objet \doxylink{structCh__Chemin}{Ch\+\_\+\+Chemin} contenant l\textquotesingle{}itinéraire complet (retour au départ inclus). 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
+Voici le graphe d\textquotesingle{}appel pour cette fonction \+:
 % FIG 2
-Here is the caller graph for this function\+:
+Voici le graphe des appelants de cette fonction \+:
 % FIG 3
 \Hypertarget{chemin__bfs_2chemin_8c_a2e3e83d065da5101e9553f6868de8059}\label{chemin__bfs_2chemin_8c_a2e3e83d065da5101e9553f6868de8059} 
 \index{chemin.c@{chemin.c}!Ch\_liberer@{Ch\_liberer}}
@@ -107,7 +107,7 @@ Here is the caller graph for this function\+:
 
 Nettoie la mémoire et libère le chemin ainsi que son tableau de cases. 
 
-Libère la mémoire associée à un chemin. Here is the caller graph for this function\+:
+Libère la mémoire associée à un chemin. Voici le graphe des appelants de cette fonction \+:
 % FIG 4
 \Hypertarget{chemin__bfs_2chemin_8c_abb06f389f727659f968e1a30a9d8bdf1}\label{chemin__bfs_2chemin_8c_abb06f389f727659f968e1a30a9d8bdf1} 
 \index{chemin.c@{chemin.c}!Ch\_nbrCases@{Ch\_nbrCases}}
@@ -121,7 +121,7 @@ Renvoie le nombre total de cases composant le chemin.
 
 Récupère le nombre de cases (étapes) dans le chemin.
 
-Récupère le nombre de cases (Etapes) dans le chemin. Here is the caller graph for this function\+:
+Récupère le nombre de cases (Etapes) dans le chemin. Voici le graphe des appelants de cette fonction \+:
 % FIG 5
 \Hypertarget{chemin__bfs_2chemin_8c_af7baea9d65ab98554d2fbe326e4e9341}\label{chemin__bfs_2chemin_8c_af7baea9d65ab98554d2fbe326e4e9341} 
 \index{chemin.c@{chemin.c}!Ch\_obtenirCaseAuChemin@{Ch\_obtenirCaseAuChemin}}
@@ -133,7 +133,7 @@ Récupère le nombre de cases (Etapes) dans le chemin. Here is the caller graph 
 
 Accède à une case spécifique du chemin via son index. 
 
-Récupère une case spécifique du chemin à un index donné. Here is the caller graph for this function\+:
+Récupère une case spécifique du chemin à un index donné. Voici le graphe des appelants de cette fonction \+:
 % FIG 6
 \Hypertarget{chemin__bfs_2chemin_8c_af8766bec59090e06f921cb44a3547bf7}\label{chemin__bfs_2chemin_8c_af8766bec59090e06f921cb44a3547bf7} 
 \index{chemin.c@{chemin.c}!Ch\_obtenirDirDepart@{Ch\_obtenirDirDepart}}
@@ -145,5 +145,5 @@ Récupère une case spécifique du chemin à un index donné. Here is the caller
 
 Récupère la direction initiale du chemin. 
 
-Récupère la direction initiale du robot au début du chemin. Here is the caller graph for this function\+:
+Récupère la direction initiale du robot au début du chemin. Voici le graphe des appelants de cette fonction \+:
 % FIG 7

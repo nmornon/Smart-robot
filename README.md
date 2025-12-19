@@ -19,6 +19,39 @@ Le critère de performance est le **temps le plus court** pour réaliser l'inté
 
 ---
 
+## Structure du projet
+```
+25-26-PI-SMART-ROBOT/
+├── programmes/
+│   ├── code_algo/
+│   │   ├── src/
+│   │   │    ├── tests/
+│   │   │    ├── chemin_force_brute/
+│   │   │    ├── chemin_bfs/
+│   │   │    └── .../
+│   │   ├── include/
+│   │   ├── bin/
+│   │   ├── lib/
+│   │   ├── doc/
+│   │   ├── makefile
+│   │   └── Doxyfile
+│   └──  code_elec/
+│       ├── src/
+│       ├── include/
+│       ├── bin/
+│       ├── doc/
+│       ├── makefile
+│       └── Doxyfile
+├── rapport/
+│       ├── analyse_descendente/
+│       ├── schema/
+│       ├── sections/
+│       ├── images/
+│       └── main.tex
+├── pipeline.sh
+└── README.md
+```
+
 ## Modélisation et Description de la Ville
 
 La ville est modélisée par une grille de cases formant un carré.
@@ -77,7 +110,7 @@ ssh pi@<adresse_ip_robot>
 
 ## Algorithme
 
-Pour changer l'algorithme de résolution de la ville il suffit d'ouvre le fichier `makefile` situé dans le dossier `./programmes/code_algo`.
+Pour changer l'algorithme de résolution de la ville il suffit d'ouvrir le fichier `makefile` situé dans le dossier `./programmes/code_algo`.
 La variable `algorithme` peut prendre les valeurs `chemin_bfs` ou `chemin_force_brute`.
 
 ---
