@@ -5,14 +5,16 @@ TESTBINDIR = tests
 EXEC       = textEnInstruction
 EXEC_TEST  = testsUnitaires
 
+ALGORITHME = chemin_bfs
+
 CC         = gcc
-CFLAGS     = -Wall -Wextra -pedantic -g -std=c99 -I$(INCLUDEDIR)
+CFLAGS     = -Wall -Wextra -pedantic -g -std=c99 -I$(INCLUDEDIR) -I$(INCLUDEDIR)/$(ALGORITHME)
 LDFLAGS    = -lm 
 LDFLAGS_TEST = -lcunit
 
-SOURCES_COMMUN = ville.c case.c direction.c chemin.c IHM.c
+SOURCES_COMMUN = ville.c case.c direction.c IHM.c $(ALGORITHME)/chemin.c
 
-SOURCES_APP    = main.c
+SOURCES_APP    = $(ALGORITHME)/main.c
 
 SOURCES_TEST   = tests/testsU.c
 
