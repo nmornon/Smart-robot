@@ -1,0 +1,45 @@
+\doxysection{ville.\+h}
+\hypertarget{ville_8h_source}{}\label{ville_8h_source}\index{include/ville.h@{include/ville.h}}
+\mbox{\hyperlink{ville_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ \_\_VILLE\_\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ \_\_VILLE\_\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{case_8h}{case.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{direction_8h}{direction.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structV__Ville_a2c2dc74e76b5c7fc7488d583d463b22f}{largeur}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structV__Ville_a81f2169e0ea74285ac9d869f65642845}{nb\_cases}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{structC__Case}{C\_Case}}*\ \mbox{\hyperlink{structV__Ville_a7dfb50f1fd0fde90fa5d1883f4481daf}{tab\_cases}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structV__Ville_a695835f08d4e81a964079556a73628c5}{num\_case\_depart}};\ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}\ \mbox{\hyperlink{structV__Ville_a85d590e64a1e490572dbb320a49a0b9d}{dir\_depart}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \}\ \mbox{\hyperlink{structV__Ville}{V\_Ville}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00040\ \mbox{\hyperlink{structV__Ville}{V\_Ville}}*\ \mbox{\hyperlink{ville_8h_a6fb021669a14c1da7552393429b2c6ad}{V\_creerVille}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ largeur);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ville_8h_a0d51dcef930496aa9f96fe2fbbc660cd}{V\_liberer}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}\ *ville);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00057\ \mbox{\hyperlink{structC__Case}{C\_Case}}*\ \mbox{\hyperlink{ville_8h_a0bb53f96e7490cbcde6ae16029bcc101}{V\_obtenirCase}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}\ *ville,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ numero\_case);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \mbox{\hyperlink{structC__Case}{C\_Case}}*\ \mbox{\hyperlink{ville_8h_a8328fae3937dc0e80aea0404962e3ada}{V\_obtenirToutesLesCases}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}\ *ville);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ville_8h_a0aeeef44f4480eca265eedc4aed42ca2}{V\_fixerDepart}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}\ *ville,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ numero\_case,\ \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}\ dir);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ville_8h_aba2541ac184235bbb3776ee306161e7e}{V\_obtenirNbCases}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}\ *ville);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ville_8h_a63b8de94217e9db83d54e925b7cc72b9}{V\_obtenirNumCaseDepart}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}\ *ville);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00095\ \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}\ \mbox{\hyperlink{ville_8h_af2f48908dffcefd702ecdc0fab3caf53}{V\_obtenirDirDepart}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}\ *ville);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ville_8h_a42f110024739ba637b86b697b5a3e7ac}{V\_obtenirLargeur}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}\ *ville);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00105\ \mbox{\hyperlink{structV__Ville}{V\_Ville}}*\ \mbox{\hyperlink{ville_8h_a9fa55bc5e29bc351a0c1d80c9bc0181a}{V\_chargerVilleDepuisFichier}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nom\_fichier);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ville_8h_a4fb5e692ce19370df646c99fb16152ed}{V\_nbCasesObligatoire}}(\mbox{\hyperlink{structV__Ville}{V\_Ville}}*\ ville);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

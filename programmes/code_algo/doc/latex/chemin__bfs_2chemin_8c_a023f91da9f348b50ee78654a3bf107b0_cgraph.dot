@@ -1,0 +1,21 @@
+digraph "Ch_genererCheminOptimal"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Ch_genererCheminOptimal",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Calcule le chemin complet optimal passant par tous les points obligatoires."];
+  Node1 -> Node2 [id="edge7_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="C_estObligatoire",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$case_8c.html#aa65fd60d4d0c5f7fd6d41c8ca0696adf",tooltip="Indique si la case est un point de passage obligatoire."];
+  Node1 -> Node3 [id="edge8_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Ch_creerChemin",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$chemin__bfs_2chemin_8c.html#a63629a6fa149296c1cc347f3dd8fa262",tooltip="Initialise une nouvelle structure de chemin vide."];
+  Node1 -> Node4 [id="edge9_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="V_obtenirCase",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ville_8c.html#a0bb53f96e7490cbcde6ae16029bcc101",tooltip="Récupère un pointeur vers une case spécifique à partir de son numéro."];
+  Node1 -> Node5 [id="edge10_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="V_obtenirDirDepart",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ville_8c.html#af2f48908dffcefd702ecdc0fab3caf53",tooltip="Retourne la direction initiale au départ."];
+  Node1 -> Node6 [id="edge11_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="V_obtenirNbCases",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ville_8c.html#aba2541ac184235bbb3776ee306161e7e",tooltip="Retourne le nombre total de cases (largeur * largeur)."];
+  Node1 -> Node7 [id="edge12_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="V_obtenirNumCaseDepart",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$ville_8c.html#a63b8de94217e9db83d54e925b7cc72b9",tooltip="Retourne le numéro de la case où commence le trajet."];
+}

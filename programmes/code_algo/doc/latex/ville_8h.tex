@@ -1,0 +1,301 @@
+\doxysection{include/ville.h File Reference}
+\hypertarget{ville_8h}{}\label{ville_8h}\index{include/ville.h@{include/ville.h}}
+
+
+Gestion de la ville (le graphe complet).  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}case.\+h"{}}\newline
+{\ttfamily \#include "{}direction.\+h"{}}\newline
+Include dependency graph for ville.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}}
+\begin{DoxyCompactList}\small\item\em Structure représentant la ville entière. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ville_8h_a6fb021669a14c1da7552393429b2c6ad}{V\+\_\+creer\+Ville}} (unsigned int largeur)
+\begin{DoxyCompactList}\small\item\em Alloue la mémoire pour une nouvelle ville vide. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ville_8h_a0d51dcef930496aa9f96fe2fbbc660cd}{V\+\_\+liberer}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville)
+\begin{DoxyCompactList}\small\item\em Libère toute la mémoire associée à la ville. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structC__Case}{C\+\_\+\+Case}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ville_8h_a0bb53f96e7490cbcde6ae16029bcc101}{V\+\_\+obtenir\+Case}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville, unsigned int numero\+\_\+case)
+\begin{DoxyCompactList}\small\item\em Accède à une case spécifique de la ville via son ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structC__Case}{C\+\_\+\+Case}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ville_8h_a8328fae3937dc0e80aea0404962e3ada}{V\+\_\+obtenir\+Toutes\+Les\+Cases}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville)
+\begin{DoxyCompactList}\small\item\em Retourne le tableau complet des cases de la ville. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ville_8h_a0aeeef44f4480eca265eedc4aed42ca2}{V\+\_\+fixer\+Depart}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville, unsigned int numero\+\_\+case, \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} dir)
+\begin{DoxyCompactList}\small\item\em Configure la position et l\textquotesingle{}orientation de départ du robot. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{ville_8h_aba2541ac184235bbb3776ee306161e7e}{V\+\_\+obtenir\+Nb\+Cases}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville)
+\begin{DoxyCompactList}\small\item\em Récupère la largeur de la ville. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{ville_8h_a63b8de94217e9db83d54e925b7cc72b9}{V\+\_\+obtenir\+Num\+Case\+Depart}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville)
+\begin{DoxyCompactList}\small\item\em Récupère le numéro de la case de départ du robot. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{ville_8h_af2f48908dffcefd702ecdc0fab3caf53}{V\+\_\+obtenir\+Dir\+Depart}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville)
+\begin{DoxyCompactList}\small\item\em Récupère la direction de départ initiale du robot. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{ville_8h_a42f110024739ba637b86b697b5a3e7ac}{V\+\_\+obtenir\+Largeur}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville)
+\begin{DoxyCompactList}\small\item\em Retourne la largeur de la ville. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ville_8h_a9fa55bc5e29bc351a0c1d80c9bc0181a}{V\+\_\+charger\+Ville\+Depuis\+Fichier}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+fichier)
+\begin{DoxyCompactList}\small\item\em Charge une ville à partir d\textquotesingle{}un fichier texte de description. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ville_8h_a4fb5e692ce19370df646c99fb16152ed}{V\+\_\+nb\+Cases\+Obligatoire}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}ville)
+\begin{DoxyCompactList}\small\item\em permet de donner le nombre de cases obligatoires dans la ville \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestion de la ville (le graphe complet). 
+
+\begin{DoxyAuthor}{Author}
+Groupe 2-\/6 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+07/12/2025
+\end{DoxyDate}
+Ce .h gère la structure globale de la ville, qui contient l\textquotesingle{}ensemble des cases. Il fait le lien entre la grille (largeur) et le graphe (connexions). Il stocke également les informations de départ du robot. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ville_8h_a9fa55bc5e29bc351a0c1d80c9bc0181a}\label{ville_8h_a9fa55bc5e29bc351a0c1d80c9bc0181a} 
+\index{ville.h@{ville.h}!V\_chargerVilleDepuisFichier@{V\_chargerVilleDepuisFichier}}
+\index{V\_chargerVilleDepuisFichier@{V\_chargerVilleDepuisFichier}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_chargerVilleDepuisFichier()}{V\_chargerVilleDepuisFichier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} V\+\_\+charger\+Ville\+Depuis\+Fichier (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nom\+\_\+fichier }\end{DoxyParamCaption})}
+
+
+
+Charge une ville à partir d\textquotesingle{}un fichier texte de description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom\+\_\+fichier} & Le chemin du fichier décrivant la ville. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la ville créée (V\+\_\+\+Ville\texorpdfstring{$\ast$}{*}) 
+\end{DoxyReturn}
+\Hypertarget{ville_8h_a6fb021669a14c1da7552393429b2c6ad}\label{ville_8h_a6fb021669a14c1da7552393429b2c6ad} 
+\index{ville.h@{ville.h}!V\_creerVille@{V\_creerVille}}
+\index{V\_creerVille@{V\_creerVille}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_creerVille()}{V\_creerVille()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} V\+\_\+creer\+Ville (\begin{DoxyParamCaption}\item[{unsigned int}]{largeur }\end{DoxyParamCaption})}
+
+
+
+Alloue la mémoire pour une nouvelle ville vide. 
+
+Cette fonction prépare le terrain (allocation du tableau de cases) mais ne crée pas encore les murs (connexions).
+
+
+\begin{DoxyParams}{Parameters}
+{\em largeur} & La largeur de la ville (la ville sera carrée de taille largeur\texorpdfstring{$\ast$}{*}largeur). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la ville créée, ou NULL en cas d\textquotesingle{}erreur d\textquotesingle{}allocation.
+\end{DoxyReturn}
+Alloue la mémoire pour une nouvelle ville vide.
+
+
+\begin{DoxyParams}{Parameters}
+{\em largeur} & Nombre de cases de côté. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la ville créée (mémoire allouée dynamiquement). 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{ville_8h_a0aeeef44f4480eca265eedc4aed42ca2}\label{ville_8h_a0aeeef44f4480eca265eedc4aed42ca2} 
+\index{ville.h@{ville.h}!V\_fixerDepart@{V\_fixerDepart}}
+\index{V\_fixerDepart@{V\_fixerDepart}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_fixerDepart()}{V\_fixerDepart()}}
+{\footnotesize\ttfamily void V\+\_\+fixer\+Depart (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville,  }\item[{unsigned int}]{numero\+\_\+case,  }\item[{\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}]{dir }\end{DoxyParamCaption})}
+
+
+
+Configure la position et l\textquotesingle{}orientation de départ du robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ville} & Pointeur vers la ville. \\
+\hline
+{\em numero\+\_\+case} & L\textquotesingle{}ID de la case de départ. \\
+\hline
+{\em dir} & La direction initiale.\\
+\hline
+\end{DoxyParams}
+Configure la position et l\textquotesingle{}orientation de départ du robot. Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{ville_8h_a0d51dcef930496aa9f96fe2fbbc660cd}\label{ville_8h_a0d51dcef930496aa9f96fe2fbbc660cd} 
+\index{ville.h@{ville.h}!V\_liberer@{V\_liberer}}
+\index{V\_liberer@{V\_liberer}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_liberer()}{V\_liberer()}}
+{\footnotesize\ttfamily void V\+\_\+liberer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville }\end{DoxyParamCaption})}
+
+
+
+Libère toute la mémoire associée à la ville. 
+
+Libère le tableau de cases puis la structure de la ville elle-\/même. 
+\begin{DoxyParams}{Parameters}
+{\em ville} & Pointeur vers la ville à détruire.\\
+\hline
+\end{DoxyParams}
+Libère toute la mémoire associée à la ville.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ville} & Pointeur vers la ville à détruire. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{ville_8h_a4fb5e692ce19370df646c99fb16152ed}\label{ville_8h_a4fb5e692ce19370df646c99fb16152ed} 
+\index{ville.h@{ville.h}!V\_nbCasesObligatoire@{V\_nbCasesObligatoire}}
+\index{V\_nbCasesObligatoire@{V\_nbCasesObligatoire}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_nbCasesObligatoire()}{V\_nbCasesObligatoire()}}
+{\footnotesize\ttfamily int V\+\_\+nb\+Cases\+Obligatoire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville }\end{DoxyParamCaption})}
+
+
+
+permet de donner le nombre de cases obligatoires dans la ville 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ville} & Le chemin du fichier décrivant la ville. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la ville créée (V\+\_\+\+Ville\texorpdfstring{$\ast$}{*})
+\end{DoxyReturn}
+permet de donner le nombre de cases obligatoires dans la ville
+
+\begin{DoxyReturn}{Returns}
+Le nombre de cases à visiter impérativement. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{ville_8h_a0bb53f96e7490cbcde6ae16029bcc101}\label{ville_8h_a0bb53f96e7490cbcde6ae16029bcc101} 
+\index{ville.h@{ville.h}!V\_obtenirCase@{V\_obtenirCase}}
+\index{V\_obtenirCase@{V\_obtenirCase}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_obtenirCase()}{V\_obtenirCase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structC__Case}{C\+\_\+\+Case}} \texorpdfstring{$\ast$}{*} V\+\_\+obtenir\+Case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville,  }\item[{unsigned int}]{numero\+\_\+case }\end{DoxyParamCaption})}
+
+
+
+Accède à une case spécifique de la ville via son ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ville} & Pointeur vers la ville. \\
+\hline
+{\em numero\+\_\+case} & L\textquotesingle{}identifiant unique de la case (commence à 1). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la case demandée, ou NULL si l\textquotesingle{}ID est invalide.
+\end{DoxyReturn}
+Accède à une case spécifique de la ville via son ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em numero\+\_\+case} & L\textquotesingle{}identifiant de la case (commence à 1). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 8
+\Hypertarget{ville_8h_af2f48908dffcefd702ecdc0fab3caf53}\label{ville_8h_af2f48908dffcefd702ecdc0fab3caf53} 
+\index{ville.h@{ville.h}!V\_obtenirDirDepart@{V\_obtenirDirDepart}}
+\index{V\_obtenirDirDepart@{V\_obtenirDirDepart}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_obtenirDirDepart()}{V\_obtenirDirDepart()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} V\+\_\+obtenir\+Dir\+Depart (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville }\end{DoxyParamCaption})}
+
+
+
+Récupère la direction de départ initiale du robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ville} & Pointeur vers la ville. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La direction de départ.
+\end{DoxyReturn}
+Récupère la direction de départ initiale du robot. Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{ville_8h_a42f110024739ba637b86b697b5a3e7ac}\label{ville_8h_a42f110024739ba637b86b697b5a3e7ac} 
+\index{ville.h@{ville.h}!V\_obtenirLargeur@{V\_obtenirLargeur}}
+\index{V\_obtenirLargeur@{V\_obtenirLargeur}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_obtenirLargeur()}{V\_obtenirLargeur()}}
+{\footnotesize\ttfamily unsigned int V\+\_\+obtenir\+Largeur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville }\end{DoxyParamCaption})}
+
+
+
+Retourne la largeur de la ville. 
+
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{ville_8h_aba2541ac184235bbb3776ee306161e7e}\label{ville_8h_aba2541ac184235bbb3776ee306161e7e} 
+\index{ville.h@{ville.h}!V\_obtenirNbCases@{V\_obtenirNbCases}}
+\index{V\_obtenirNbCases@{V\_obtenirNbCases}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_obtenirNbCases()}{V\_obtenirNbCases()}}
+{\footnotesize\ttfamily unsigned int V\+\_\+obtenir\+Nb\+Cases (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville }\end{DoxyParamCaption})}
+
+
+
+Récupère la largeur de la ville. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ville} & Pointeur vers la ville. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La largeur (nombre de colonnes).
+\end{DoxyReturn}
+Récupère le nombre total de cases dans la ville. 
+\begin{DoxyParams}{Parameters}
+{\em ville} & Pointeur vers la ville. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le nombre total de cases (largeur \texorpdfstring{$\ast$}{*} largeur).
+\end{DoxyReturn}
+Récupère la largeur de la ville. Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{ville_8h_a63b8de94217e9db83d54e925b7cc72b9}\label{ville_8h_a63b8de94217e9db83d54e925b7cc72b9} 
+\index{ville.h@{ville.h}!V\_obtenirNumCaseDepart@{V\_obtenirNumCaseDepart}}
+\index{V\_obtenirNumCaseDepart@{V\_obtenirNumCaseDepart}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_obtenirNumCaseDepart()}{V\_obtenirNumCaseDepart()}}
+{\footnotesize\ttfamily unsigned int V\+\_\+obtenir\+Num\+Case\+Depart (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville }\end{DoxyParamCaption})}
+
+
+
+Récupère le numéro de la case de départ du robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ville} & Pointeur vers la ville. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le numéro de la case de départ.
+\end{DoxyReturn}
+Récupère le numéro de la case de départ du robot. Here is the caller graph for this function\+:
+% FIG 12
+\Hypertarget{ville_8h_a8328fae3937dc0e80aea0404962e3ada}\label{ville_8h_a8328fae3937dc0e80aea0404962e3ada} 
+\index{ville.h@{ville.h}!V\_obtenirToutesLesCases@{V\_obtenirToutesLesCases}}
+\index{V\_obtenirToutesLesCases@{V\_obtenirToutesLesCases}!ville.h@{ville.h}}
+\doxysubsubsection{\texorpdfstring{V\_obtenirToutesLesCases()}{V\_obtenirToutesLesCases()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structC__Case}{C\+\_\+\+Case}} \texorpdfstring{$\ast$}{*} V\+\_\+obtenir\+Toutes\+Les\+Cases (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{ville }\end{DoxyParamCaption})}
+
+
+
+Retourne le tableau complet des cases de la ville. 
+

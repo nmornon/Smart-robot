@@ -1,0 +1,136 @@
+\doxysection{src/\+IHM.c File Reference}
+\hypertarget{IHM_8c}{}\label{IHM_8c}\index{src/IHM.c@{src/IHM.c}}
+
+
+Gestion de l\textquotesingle{}interface et lecture des fichiers de ville.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}IHM.\+h"{}}\newline
+{\ttfamily \#include "{}ville.\+h"{}}\newline
+{\ttfamily \#include "{}case.\+h"{}}\newline
+{\ttfamily \#include "{}direction.\+h"{}}\newline
+{\ttfamily \#include "{}chemin.\+h"{}}\newline
+Include dependency graph for IHM.\+c\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{IHM_8c_a4e9ef6369e150f95709a98ff059645b3}{MAX\+\_\+\+LIGNE}}~256
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{IHM_8c_af9e50514f9c9e97be9e9489529bedf6c}{IHM\+\_\+charger\+Ville\+Depuis\+Fichier}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+fichier)
+\begin{DoxyCompactList}\small\item\em Charge les données d\textquotesingle{}une ville depuis un fichier texte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IHM_8c_aa1c338ca77e74aaef54390524108d014}{IHM\+\_\+afficher\+Chemin}} (\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}chemin)
+\begin{DoxyCompactList}\small\item\em Affiche dans la console le chemin complet de manière lisible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IHM_8c_afba9d8082a44d9b5cf2e764796cd4cce}{IHM\+\_\+afficher\+\_\+ville}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}v)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}état interne de la ville (utile pour le débogage). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IHM_8c_a06fd8ec756fbf3b14607a7c285785cf2}{IHM\+\_\+generer\+Ordres}} (\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}chemin)
+\begin{DoxyCompactList}\small\item\em Génère les ordres textuels (AV, TG, TD) pour le robot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestion de l\textquotesingle{}interface et lecture des fichiers de ville. 
+
+
+\begin{DoxyItemize}
+\item Ce module permet de transformer un fichier texte en structure de ville, d\textquotesingle{}afficher les résultats à l\textquotesingle{}écran et de traduire un chemin en ordres compréhensibles pour le robot (AV, TG, TD).
+\item \begin{DoxyAuthor}{Author}
+Groupe 2-\/6 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/12/2025 
+\end{DoxyDate}
+
+\end{DoxyItemize}
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{IHM_8c_a4e9ef6369e150f95709a98ff059645b3}\label{IHM_8c_a4e9ef6369e150f95709a98ff059645b3} 
+\index{IHM.c@{IHM.c}!MAX\_LIGNE@{MAX\_LIGNE}}
+\index{MAX\_LIGNE@{MAX\_LIGNE}!IHM.c@{IHM.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_LIGNE}{MAX\_LIGNE}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+LIGNE~256}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{IHM_8c_afba9d8082a44d9b5cf2e764796cd4cce}\label{IHM_8c_afba9d8082a44d9b5cf2e764796cd4cce} 
+\index{IHM.c@{IHM.c}!IHM\_afficher\_ville@{IHM\_afficher\_ville}}
+\index{IHM\_afficher\_ville@{IHM\_afficher\_ville}!IHM.c@{IHM.c}}
+\doxysubsubsection{\texorpdfstring{IHM\_afficher\_ville()}{IHM\_afficher\_ville()}}
+{\footnotesize\ttfamily void IHM\+\_\+afficher\+\_\+ville (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{v }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}état interne de la ville (utile pour le débogage). 
+
+Affiche la carte de la ville dans la console. Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{IHM_8c_aa1c338ca77e74aaef54390524108d014}\label{IHM_8c_aa1c338ca77e74aaef54390524108d014} 
+\index{IHM.c@{IHM.c}!IHM\_afficherChemin@{IHM\_afficherChemin}}
+\index{IHM\_afficherChemin@{IHM\_afficherChemin}!IHM.c@{IHM.c}}
+\doxysubsubsection{\texorpdfstring{IHM\_afficherChemin()}{IHM\_afficherChemin()}}
+{\footnotesize\ttfamily void IHM\+\_\+afficher\+Chemin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}}]{chemin }\end{DoxyParamCaption})}
+
+
+
+Affiche dans la console le chemin complet de manière lisible. 
+
+Affiche le chemin final et sa distance totale. Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{IHM_8c_af9e50514f9c9e97be9e9489529bedf6c}\label{IHM_8c_af9e50514f9c9e97be9e9489529bedf6c} 
+\index{IHM.c@{IHM.c}!IHM\_chargerVilleDepuisFichier@{IHM\_chargerVilleDepuisFichier}}
+\index{IHM\_chargerVilleDepuisFichier@{IHM\_chargerVilleDepuisFichier}!IHM.c@{IHM.c}}
+\doxysubsubsection{\texorpdfstring{IHM\_chargerVilleDepuisFichier()}{IHM\_chargerVilleDepuisFichier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} IHM\+\_\+charger\+Ville\+Depuis\+Fichier (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nom\+\_\+fichier }\end{DoxyParamCaption})}
+
+
+
+Charge les données d\textquotesingle{}une ville depuis un fichier texte. 
+
+Crée une ville à partir d\textquotesingle{}un fichier texte.
+
+
+\begin{DoxyItemize}
+\item Le fichier doit suivre le format \+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Largeur, 2. Case départ + Orientation, 3. Passages (X-\/Y) ou cases obligatoires (X).
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parameters}
+{\em nom\+\_\+fichier} & Chemin vers le fichier .txt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la ville créée, ou NULL en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{IHM_8c_a06fd8ec756fbf3b14607a7c285785cf2}\label{IHM_8c_a06fd8ec756fbf3b14607a7c285785cf2} 
+\index{IHM.c@{IHM.c}!IHM\_genererOrdres@{IHM\_genererOrdres}}
+\index{IHM\_genererOrdres@{IHM\_genererOrdres}!IHM.c@{IHM.c}}
+\doxysubsubsection{\texorpdfstring{IHM\_genererOrdres()}{IHM\_genererOrdres()}}
+{\footnotesize\ttfamily void IHM\+\_\+generer\+Ordres (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}}]{chemin }\end{DoxyParamCaption})}
+
+
+
+Génère les ordres textuels (AV, TG, TD) pour le robot. 
+
+Traduit un chemin en instructions concrètes (ordres de mouvement).
+
+
+\begin{DoxyItemize}
+\item Analyse chaque étape du chemin pour décider s\textquotesingle{}il faut tourner ou avancer en fonction de l\textquotesingle{}orientation actuelle. 
+\end{DoxyItemize}Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6

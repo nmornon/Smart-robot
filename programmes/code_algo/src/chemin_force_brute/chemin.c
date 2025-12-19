@@ -1,3 +1,10 @@
+/**
+ * @file chemin.c
+ * @brief Logique de gestion et de génération de chemins dans la ville.
+ * * Ce fichier contient les fonctions pour manipuler la structure de chemin
+ * et l'algorithme de recherche par force brute.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,6 +15,10 @@
 #include "chemin.h"
 #include "direction.h" 
 
+/**
+ * @brief Crée un nouveau chemin vide en mémoire.
+ * @return Un pointeur vers la structure Ch_Chemin initialisée.
+ */
 Ch_Chemin* Ch_creerChemin() {
     Ch_Chemin *c = (Ch_Chemin*)malloc(sizeof(Ch_Chemin));
 
@@ -19,6 +30,9 @@ Ch_Chemin* Ch_creerChemin() {
     return c;
 }
 
+/**
+ * @brief Indique la direction initiale prise au début du chemin.
+ */
 Direction Ch_obtenirDirDepart(Ch_Chemin *c) {
     if (c != NULL) {
         return c->dir_depart;
@@ -27,14 +41,23 @@ Direction Ch_obtenirDirDepart(Ch_Chemin *c) {
     }
 }
 
+/**
+ * @brief Récupère une case spécifique du chemin selon son index.
+ */
 C_Case* Ch_obtenirCaseAuChemin(Ch_Chemin *c, unsigned int index) {
     return &(c->tab_cases[index]);
 }
 
+/**
+ * @brief Retourne le nombre total de cases qui composent le chemin.
+ */
 int Ch_nbrCases(Ch_Chemin *c) {
     return c->nb_cases;
 }
 
+/**
+ * @brief Nettoie la mémoire et libère le chemin ainsi que son tableau de cases.
+ */
 void Ch_liberer(Ch_Chemin *c) {
     if (c != NULL) {
         if (c->tab_cases != NULL) {
@@ -45,7 +68,11 @@ void Ch_liberer(Ch_Chemin *c) {
     }
 }
 
-
+/**
+ * @brief [Fonction interne] Explore récursivement toutes les routes possibles.
+ * * Utilise la force brute pour trouver le chemin le plus court qui ramasse 
+ * tous les objets obligatoires et revient au point de départ.
+ */
 static void explorer_force_brute(V_Ville *v,
                                  unsigned int num_case,
                                  unsigned int num_depart,
@@ -104,6 +131,9 @@ static void explorer_force_brute(V_Ville *v,
     }
 }
 
+/**
+ * @brief [Fonction interne] Convertit les résultats de la recherche en structure Ch_Chemin.
+ */
 static Ch_Chemin* construire_chemin_final(V_Ville *v, int *ids_chemin, int longueur, unsigned int depart, Direction dir) {
 
     Ch_Chemin *c = Ch_creerChemin();
@@ -125,6 +155,12 @@ static Ch_Chemin* construire_chemin_final(V_Ville *v, int *ids_chemin, int longu
     return c;
 }
 
+/**
+ * @brief Calcule le chemin optimal pour ramasser tous les objets de la ville.
+ * * Cette fonction prépare les buffers nécessaires et lance l'exploration par force brute.
+ * @param v La ville à parcourir.
+ * @return Le chemin le plus court trouvé.
+ */
 Ch_Chemin* Ch_genererCheminBrute(V_Ville *v) {
     if (!v) return Ch_creerChemin();
 

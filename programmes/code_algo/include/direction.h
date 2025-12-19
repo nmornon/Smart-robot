@@ -1,11 +1,11 @@
 /**
  * \file direction.h
- * \brief Gestion des points cardinaux et de l'orientation.
+ * \brief Gestion des points cardinaux pour le robot.
  * \author Groupe 2-6
  * \date 07/12/2025
  *
- * Ce fichier définit les 4 directions cardinales et fournit des outils
- * pour les manipuler (notamment pour trouver l'opposé).
+ * Ce fichier définit comment le robot se repère sur la grille (Haut, Bas, Gauche, Droite)
+ * et permet de calculer facilement un demi-tour.
  */
 
 #ifndef __DIRECTION__
@@ -13,25 +13,25 @@
 
 /**
  * \enum Direction
- * \brief Les points cardinaux.
-*/
+ * \brief Les 4 orientations possibles.
+ */
 typedef enum {
-    NORD = 0,   /**< Orientation vers le Nord (Haut de la grille) */
-    EST = 1,    /**< Orientation vers l'Est (Droite de la grille) */
-    SUD = 2,    /**< Orientation vers le Sud (Bas de la grille) */
-    OUEST = 3   /**< Orientation vers l'Ouest (Gauche de la grille) */
+    NORD = 0,   /**< Vers le haut */
+    EST = 1,    /**< Vers la droite */
+    SUD = 2,    /**< Vers le bas */
+    OUEST = 3   /**< Vers la gauche */
 } Direction;
 
-#define PAS_DE_DIRECTION -1 // En cas d'erreur 
+/** \brief Valeur de secours si aucune direction n'est définie. */
+#define PAS_DE_DIRECTION -1 
 
 /**
- * \brief Calcule la direction opposée à une direction donnée.
+ * \brief Donne la direction opposée (ex: NORD devient SUD).
+ * * Très utile pour connaître la provenance d'un mouvement ou
+ * pour faire faire demi-tour au robot.
  *
- * Fonction  permettant de connaître le "dos" du robot
- * ou la provenance d'un mouvement.
- *
- * \param dir La direction d'origine.
- * \return La direction opposée (ex: NORD renvoie SUD).
+ * \param dir La direction actuelle.
+ * \return La direction inverse.
  */
 Direction directionOpposee(Direction dir);
 

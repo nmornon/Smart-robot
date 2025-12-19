@@ -1,3 +1,10 @@
+/**
+ * @file chemin.c
+ * @brief Gestion des trajets et calcul d'itinéraires optimaux dans la ville.
+ * * Ce fichier contient les algorithmes pour créer des chemins, calculer des plus courts 
+ * chemins (BFS) et optimiser l'ordre de passage par plusieurs points obligatoires.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,7 +17,10 @@
 
 #define INFINITY INT_MAX 
 
-
+/**
+ * @brief Initialise une nouvelle structure de chemin vide.
+ * @return Un pointeur vers le chemin créé.
+ */
 Ch_Chemin* Ch_creerChemin() {
     Ch_Chemin *c = (Ch_Chemin*)malloc(sizeof(Ch_Chemin));
     c->nb_cases = 0;
@@ -20,19 +30,32 @@ Ch_Chemin* Ch_creerChemin() {
     return c;
 }
 
+/**
+ * @brief Récupère la direction initiale du chemin.
+ */
 Direction Ch_obtenirDirDepart(Ch_Chemin *c) {
     if (c != NULL) return c->dir_depart;
     return PAS_DE_DIRECTION;
 }
 
+/**
+ * @brief Accède à une case spécifique du chemin via son index.
+ */
 C_Case* Ch_obtenirCaseAuChemin(Ch_Chemin *c, unsigned int index) {
     return &(c->tab_cases[index]);
 }
 
+/**
+ * @brief Renvoie le nombre total de cases composant le chemin.
+ */
 int Ch_nbrCases(Ch_Chemin *c) {
     return c->nb_cases;
 }
 
+/**
+ * @brief Assemble l'objet Ch_Chemin final à partir d'une liste d'identifiants de cases.
+ * @note Fonction interne au fichier.
+ */
 static Ch_Chemin* construire_chemin_final(V_Ville *v, int *ids_chemin, 
                                          int longueur, unsigned int depart, 
                                          Direction dir) {
@@ -52,7 +75,8 @@ static Ch_Chemin* construire_chemin_final(V_Ville *v, int *ids_chemin,
 }
 
 /**
- * BFS : Trouve le plus court chemin entre deux cases
+ * @brief Algorithme BFS pour trouver la distance la plus courte entre deux points.
+ * @return Une structure contenant la distance et le tableau des prédécesseurs.
  */
 static ResultatBFS bfs_chemin_court(V_Ville *v, unsigned int depart, unsigned int arrivee) {
     ResultatBFS resultat;
@@ -121,8 +145,10 @@ static ResultatBFS bfs_chemin_court(V_Ville *v, unsigned int depart, unsigned in
     return resultat;
 }
 
-//Reconstruit le chemin à partir des prédécesseurs du BFS
-
+/**
+ * @brief Remonte la chaîne des prédécesseurs pour reconstruire le chemin point par point.
+ * @return La longueur du segment trouvé.
+ */
 static int reconstruire_chemin(unsigned int depart, unsigned int arrivee,
                                unsigned int *predecesseurs, int *chemin_sortie) {
     if (predecesseurs == NULL) return -1;
@@ -148,13 +174,16 @@ static int reconstruire_chemin(unsigned int depart, unsigned int arrivee,
     return longueur - 1;
 }
 
-// Exploration récursive pour trouver le meilleur ordre de visite
+/**
+ * @brief Exploration récursive pour résoudre le problème du voyageur de commerce.
+ * Recherche l'ordre de visite des objectifs qui minimise la distance totale.
+ */
 static void explorer_ordre_objectifs(int position, int nb_obj,
                                      int *sequence_temp, bool *visites,
                                      int cout_actuel, int **distances,
                                      int *meilleure_sequence, int *min_cout) {
     
-    // On abandonne si c'est trop long 
+    // On abandonne si c'est déjà plus long que notre meilleur score 
     if (cout_actuel >= *min_cout) return;
 
     // Tous les objectifs sont placés
@@ -193,7 +222,11 @@ static void explorer_ordre_objectifs(int position, int nb_obj,
 }
 
 
-// Génère le chemin optimal qui visite tous les objectifs obligatoires
+/**
+ * @brief Calcule le chemin complet optimal passant par tous les points obligatoires.
+ * @param v Pointeur vers la ville.
+ * @return Un objet Ch_Chemin contenant l'itinéraire complet (retour au départ inclus).
+ */
 Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
     if (!v) return Ch_creerChemin();
 
@@ -357,3 +390,15 @@ Ch_Chemin* Ch_genererCheminOptimal(V_Ville *v) {
     return resultat;
 }
 
+/**
+ * @brief Nettoie la mémoire et libère le chemin ainsi que son tableau de cases.
+ */
+void Ch_liberer(Ch_Chemin *c) {
+    if (c != NULL) {
+        if (c->tab_cases != NULL) {
+            free(c->tab_cases);
+            c->tab_cases = NULL;
+        }
+        free(c);
+    }
+}

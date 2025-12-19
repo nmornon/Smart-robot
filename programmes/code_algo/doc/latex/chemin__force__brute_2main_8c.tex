@@ -1,0 +1,54 @@
+\doxysection{src/chemin\+\_\+force\+\_\+brute/main.c File Reference}
+\hypertarget{chemin__force__brute_2main_8c}{}\label{chemin__force__brute_2main_8c}\index{src/chemin\_force\_brute/main.c@{src/chemin\_force\_brute/main.c}}
+
+
+Point d\textquotesingle{}entrée pour la gestion et l\textquotesingle{}optimisation de trajets en ville.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}IHM.\+h"{}}\newline
+{\ttfamily \#include "{}ville.\+h"{}}\newline
+{\ttfamily \#include "{}case.\+h"{}}\newline
+{\ttfamily \#include "{}direction.\+h"{}}\newline
+{\ttfamily \#include "{}chemin.\+h"{}}\newline
+Include dependency graph for main.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{chemin__force__brute_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Charge une ville, calcule le meilleur chemin et affiche les instructions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Point d\textquotesingle{}entrée pour la gestion et l\textquotesingle{}optimisation de trajets en ville. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{chemin__force__brute_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{chemin__force__brute_2main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Charge une ville, calcule le meilleur chemin et affiche les instructions. 
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parameters}
+{\em argc} & Nombre d\textquotesingle{}arguments. \\
+\hline
+{\em argv} & Tableau d\textquotesingle{}arguments (attend le chemin du fichier de ville en argv\mbox{[}1\mbox{]}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS si tout s\textquotesingle{}est bien passé, sinon EXIT\+\_\+\+FAILURE. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}Here is the call graph for this function\+:
+% FIG 1

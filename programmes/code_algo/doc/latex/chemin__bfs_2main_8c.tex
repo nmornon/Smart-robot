@@ -1,0 +1,54 @@
+\doxysection{src/chemin\+\_\+bfs/main.c File Reference}
+\hypertarget{chemin__bfs_2main_8c}{}\label{chemin__bfs_2main_8c}\index{src/chemin\_bfs/main.c@{src/chemin\_bfs/main.c}}
+
+
+Point d\textquotesingle{}entrée du programme.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}IHM.\+h"{}}\newline
+{\ttfamily \#include "{}ville.\+h"{}}\newline
+{\ttfamily \#include "{}case.\+h"{}}\newline
+{\ttfamily \#include "{}direction.\+h"{}}\newline
+{\ttfamily \#include "{}chemin.\+h"{}}\newline
+Include dependency graph for main.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{chemin__bfs_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction principale qui pilote le projet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Point d\textquotesingle{}entrée du programme. 
+
+
+\begin{DoxyItemize}
+\item Ce fichier orchestre la lecture d\textquotesingle{}une ville, le calcul de l\textquotesingle{}itinéraire et l\textquotesingle{}affichage des instructions finales. 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{chemin__bfs_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{chemin__bfs_2main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Fonction principale qui pilote le projet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Nombre d\textquotesingle{}arguments (on en attend 2 \+: nom du programme + fichier ville). \\
+\hline
+{\em argv} & Tableau d\textquotesingle{}arguments (argv\mbox{[}1\mbox{]} doit être le chemin vers le fichier de ville). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+EXIT\+\_\+\+SUCCESS si le trajet est généré, EXIT\+\_\+\+FAILURE en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 1

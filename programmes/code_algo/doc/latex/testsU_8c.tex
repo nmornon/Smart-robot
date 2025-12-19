@@ -1,0 +1,239 @@
+\doxysection{src/tests/testsU.c File Reference}
+\hypertarget{testsU_8c}{}\label{testsU_8c}\index{src/tests/testsU.c@{src/tests/testsU.c}}
+
+
+Tests unitaires pour le projet de navigation urbaine.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$CUnit/\+Basic.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}direction.\+h"{}}\newline
+{\ttfamily \#include "{}case.\+h"{}}\newline
+{\ttfamily \#include "{}ville.\+h"{}}\newline
+{\ttfamily \#include "{}chemin.\+h"{}}\newline
+Include dependency graph for tests\+U.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{testsU_8c_a25c6656a1440296fbd62ee82768abfa4}{init\+\_\+suite\+\_\+success}} ()
+\begin{DoxyCompactList}\small\item\em Initialisation de la suite de tests (ne fait rien ici). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{testsU_8c_ad592dbc1dbdb578ee0c47c7ffd115126}{clean\+\_\+suite\+\_\+success}} ()
+\begin{DoxyCompactList}\small\item\em Nettoyage après la suite de tests (ne fait rien ici). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_ac7e53c5cf389f69fd49fee8641adea2a}{test\+\_\+\+Direction\+\_\+opposee}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie que l\textquotesingle{}inversion des points cardinaux fonctionne (ex\+: NORD -\/\texorpdfstring{$>$}{>} SUD). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_a86f8d54f566ebf71827904a9405a4931}{test\+\_\+\+Case\+\_\+creation\+\_\+valeurs\+\_\+defaut}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie qu\textquotesingle{}une case neuve possède bien son numéro et aucun voisin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_a119c6363df7076dc6ea150d722ca901d}{test\+\_\+\+Case\+\_\+modification\+\_\+obligatoire}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie le changement d\textquotesingle{}état "{}obligatoire"{} d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_a2d7d615a874ec7a4402daef63ffa36b4}{test\+\_\+\+Case\+\_\+adjacence}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie qu\textquotesingle{}on peut lier une case à une autre via une direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_a7c77ca8fc11d2541083a5b9f94407c00}{test\+\_\+\+Ville\+\_\+creation}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie l\textquotesingle{}allocation d\textquotesingle{}une ville et le calcul correct du nombre de cases. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_a2abbe4379decffa80e4a99880ab9382f}{test\+\_\+\+Ville\+\_\+acces\+\_\+cases}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie qu\textquotesingle{}on récupère bien la bonne case via son index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_aa319fd1fc820f946ac9a953ff2c8ee7a}{test\+\_\+\+Ville\+\_\+fixer\+\_\+depart}} (void)
+\begin{DoxyCompactList}\small\item\em Vérifie la modification du point de départ du robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_ab63b476a2cc1eb2680726e32e201b964}{test\+\_\+\+Ville\+\_\+compter\+\_\+obligatoires}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie que le compteur de cases obligatoires fonctionne. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_a6a3d162018ceb3da908f11cd5bc99930}{test\+\_\+\+Chemin\+\_\+creation}} ()
+\begin{DoxyCompactList}\small\item\em Vérifie l\textquotesingle{}état initial d\textquotesingle{}un nouveau chemin vide. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testsU_8c_a3903dc6d867496211a716bf75d978428}{test\+\_\+\+Chemin\+\_\+algo\+\_\+boucle\+\_\+carre}} ()
+\begin{DoxyCompactList}\small\item\em Scénario complexe \+: vérifie que l\textquotesingle{}algorithme trouve le chemin optimal. Test sur une boucle 2x2 avec passage obligatoire par la case la plus éloignée. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{testsU_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Point d\textquotesingle{}entrée principal des tests unitaires. Initialise le registre, crée les suites, les lance et affiche les résultats. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tests unitaires pour le projet de navigation urbaine. 
+
+
+\begin{DoxyItemize}
+\item Ce fichier utilise la bibliothèque CUnit pour valider le comportement des TAD Direction, Case, Ville et Chemin. 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{testsU_8c_ad592dbc1dbdb578ee0c47c7ffd115126}\label{testsU_8c_ad592dbc1dbdb578ee0c47c7ffd115126} 
+\index{testsU.c@{testsU.c}!clean\_suite\_success@{clean\_suite\_success}}
+\index{clean\_suite\_success@{clean\_suite\_success}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{clean\_suite\_success()}{clean\_suite\_success()}}
+{\footnotesize\ttfamily int clean\+\_\+suite\+\_\+success (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Nettoyage après la suite de tests (ne fait rien ici). 
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{testsU_8c_a25c6656a1440296fbd62ee82768abfa4}\label{testsU_8c_a25c6656a1440296fbd62ee82768abfa4} 
+\index{testsU.c@{testsU.c}!init\_suite\_success@{init\_suite\_success}}
+\index{init\_suite\_success@{init\_suite\_success}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{init\_suite\_success()}{init\_suite\_success()}}
+{\footnotesize\ttfamily int init\+\_\+suite\+\_\+success (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialisation de la suite de tests (ne fait rien ici). 
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{testsU_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{testsU_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testsU.c@{testsU.c}!main@{main}}
+\index{main@{main}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Point d\textquotesingle{}entrée principal des tests unitaires. Initialise le registre, crée les suites, les lance et affiche les résultats. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{testsU_8c_a2d7d615a874ec7a4402daef63ffa36b4}\label{testsU_8c_a2d7d615a874ec7a4402daef63ffa36b4} 
+\index{testsU.c@{testsU.c}!test\_Case\_adjacence@{test\_Case\_adjacence}}
+\index{test\_Case\_adjacence@{test\_Case\_adjacence}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Case\_adjacence()}{test\_Case\_adjacence()}}
+{\footnotesize\ttfamily void test\+\_\+\+Case\+\_\+adjacence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie qu\textquotesingle{}on peut lier une case à une autre via une direction. 
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{testsU_8c_a86f8d54f566ebf71827904a9405a4931}\label{testsU_8c_a86f8d54f566ebf71827904a9405a4931} 
+\index{testsU.c@{testsU.c}!test\_Case\_creation\_valeurs\_defaut@{test\_Case\_creation\_valeurs\_defaut}}
+\index{test\_Case\_creation\_valeurs\_defaut@{test\_Case\_creation\_valeurs\_defaut}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Case\_creation\_valeurs\_defaut()}{test\_Case\_creation\_valeurs\_defaut()}}
+{\footnotesize\ttfamily void test\+\_\+\+Case\+\_\+creation\+\_\+valeurs\+\_\+defaut (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie qu\textquotesingle{}une case neuve possède bien son numéro et aucun voisin. 
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{testsU_8c_a119c6363df7076dc6ea150d722ca901d}\label{testsU_8c_a119c6363df7076dc6ea150d722ca901d} 
+\index{testsU.c@{testsU.c}!test\_Case\_modification\_obligatoire@{test\_Case\_modification\_obligatoire}}
+\index{test\_Case\_modification\_obligatoire@{test\_Case\_modification\_obligatoire}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Case\_modification\_obligatoire()}{test\_Case\_modification\_obligatoire()}}
+{\footnotesize\ttfamily void test\+\_\+\+Case\+\_\+modification\+\_\+obligatoire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie le changement d\textquotesingle{}état "{}obligatoire"{} d\textquotesingle{}une case. 
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{testsU_8c_a3903dc6d867496211a716bf75d978428}\label{testsU_8c_a3903dc6d867496211a716bf75d978428} 
+\index{testsU.c@{testsU.c}!test\_Chemin\_algo\_boucle\_carre@{test\_Chemin\_algo\_boucle\_carre}}
+\index{test\_Chemin\_algo\_boucle\_carre@{test\_Chemin\_algo\_boucle\_carre}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Chemin\_algo\_boucle\_carre()}{test\_Chemin\_algo\_boucle\_carre()}}
+{\footnotesize\ttfamily void test\+\_\+\+Chemin\+\_\+algo\+\_\+boucle\+\_\+carre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Scénario complexe \+: vérifie que l\textquotesingle{}algorithme trouve le chemin optimal. Test sur une boucle 2x2 avec passage obligatoire par la case la plus éloignée. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\Hypertarget{testsU_8c_a6a3d162018ceb3da908f11cd5bc99930}\label{testsU_8c_a6a3d162018ceb3da908f11cd5bc99930} 
+\index{testsU.c@{testsU.c}!test\_Chemin\_creation@{test\_Chemin\_creation}}
+\index{test\_Chemin\_creation@{test\_Chemin\_creation}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Chemin\_creation()}{test\_Chemin\_creation()}}
+{\footnotesize\ttfamily void test\+\_\+\+Chemin\+\_\+creation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie l\textquotesingle{}état initial d\textquotesingle{}un nouveau chemin vide. 
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\Hypertarget{testsU_8c_ac7e53c5cf389f69fd49fee8641adea2a}\label{testsU_8c_ac7e53c5cf389f69fd49fee8641adea2a} 
+\index{testsU.c@{testsU.c}!test\_Direction\_opposee@{test\_Direction\_opposee}}
+\index{test\_Direction\_opposee@{test\_Direction\_opposee}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Direction\_opposee()}{test\_Direction\_opposee()}}
+{\footnotesize\ttfamily void test\+\_\+\+Direction\+\_\+opposee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie que l\textquotesingle{}inversion des points cardinaux fonctionne (ex\+: NORD -\/\texorpdfstring{$>$}{>} SUD). 
+
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\Hypertarget{testsU_8c_a2abbe4379decffa80e4a99880ab9382f}\label{testsU_8c_a2abbe4379decffa80e4a99880ab9382f} 
+\index{testsU.c@{testsU.c}!test\_Ville\_acces\_cases@{test\_Ville\_acces\_cases}}
+\index{test\_Ville\_acces\_cases@{test\_Ville\_acces\_cases}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Ville\_acces\_cases()}{test\_Ville\_acces\_cases()}}
+{\footnotesize\ttfamily void test\+\_\+\+Ville\+\_\+acces\+\_\+cases (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie qu\textquotesingle{}on récupère bien la bonne case via son index. 
+
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\Hypertarget{testsU_8c_ab63b476a2cc1eb2680726e32e201b964}\label{testsU_8c_ab63b476a2cc1eb2680726e32e201b964} 
+\index{testsU.c@{testsU.c}!test\_Ville\_compter\_obligatoires@{test\_Ville\_compter\_obligatoires}}
+\index{test\_Ville\_compter\_obligatoires@{test\_Ville\_compter\_obligatoires}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Ville\_compter\_obligatoires()}{test\_Ville\_compter\_obligatoires()}}
+{\footnotesize\ttfamily void test\+\_\+\+Ville\+\_\+compter\+\_\+obligatoires (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie que le compteur de cases obligatoires fonctionne. 
+
+Here is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\Hypertarget{testsU_8c_a7c77ca8fc11d2541083a5b9f94407c00}\label{testsU_8c_a7c77ca8fc11d2541083a5b9f94407c00} 
+\index{testsU.c@{testsU.c}!test\_Ville\_creation@{test\_Ville\_creation}}
+\index{test\_Ville\_creation@{test\_Ville\_creation}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Ville\_creation()}{test\_Ville\_creation()}}
+{\footnotesize\ttfamily void test\+\_\+\+Ville\+\_\+creation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie l\textquotesingle{}allocation d\textquotesingle{}une ville et le calcul correct du nombre de cases. 
+
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\Hypertarget{testsU_8c_aa319fd1fc820f946ac9a953ff2c8ee7a}\label{testsU_8c_aa319fd1fc820f946ac9a953ff2c8ee7a} 
+\index{testsU.c@{testsU.c}!test\_Ville\_fixer\_depart@{test\_Ville\_fixer\_depart}}
+\index{test\_Ville\_fixer\_depart@{test\_Ville\_fixer\_depart}!testsU.c@{testsU.c}}
+\doxysubsubsection{\texorpdfstring{test\_Ville\_fixer\_depart()}{test\_Ville\_fixer\_depart()}}
+{\footnotesize\ttfamily void test\+\_\+\+Ville\+\_\+fixer\+\_\+depart (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Vérifie la modification du point de départ du robot. 
+
+Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23

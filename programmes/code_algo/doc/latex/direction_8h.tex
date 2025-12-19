@@ -1,0 +1,124 @@
+\doxysection{include/direction.h File Reference}
+\hypertarget{direction_8h}{}\label{direction_8h}\index{include/direction.h@{include/direction.h}}
+
+
+Gestion des points cardinaux pour le robot.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{direction_8h_a74d331c113c5bafd7450bf892758b958}{PAS\+\_\+\+DE\+\_\+\+DIRECTION}}~-\/1
+\begin{DoxyCompactList}\small\item\em Valeur de secours si aucune direction n\textquotesingle{}est définie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \{ \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaaa1f529db9f2d334d9c41dcc5f6f6e2a7}{NORD}} = 0
+, \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaab26f94a551dbfca6e0f4f6b5ad145c01}{EST}} = 1
+, \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaad2d3ceab3fce63bbe07882ab5a4e991e}{SUD}} = 2
+, \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaa564dddee8796eda21f35c76cb586aeb6}{OUEST}} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Les 4 orientations possibles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{direction_8h_a644b2cb7c37a33c2ad1bcd75f87296c4}{direction\+Opposee}} (\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} dir)
+\begin{DoxyCompactList}\small\item\em Donne la direction opposée (ex\+: NORD devient SUD). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestion des points cardinaux pour le robot. 
+
+\begin{DoxyAuthor}{Author}
+Groupe 2-\/6 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+07/12/2025
+\end{DoxyDate}
+Ce fichier définit comment le robot se repère sur la grille (Haut, Bas, Gauche, Droite) et permet de calculer facilement un demi-\/tour. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{direction_8h_a74d331c113c5bafd7450bf892758b958}\label{direction_8h_a74d331c113c5bafd7450bf892758b958} 
+\index{direction.h@{direction.h}!PAS\_DE\_DIRECTION@{PAS\_DE\_DIRECTION}}
+\index{PAS\_DE\_DIRECTION@{PAS\_DE\_DIRECTION}!direction.h@{direction.h}}
+\doxysubsubsection{\texorpdfstring{PAS\_DE\_DIRECTION}{PAS\_DE\_DIRECTION}}
+{\footnotesize\ttfamily \#define PAS\+\_\+\+DE\+\_\+\+DIRECTION~-\/1}
+
+
+
+Valeur de secours si aucune direction n\textquotesingle{}est définie. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}\label{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+\index{direction.h@{direction.h}!Direction@{Direction}}
+\index{Direction@{Direction}!direction.h@{direction.h}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}
+
+
+
+Les 4 orientations possibles. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORD@{NORD}!direction.h@{direction.h}}\index{direction.h@{direction.h}!NORD@{NORD}}}\Hypertarget{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaaa1f529db9f2d334d9c41dcc5f6f6e2a7}\label{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaaa1f529db9f2d334d9c41dcc5f6f6e2a7} 
+NORD&Vers le haut \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EST@{EST}!direction.h@{direction.h}}\index{direction.h@{direction.h}!EST@{EST}}}\Hypertarget{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaab26f94a551dbfca6e0f4f6b5ad145c01}\label{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaab26f94a551dbfca6e0f4f6b5ad145c01} 
+EST&Vers la droite \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUD@{SUD}!direction.h@{direction.h}}\index{direction.h@{direction.h}!SUD@{SUD}}}\Hypertarget{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaad2d3ceab3fce63bbe07882ab5a4e991e}\label{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaad2d3ceab3fce63bbe07882ab5a4e991e} 
+SUD&Vers le bas \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUEST@{OUEST}!direction.h@{direction.h}}\index{direction.h@{direction.h}!OUEST@{OUEST}}}\Hypertarget{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaa564dddee8796eda21f35c76cb586aeb6}\label{direction_8h_a224b9163917ac32fc95a60d8c1eec3aaa564dddee8796eda21f35c76cb586aeb6} 
+OUEST&Vers la gauche \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{direction_8h_a644b2cb7c37a33c2ad1bcd75f87296c4}\label{direction_8h_a644b2cb7c37a33c2ad1bcd75f87296c4} 
+\index{direction.h@{direction.h}!directionOpposee@{directionOpposee}}
+\index{directionOpposee@{directionOpposee}!direction.h@{direction.h}}
+\doxysubsubsection{\texorpdfstring{directionOpposee()}{directionOpposee()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} direction\+Opposee (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}]{dir }\end{DoxyParamCaption})}
+
+
+
+Donne la direction opposée (ex\+: NORD devient SUD). 
+
+
+\begin{DoxyItemize}
+\item Très utile pour connaître la provenance d\textquotesingle{}un mouvement ou pour faire faire demi-\/tour au robot.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & La direction actuelle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La direction inverse.
+\end{DoxyReturn}
+Donne la direction opposée (ex\+: NORD devient SUD).
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parameters}
+{\em dir} & La direction d\textquotesingle{}origine (NORD, SUD, EST, OUEST). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La direction inverse, ou PAS\+\_\+\+DE\+\_\+\+DIRECTION si l\textquotesingle{}entrée est invalide. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}Here is the caller graph for this function\+:
+% FIG 1

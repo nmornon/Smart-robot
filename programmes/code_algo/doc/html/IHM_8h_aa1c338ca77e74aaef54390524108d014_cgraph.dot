@@ -1,0 +1,11 @@
+digraph "IHM_afficherChemin"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="IHM_afficherChemin",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Affiche le chemin final et sa distance totale."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Ch_nbrCases",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$chemin__bfs_2chemin_8c.html#abb06f389f727659f968e1a30a9d8bdf1",tooltip="Renvoie le nombre total de cases composant le chemin."];
+}

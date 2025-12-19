@@ -1,0 +1,137 @@
+\doxysection{include/\+IHM.h File Reference}
+\hypertarget{IHM_8h}{}\label{IHM_8h}\index{include/IHM.h@{include/IHM.h}}
+
+
+Gestion des interactions (fichiers et affichage console).  
+
+
+{\ttfamily \#include "{}ville.\+h"{}}\newline
+{\ttfamily \#include "{}chemin.\+h"{}}\newline
+Include dependency graph for IHM.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{IHM_8h_af9e50514f9c9e97be9e9489529bedf6c}{IHM\+\_\+charger\+Ville\+Depuis\+Fichier}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+fichier)
+\begin{DoxyCompactList}\small\item\em Crée une ville à partir d\textquotesingle{}un fichier texte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IHM_8h_afba9d8082a44d9b5cf2e764796cd4cce}{IHM\+\_\+afficher\+\_\+ville}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}v)
+\begin{DoxyCompactList}\small\item\em Affiche la carte de la ville dans la console. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IHM_8h_aa1c338ca77e74aaef54390524108d014}{IHM\+\_\+afficher\+Chemin}} (\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}chemin)
+\begin{DoxyCompactList}\small\item\em Affiche le chemin final et sa distance totale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IHM_8h_a06fd8ec756fbf3b14607a7c285785cf2}{IHM\+\_\+generer\+Ordres}} (\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}chemin)
+\begin{DoxyCompactList}\small\item\em Traduit un chemin en instructions concrètes (ordres de mouvement). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestion des interactions (fichiers et affichage console). 
+
+\begin{DoxyAuthor}{Author}
+Groupe 2-\/6 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/12/2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{IHM_8h_afba9d8082a44d9b5cf2e764796cd4cce}\label{IHM_8h_afba9d8082a44d9b5cf2e764796cd4cce} 
+\index{IHM.h@{IHM.h}!IHM\_afficher\_ville@{IHM\_afficher\_ville}}
+\index{IHM\_afficher\_ville@{IHM\_afficher\_ville}!IHM.h@{IHM.h}}
+\doxysubsubsection{\texorpdfstring{IHM\_afficher\_ville()}{IHM\_afficher\_ville()}}
+{\footnotesize\ttfamily void IHM\+\_\+afficher\+\_\+ville (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{v }\end{DoxyParamCaption})}
+
+
+
+Affiche la carte de la ville dans la console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointeur vers la ville à visualiser.\\
+\hline
+\end{DoxyParams}
+Affiche la carte de la ville dans la console. Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{IHM_8h_aa1c338ca77e74aaef54390524108d014}\label{IHM_8h_aa1c338ca77e74aaef54390524108d014} 
+\index{IHM.h@{IHM.h}!IHM\_afficherChemin@{IHM\_afficherChemin}}
+\index{IHM\_afficherChemin@{IHM\_afficherChemin}!IHM.h@{IHM.h}}
+\doxysubsubsection{\texorpdfstring{IHM\_afficherChemin()}{IHM\_afficherChemin()}}
+{\footnotesize\ttfamily void IHM\+\_\+afficher\+Chemin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}}]{chemin }\end{DoxyParamCaption})}
+
+
+
+Affiche le chemin final et sa distance totale. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chemin} & Le chemin calculé à afficher.\\
+\hline
+\end{DoxyParams}
+Affiche le chemin final et sa distance totale. Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{IHM_8h_af9e50514f9c9e97be9e9489529bedf6c}\label{IHM_8h_af9e50514f9c9e97be9e9489529bedf6c} 
+\index{IHM.h@{IHM.h}!IHM\_chargerVilleDepuisFichier@{IHM\_chargerVilleDepuisFichier}}
+\index{IHM\_chargerVilleDepuisFichier@{IHM\_chargerVilleDepuisFichier}!IHM.h@{IHM.h}}
+\doxysubsubsection{\texorpdfstring{IHM\_chargerVilleDepuisFichier()}{IHM\_chargerVilleDepuisFichier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*} IHM\+\_\+charger\+Ville\+Depuis\+Fichier (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nom\+\_\+fichier }\end{DoxyParamCaption})}
+
+
+
+Crée une ville à partir d\textquotesingle{}un fichier texte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom\+\_\+fichier} & Chemin vers le fichier de description (.txt). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers la ville créée, ou NULL si le fichier est invalide.
+\end{DoxyReturn}
+Crée une ville à partir d\textquotesingle{}un fichier texte.
+
+
+\begin{DoxyItemize}
+\item Le fichier doit suivre le format \+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Largeur, 2. Case départ + Orientation, 3. Passages (X-\/Y) ou cases obligatoires (X).
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parameters}
+{\em nom\+\_\+fichier} & Chemin vers le fichier .txt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers la ville créée, ou NULL en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{IHM_8h_a06fd8ec756fbf3b14607a7c285785cf2}\label{IHM_8h_a06fd8ec756fbf3b14607a7c285785cf2} 
+\index{IHM.h@{IHM.h}!IHM\_genererOrdres@{IHM\_genererOrdres}}
+\index{IHM\_genererOrdres@{IHM\_genererOrdres}!IHM.h@{IHM.h}}
+\doxysubsubsection{\texorpdfstring{IHM\_genererOrdres()}{IHM\_genererOrdres()}}
+{\footnotesize\ttfamily void IHM\+\_\+generer\+Ordres (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}}]{chemin }\end{DoxyParamCaption})}
+
+
+
+Traduit un chemin en instructions concrètes (ordres de mouvement). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chemin} & Le chemin à convertir.\\
+\hline
+\end{DoxyParams}
+Traduit un chemin en instructions concrètes (ordres de mouvement).
+
+
+\begin{DoxyItemize}
+\item Analyse chaque étape du chemin pour décider s\textquotesingle{}il faut tourner ou avancer en fonction de l\textquotesingle{}orientation actuelle. 
+\end{DoxyItemize}Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7

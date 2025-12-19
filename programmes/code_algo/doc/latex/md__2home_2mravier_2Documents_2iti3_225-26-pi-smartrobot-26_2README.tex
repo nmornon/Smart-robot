@@ -1,0 +1,88 @@
+\chapter{🤖 PI SMART ROBOT}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README}{}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README}\index{🤖 PI SMART ROBOT@{🤖 PI SMART ROBOT}}
+\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md0}%
+\Hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md0}%
+ \hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md1}{}\doxysubsection{\texorpdfstring{Projet Intégratif -\/ Groupe 6 -\/ 2025-\/2026 -\/ INSA Rouen}{Projet Intégratif - Groupe 6 - 2025-2026 - INSA Rouen}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md1}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md3}{}\doxysection{\texorpdfstring{Objectif du Projet}{Objectif du Projet}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md3}
+L\textquotesingle{}objectif principal de ce projet est la conception, la réalisation et la programmation d\textquotesingle{}un {\bfseries{robot mobile}} capable de naviguer de manière autonome dans un environnement simulé (une ville composée de rues modélisées par des lignes noires).
+
+Le robot doit \+:
+\begin{DoxyEnumerate}
+\item {\bfseries{Partir}} d\textquotesingle{}un point initial (pastille verte).
+\item {\bfseries{Passer}} par tous les points de passage obligatoires (pastilles bleues).
+\item {\bfseries{Revenir}} à son point de départ.
+\end{DoxyEnumerate}
+
+Le critère de performance est le {\bfseries{temps le plus court}} pour réaliser l\textquotesingle{}intégralité du trajet.
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md5}{}\doxysection{\texorpdfstring{Modélisation et Description de la Ville}{Modélisation et Description de la Ville}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md5}
+La ville est modélisée par une grille de cases formant un carré.
+
+Le problème est décrit à l\textquotesingle{}aide d\textquotesingle{}un {\bfseries{flux texte structuré}} qui définit\+:
+\begin{DoxyItemize}
+\item La largeur \$l\$ de la ville en nombre de cases
+\item La case de départ et son orientation initiale (N, E, S, O)
+\item Les passages entre les cases (ex\+: {\ttfamily 1-\/2})
+\item Les numéros des cases contenant les points de passage obligatoires (pastilles bleues)
+\end{DoxyItemize}\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md6}{}\doxysection{\texorpdfstring{Architecture Logicielle et Contrôle}{Architecture Logicielle et Contrôle}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md6}
+L\textquotesingle{}exécution du projet repose sur une architecture en deux programmes communicants, orchestrés par un script {\ttfamily bash}.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Composant   }&\cellcolor{\tableheadbgcolor}\textbf{ Rôle   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Composant   }&\cellcolor{\tableheadbgcolor}\textbf{ Rôle   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+{\bfseries{Script {\ttfamily bash}}}   &Orchestrateur   &Lance les deux programmes, crée le pipeline de communication et affiche le temps d\textquotesingle{}exécution    \\\cline{1-3}
+{\bfseries{Programme 1}}   &Algorithme / Pathfinder   &Lit la description de la ville et {\bfseries{produit sur sa sortie standard les ordres}} que devra suivre le robot (séquence AV, TG, TD)    \\\cline{1-3}
+{\bfseries{Programme 2}}   &Contrôleur / Driver   &{\bfseries{Lit les ordres depuis son entrée standard}}, les interprète, et pilote les composants du robot (moteurs, capteurs)   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md7}{}\doxysubsection{\texorpdfstring{Les Ordres de Contrôle}{Les Ordres de Contrôle}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md7}
+Le robot est guidé à l\textquotesingle{}aide d\textquotesingle{}ordres tels que \+:
+\begin{DoxyItemize}
+\item {\ttfamily AV} \+: {\bfseries{Avancer}} jusqu\textquotesingle{}au prochain croisement
+\item {\ttfamily TG} \+: {\bfseries{Tourner à Gauche}}
+\item {\ttfamily TD} \+: {\bfseries{Tourner à Droite}}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md9}{}\doxysection{\texorpdfstring{Composants Matériels (\+Partie Électronique)}{Composants Matériels (Partie Électronique)}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md9}
+Le robot est équipé des composants suivants\+:
+\begin{DoxyItemize}
+\item {\bfseries{Contrôle/\+Alimentation \+:}} Châssis, Contrôleur L293D, Raspberry Pi, Interrupteur on/off.
+\item {\bfseries{Déplacement \+:}} 2 moteurs + roues + supports.
+\item {\bfseries{Capteurs \+:}} 1 Capteur couleur, 3 Capteurs détecteurs de ligne.
+\item {\bfseries{Interface \+:}} Buzzers, LED, Écran LCD (pour afficher les manœuvres en continu et les couleurs détectées en émettant un bip).
+\item {\bfseries{Batteries \+:}} 1 batterie USB-\/C pour la Raspberry Pi 4, 2 batteries NIMH 3,7V + support.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md11}{}\doxysection{\texorpdfstring{Utilisation et Démonstration}{Utilisation et Démonstration}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md11}
+Le jour de la démonstration\+:
+\begin{DoxyEnumerate}
+\item {\bfseries{Connexion \+:}} Se connecter en {\ttfamily SSH} sur le robot
+\item {\bfseries{Transfert du Fichier \+:}} Copier le fichier de description de la ville sur le robot
+\item {\bfseries{Lancement \+:}} Lancer le script {\ttfamily bash} en lui passant le nom du fichier de description en paramètre
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Exemple\ de\ lancement\ :}
+\DoxyCodeLine{scp\ <fichier\_ville>\ pi@<adresse\_ip\_robot>:<adresse\_destination>}
+\DoxyCodeLine{ssh\ pi@<adresse\_ip\_robot>}
+\DoxyCodeLine{./pipeline.sh\ fichier\_ville.txt}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md13}{}\doxysection{\texorpdfstring{Algorithme}{Algorithme}}\label{md__2home_2mravier_2Documents_2iti3_225-26-pi-smartrobot-26_2README_autotoc_md13}
+Pour changer l\textquotesingle{}algorithme de résolution de la ville il suffit d\textquotesingle{}ouvre le fichier {\ttfamily makefile} situé dans le dossier {\ttfamily ./programmes/code\+\_\+algo}. La variable {\ttfamily algorithme} peut prendre les valeurs {\ttfamily chemin\+\_\+bfs} ou {\ttfamily chemin\+\_\+force\+\_\+brute}. 

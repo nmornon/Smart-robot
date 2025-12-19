@@ -1,0 +1,48 @@
+\doxysection{src/direction.c File Reference}
+\hypertarget{direction_8c}{}\label{direction_8c}\index{src/direction.c@{src/direction.c}}
+
+
+Fonctions utilitaires pour la gestion des directions.  
+
+
+{\ttfamily \#include "{}direction.\+h"{}}\newline
+Include dependency graph for direction.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{direction_8c_a644b2cb7c37a33c2ad1bcd75f87296c4}{direction\+Opposee}} (\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} dir)
+\begin{DoxyCompactList}\small\item\em Calcule la direction opposée à celle fournie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fonctions utilitaires pour la gestion des directions. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{direction_8c_a644b2cb7c37a33c2ad1bcd75f87296c4}\label{direction_8c_a644b2cb7c37a33c2ad1bcd75f87296c4} 
+\index{direction.c@{direction.c}!directionOpposee@{directionOpposee}}
+\index{directionOpposee@{directionOpposee}!direction.c@{direction.c}}
+\doxysubsubsection{\texorpdfstring{directionOpposee()}{directionOpposee()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} direction\+Opposee (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}]{dir }\end{DoxyParamCaption})}
+
+
+
+Calcule la direction opposée à celle fournie. 
+
+Donne la direction opposée (ex\+: NORD devient SUD).
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parameters}
+{\em dir} & La direction d\textquotesingle{}origine (NORD, SUD, EST, OUEST). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La direction inverse, ou PAS\+\_\+\+DE\+\_\+\+DIRECTION si l\textquotesingle{}entrée est invalide. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}Here is the caller graph for this function\+:
+% FIG 1

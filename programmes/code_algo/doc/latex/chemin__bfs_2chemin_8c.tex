@@ -1,0 +1,149 @@
+\doxysection{src/chemin\+\_\+bfs/chemin.c File Reference}
+\hypertarget{chemin__bfs_2chemin_8c}{}\label{chemin__bfs_2chemin_8c}\index{src/chemin\_bfs/chemin.c@{src/chemin\_bfs/chemin.c}}
+
+
+Gestion des trajets et calcul d\textquotesingle{}itinéraires optimaux dans la ville.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include "{}ville.\+h"{}}\newline
+{\ttfamily \#include "{}case.\+h"{}}\newline
+{\ttfamily \#include "{}chemin.\+h"{}}\newline
+{\ttfamily \#include "{}direction.\+h"{}}\newline
+Include dependency graph for chemin.\+c\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{chemin__bfs_2chemin_8c_a956e2723d559858d08644ac99146e910}{INFINITY}}~INT\+\_\+\+MAX
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{chemin__bfs_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262}{Ch\+\_\+creer\+Chemin}} ()
+\begin{DoxyCompactList}\small\item\em Initialise une nouvelle structure de chemin vide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{chemin__bfs_2chemin_8c_af8766bec59090e06f921cb44a3547bf7}{Ch\+\_\+obtenir\+Dir\+Depart}} (\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Récupère la direction initiale du chemin. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structC__Case}{C\+\_\+\+Case}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{chemin__bfs_2chemin_8c_af7baea9d65ab98554d2fbe326e4e9341}{Ch\+\_\+obtenir\+Case\+Au\+Chemin}} (\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}c, unsigned int index)
+\begin{DoxyCompactList}\small\item\em Accède à une case spécifique du chemin via son index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{chemin__bfs_2chemin_8c_abb06f389f727659f968e1a30a9d8bdf1}{Ch\+\_\+nbr\+Cases}} (\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Renvoie le nombre total de cases composant le chemin. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{chemin__bfs_2chemin_8c_a023f91da9f348b50ee78654a3bf107b0}{Ch\+\_\+generer\+Chemin\+Optimal}} (\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}v)
+\begin{DoxyCompactList}\small\item\em Calcule le chemin complet optimal passant par tous les points obligatoires. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{chemin__bfs_2chemin_8c_a2e3e83d065da5101e9553f6868de8059}{Ch\+\_\+liberer}} (\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Nettoie la mémoire et libère le chemin ainsi que son tableau de cases. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestion des trajets et calcul d\textquotesingle{}itinéraires optimaux dans la ville. 
+
+
+\begin{DoxyItemize}
+\item Ce fichier contient les algorithmes pour créer des chemins, calculer des plus courts chemins (BFS) et optimiser l\textquotesingle{}ordre de passage par plusieurs points obligatoires. 
+\end{DoxyItemize}
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{chemin__bfs_2chemin_8c_a956e2723d559858d08644ac99146e910}\label{chemin__bfs_2chemin_8c_a956e2723d559858d08644ac99146e910} 
+\index{chemin.c@{chemin.c}!INFINITY@{INFINITY}}
+\index{INFINITY@{INFINITY}!chemin.c@{chemin.c}}
+\doxysubsubsection{\texorpdfstring{INFINITY}{INFINITY}}
+{\footnotesize\ttfamily \#define INFINITY~INT\+\_\+\+MAX}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{chemin__bfs_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262}\label{chemin__bfs_2chemin_8c_a63629a6fa149296c1cc347f3dd8fa262} 
+\index{chemin.c@{chemin.c}!Ch\_creerChemin@{Ch\_creerChemin}}
+\index{Ch\_creerChemin@{Ch\_creerChemin}!chemin.c@{chemin.c}}
+\doxysubsubsection{\texorpdfstring{Ch\_creerChemin()}{Ch\_creerChemin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*} Ch\+\_\+creer\+Chemin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise une nouvelle structure de chemin vide. 
+
+Alloue et initialise un chemin vide.
+
+\begin{DoxyReturn}{Returns}
+Un pointeur vers le chemin créé. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{chemin__bfs_2chemin_8c_a023f91da9f348b50ee78654a3bf107b0}\label{chemin__bfs_2chemin_8c_a023f91da9f348b50ee78654a3bf107b0} 
+\index{chemin.c@{chemin.c}!Ch\_genererCheminOptimal@{Ch\_genererCheminOptimal}}
+\index{Ch\_genererCheminOptimal@{Ch\_genererCheminOptimal}!chemin.c@{chemin.c}}
+\doxysubsubsection{\texorpdfstring{Ch\_genererCheminOptimal()}{Ch\_genererCheminOptimal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*} Ch\+\_\+generer\+Chemin\+Optimal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structV__Ville}{V\+\_\+\+Ville}} \texorpdfstring{$\ast$}{*}}]{v }\end{DoxyParamCaption})}
+
+
+
+Calcule le chemin complet optimal passant par tous les points obligatoires. 
+
+Génère le chemin le plus court visitant tous les points obligatoires et revenant au départ, en utilisant une approche optimisée (BFS + TSP sur objectifs).
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointeur vers la ville. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un objet \doxylink{structCh__Chemin}{Ch\+\_\+\+Chemin} contenant l\textquotesingle{}itinéraire complet (retour au départ inclus). 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{chemin__bfs_2chemin_8c_a2e3e83d065da5101e9553f6868de8059}\label{chemin__bfs_2chemin_8c_a2e3e83d065da5101e9553f6868de8059} 
+\index{chemin.c@{chemin.c}!Ch\_liberer@{Ch\_liberer}}
+\index{Ch\_liberer@{Ch\_liberer}!chemin.c@{chemin.c}}
+\doxysubsubsection{\texorpdfstring{Ch\_liberer()}{Ch\_liberer()}}
+{\footnotesize\ttfamily void Ch\+\_\+liberer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Nettoie la mémoire et libère le chemin ainsi que son tableau de cases. 
+
+Libère la mémoire associée à un chemin. Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{chemin__bfs_2chemin_8c_abb06f389f727659f968e1a30a9d8bdf1}\label{chemin__bfs_2chemin_8c_abb06f389f727659f968e1a30a9d8bdf1} 
+\index{chemin.c@{chemin.c}!Ch\_nbrCases@{Ch\_nbrCases}}
+\index{Ch\_nbrCases@{Ch\_nbrCases}!chemin.c@{chemin.c}}
+\doxysubsubsection{\texorpdfstring{Ch\_nbrCases()}{Ch\_nbrCases()}}
+{\footnotesize\ttfamily int Ch\+\_\+nbr\+Cases (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Renvoie le nombre total de cases composant le chemin. 
+
+Récupère le nombre de cases (étapes) dans le chemin.
+
+Récupère le nombre de cases (Etapes) dans le chemin. Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{chemin__bfs_2chemin_8c_af7baea9d65ab98554d2fbe326e4e9341}\label{chemin__bfs_2chemin_8c_af7baea9d65ab98554d2fbe326e4e9341} 
+\index{chemin.c@{chemin.c}!Ch\_obtenirCaseAuChemin@{Ch\_obtenirCaseAuChemin}}
+\index{Ch\_obtenirCaseAuChemin@{Ch\_obtenirCaseAuChemin}!chemin.c@{chemin.c}}
+\doxysubsubsection{\texorpdfstring{Ch\_obtenirCaseAuChemin()}{Ch\_obtenirCaseAuChemin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structC__Case}{C\+\_\+\+Case}} \texorpdfstring{$\ast$}{*} Ch\+\_\+obtenir\+Case\+Au\+Chemin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+Accède à une case spécifique du chemin via son index. 
+
+Récupère une case spécifique du chemin à un index donné. Here is the caller graph for this function\+:
+% FIG 6
+\Hypertarget{chemin__bfs_2chemin_8c_af8766bec59090e06f921cb44a3547bf7}\label{chemin__bfs_2chemin_8c_af8766bec59090e06f921cb44a3547bf7} 
+\index{chemin.c@{chemin.c}!Ch\_obtenirDirDepart@{Ch\_obtenirDirDepart}}
+\index{Ch\_obtenirDirDepart@{Ch\_obtenirDirDepart}!chemin.c@{chemin.c}}
+\doxysubsubsection{\texorpdfstring{Ch\_obtenirDirDepart()}{Ch\_obtenirDirDepart()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} Ch\+\_\+obtenir\+Dir\+Depart (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCh__Chemin}{Ch\+\_\+\+Chemin}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Récupère la direction initiale du chemin. 
+
+Récupère la direction initiale du robot au début du chemin. Here is the caller graph for this function\+:
+% FIG 7
