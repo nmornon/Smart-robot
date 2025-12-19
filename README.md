@@ -79,5 +79,3 @@ ssh pi@<adresse_ip_robot>
 
 Pour changer l'algorithme de résolution de la ville il suffit d'ouvre le fichier makefile situé dans le dossier `./programmes/code_algo`
 La variable `algorithme` peut prendre les valeurs `chemin_bfs` ou `chemin_force_brute`.
-
----
