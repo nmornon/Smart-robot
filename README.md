@@ -2,10 +2,6 @@
 
 ### Projet Intégratif - Groupe 6 - 2025-2026 - INSA Rouen
 
-![Image schema électrique](https://gitlab.insa-rouen.fr/pi-smartrobot/25-26-pi-smartrobot-26/-/raw/main/rapport/schema/shema_elec_16_12_2025.png)
-
----
-
 ## Objectif du Projet
 
 L'objectif principal de ce projet est la conception, la réalisation et la programmation d'un **robot mobile** capable de naviguer de manière autonome dans un environnement simulé (une ville composée de rues modélisées par des lignes noires).
