@@ -1,35 +1,34 @@
-# 🤖 PI SMART ROBOT
+# PI Smart Robot — Robot Autonome Suiveur de Ligne 
 
-### Projet Intégratif - Groupe 6 - 2025-2026 - INSA Rouen
+**Projet Intégratif — Groupe 6 (2025–2026) — INSA Rouen**
 
-## Objectif du Projet
+Conception, câblage électronique et programmation en **C** d'un robot mobile capable de naviguer de manière autonome dans un environnement simulé : une ville composée de rues modélisées par des lignes noires.
 
-L'objectif principal de ce projet est la conception, la réalisation et la programmation d'un **robot mobile** capable de naviguer de manière autonome dans un environnement simulé (une ville composée de rues modélisées par des lignes noires).
-
-Le robot doit :
-1.  **Partir** d'un point initial (pastille verte).
-2.  **Passer** par tous les points de passage obligatoires (pastilles bleues).
-3.  **Revenir** à son point de départ.
-
-Le critère de performance est le **temps le plus court** pour réaliser l'intégralité du trajet.
+### Objectif du projet
+Le robot doit réaliser le trajet le plus rapide possible en respectant les étapes suivantes :
+1. **Partir** d'un point initial (pastille rouge) avec une orientation donnée (`N`, `E`, `S`, `O`).
+2. **Passer** par tous les points de passage obligatoires (pastilles vertes).
+3. **Revenir** à son point de départ.
+4. **Afficher et signaler** les détections : à chaque passage de pastille, le robot émet un bip sonore et affiche la couleur détectée ainsi que les manœuvres en cours sur son écran LCD.
 
 ---
 
 ## Structure du projet
-```
+
+```text
 25-26-PI-SMART-ROBOT/
 ├── programmes/
 │   ├── code_algo/
 │   │   ├── src/
-│   │   │    ├── tests/
-│   │   │    ├── chemin_force_brute/
-│   │   │    ├── chemin_bfs/
-│   │   │    └── .../
+│   │   │   ├── tests/
+│   │   │   ├── chemin_force_brute/
+│   │   │   ├── chemin_bfs/
+│   │   │   └── .../
 │   │   ├── include/
 │   │   ├── bin/
 │   │   ├── lib/
 │   │   └── makefile
-│   └──  code_elec/
+│   └── code_elec/
 │       ├── src/
 │       ├── include/
 │       ├── bin/
@@ -37,84 +36,95 @@ Le critère de performance est le **temps le plus court** pour réaliser l'inté
 │       ├── makefile
 │       └── Doxyfile
 ├── rapport/
-│       ├── analyse_descendente/
-│       ├── schema/
-│       ├── sections/
-│       ├── images/
-│       └── main.tex
+│   ├── analyse_descendente/
+│   ├── schema/
+│   ├── sections/
+│   ├── images/
+│   └── main.tex
 ├── pipeline.sh
 └── README.md
 ```
 
-## Modélisation et Description de la Ville
+---
 
-La ville est modélisée par une grille de cases formant un carré.
+## Modélisation et description de la ville
 
+La ville est modélisée par une grille de cases formant un carré. Le problème est décrit à l'aide d'un flux texte structuré qui définit :
+- La largeur $l$ de la ville en nombre de cases (grille de $l \times l$ cases).
+- La case de départ et son orientation initiale (`N`, `E`, `S`, `O`).
+- Les passages entre les cases (ex. : `1-2`).
+- Les numéros des cases contenant les points de passage obligatoires (pastilles vertes).
 
-Le problème est décrit à l'aide d'un **flux texte structuré** qui définit:
-* La largeur $l$ de la ville en nombre de cases
-* La case de départ et son orientation initiale (N, E, S, O)
-* Les passages entre les cases (ex: `1-2`)
-* Les numéros des cases contenant les points de passage obligatoires (pastilles bleues)
+---
 
-## Architecture Logicielle et Contrôle
+## Architecture logicielle et contrôle
 
-L'exécution du projet repose sur une architecture en deux programmes communicants, orchestrés par un script `bash`.
+L'exécution du projet repose sur une architecture en deux programmes communicants, orchestrés par un script bash :
 
 | Composant | Rôle | Description |
 | :--- | :--- | :--- |
-| **Script `bash`** | Orchestrateur | Lance les deux programmes, crée le pipeline de communication et affiche le temps d'exécution |
-| **Programme 1** | Algorithme / Pathfinder | Lit la description de la ville et **produit sur sa sortie standard les ordres** que devra suivre le robot (séquence AV, TG, TD) |
-| **Programme 2** | Contrôleur / Driver | **Lit les ordres depuis son entrée standard**, les interprète, et pilote les composants du robot (moteurs, capteurs) |
+| Script bash (`pipeline.sh`) | Orchestrateur | Lance les deux programmes, crée le pipeline de communication et affiche le temps d'exécution. |
+| Programme 1 (`code_algo`) | Algorithme / Pathfinder | Lit la description de la ville et produit sur sa sortie standard les ordres que devra suivre le robot (séquence `AV`, `TG`, `TD`). |
+| Programme 2 (`code_elec`) | Contrôleur / Driver | Lit les ordres depuis son entrée standard, les interprète, et pilote les composants du robot (moteurs, capteurs). |
 
-### Les Ordres de Contrôle 
+### Ordres de contrôle
 Le robot est guidé à l'aide d'ordres tels que :
-* `AV` : **Avancer** jusqu'au prochain croisement
-* `TG` : **Tourner à Gauche**
-* `TD` : **Tourner à Droite**
+- `AV` : Avancer jusqu'au prochain croisement.
+- `TG` : Tourner à Gauche.
+- `TD` : Tourner à Droite.
+
+### Algorithmes disponibles
+Deux approches ont été implémentées pour calculer le chemin :
+- `chemin_bfs` : Parcours en largeur (BFS) combiné à la recherche de l'ordre optimal des objectifs, adapté aux grilles plus grandes.
+- `chemin_force_brute` : Exploration récursive simulant les déplacements et l'orientation du robot.
 
 ---
 
-## Composants Matériels (Partie Électronique)
+## Composants matériels (partie électronique)
 
-Le robot est équipé des composants suivants:
-* **Contrôle/Alimentation :** Châssis, Contrôleur L293D, Raspberry Pi, Interrupteur on/off.
-* **Déplacement :** 2 moteurs + roues + supports.
-* **Capteurs :** 1 Capteur couleur, 3 Capteurs détecteurs de ligne.
-* **Interface :** Buzzers, LED, Écran LCD (pour afficher les manœuvres en continu et les couleurs détectées en émettant un bip).
-* **Batteries :** 1 batterie USB-C pour la Raspberry Pi 4, 2 batteries NIMH 3,7V + support.
+Le robot est équipé des composants suivants, avec une séparation entre le circuit logique et le circuit d'actionnement :
+- **Contrôle / Alimentation** : Châssis, Contrôleur L293D, Raspberry Pi 4, Interrupteur on/off.
+- **Déplacement** : 2 moteurs + roues + supports.
+- **Capteurs** : 1 Capteur couleur RGB (TCS34725), 5 Capteurs détecteurs de ligne (3 à l'avant et 2 à l'arrière).
+- **Interface** : Buzzer, Écran LCD (pour afficher les manœuvres en continu et les couleurs détectées en émettant un bip).
+- **Batteries** : 1 batterie USB-C pour la Raspberry Pi 4, 2 batteries NiMH $3{,}7\text{ V}$ + support.
 
 ---
 
-## Utilisation et Démonstration
+## Utilisation et démonstration
 
-Le jour de la démonstration:
-1.  **Connexion :** Se connecter en `SSH` sur le robot
-2.  **Transfert du Fichier :** Copier le fichier de description de la ville sur le robot
-3.  **Lancement :** Lancer le script `bash` en lui passant le nom du fichier de description en paramètre
+Le jour de la démonstration :
+1. **Connexion** : Se connecter en SSH sur le robot.
+2. **Transfert du fichier** : Copier le fichier de description de la ville sur le robot.
+3. **Lancement** : Lancer le script bash en lui passant le nom du fichier de description en paramètre.
 
 ```bash
-# Exemple de lancement :
 scp <fichier_ville> pi@<adresse_ip_robot>:<adresse_destination>
 ssh pi@<adresse_ip_robot>
 ./pipeline.sh fichier_ville.txt
 ```
 
----
+### Algorithme
+Pour changer l'algorithme de résolution de la ville, il suffit d'ouvrir le fichier `makefile` situé dans le dossier `./programmes/code_algo`.
+La variable d'algorithme peut prendre les valeurs `chemin_bfs` ou `chemin_force_brute`.
 
-## Algorithme
+### Tests unitaires et documentation des algorithmes
+Pour accéder aux tests unitaires et à la documentation des algorithmes, il faut se déplacer dans le dossier `./programmes/code_algo` et taper l'une des commandes suivantes au choix :
 
-Pour changer l'algorithme de résolution de la ville il suffit d'ouvrir le fichier `makefile` situé dans le dossier `./programmes/code_algo`.
-La variable `algorithme` peut prendre les valeurs `chemin_bfs` ou `chemin_force_brute`.
-
----
-
-## Tests unitaires et documentation des algorithmes
-
-Pour accéder aux tests unitaires et à la documentation des algorithmes il faut se déplacer dans le dossier `./programmes/code_algo` et taper une des commandes suivantes au choix : 
 ```bash
-make #Pour compiler normalement les algorithmes
-make tests #Pour compiler les tests
-make doc #Pour générer la doc
-make clean #Pour supprimer l'excés
+make        # Pour compiler normalement les algorithmes
+make tests  # Pour compiler les tests
+make doc    # Pour générer la doc
+make clean  # Pour supprimer les fichiers générés / l'excès
 ```
+
+---
+
+## Équipe — Groupe 6
+
+Projet réalisé par :
+- **Aleks Angelov**
+- **Youssef El Akoum**
+- **Bilal Marnissi**
+- **Noémie Mornon**
+- **Mathis Ravier**
