@@ -1,5 +1,5 @@
 /**
- * @file IHM.c
+ * @file IHM.c 
  * @brief Gestion de l'interface et lecture des fichiers de ville.
  * * Ce module permet de transformer un fichier texte en structure de ville,
  * d'afficher les résultats à l'écran et de traduire un chemin en ordres 
